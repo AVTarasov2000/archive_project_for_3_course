@@ -5,5 +5,5 @@ import entitys.File;
 
 @FunctionalInterface
 public interface FileChecker{
-    boolean checkFile(File key, File file);
+    boolean checkFile(Object key, File file);
 }

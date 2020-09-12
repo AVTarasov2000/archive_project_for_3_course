@@ -17,4 +17,12 @@ public class Archive {
     public ArrayList <File> getFiles() {
         return files;
     }
+
+    public static boolean getByMetaInf(Object key, File file){
+        return file.getMetaInf().compareTo((String) key)==0;
+    }
+
+
+
+
 }

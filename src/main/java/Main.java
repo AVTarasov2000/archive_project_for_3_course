@@ -1,4 +1,3 @@
-import com.sun.istack.internal.NotNull;
 import entitys.Archive;
 import entitys.File;
 import interfaces.FunctionalInterfaces.FileChecker;
@@ -10,6 +9,10 @@ import java.util.Date;
 
 public class Main {
 
+    public static boolean getByMetaInf(Object key, File file){
+        return file.getMetaInf().compareTo((String) key)==0;
+    }
+
     public static void main(String[] args){
         File file1 = new File(new Date(2020, Calendar.FEBRUARY,1), "aa","aa","aa");
         File file2 = new File(new Date(2020, Calendar.MARCH,1), "bb","bb","bb");
@@ -19,10 +22,7 @@ public class Main {
         arr.add(file2);
         arr.add(file3);
         Archive archive = new Archive(arr);
-        ArrayList<File> res = ArchiveSorts.GetBy(archive,new File(new Date(2020, Calendar.FEBRUARY,1),
-                "aa","bb","cc"), (File a, File b) -> {
-            return a.getPlace().compareTo(b.getPlace());
-        });
+        ArrayList<File> res = ArchiveSorts.GetBy(archive,"bb", Archive::getByMetaInf);
         System.out.print(res);
     }
 }

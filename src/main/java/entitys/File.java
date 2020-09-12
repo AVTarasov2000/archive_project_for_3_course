@@ -1,8 +1,5 @@
 package entitys;
 
-
-import com.sun.istack.internal.NotNull;
-
 import java.util.Date;
 
 public class File {
@@ -49,5 +46,13 @@ public class File {
 
     public void setPlace(String place) {
         this.place = place;
+    }
+
+    @Override
+    public String toString() {
+        return "Date: " + datetime.toString()+
+                "| MetaInf: "+metaInf+
+                "| type: "+ type +
+                "| place: " + place;
     }
 }
