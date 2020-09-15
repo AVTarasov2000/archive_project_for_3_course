@@ -1,4 +1,10 @@
 package entitys;
 
-public class RealPlace {
+public class RealPlace extends Place{
+
+    public String getPlace(){
+        return super.place;
+    }
+
+
 }
