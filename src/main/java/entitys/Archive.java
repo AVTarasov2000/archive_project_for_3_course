@@ -8,7 +8,6 @@ import java.util.HashMap;
 public class Archive {
 
     String name;
-//    ArrayList<File> files;
     HashMap<String, File> files;
 
     public Archive(String name) {

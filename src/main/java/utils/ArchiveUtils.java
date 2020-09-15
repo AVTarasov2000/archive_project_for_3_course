@@ -23,7 +23,7 @@ public class ArchiveUtils {
     }
 
     public static ArrayList<File> GetBy(Archive archive, Object key, FileChecker check){
-        ArrayList<File> result = new ArrayList <File>();
+        ArrayList<File> result = new ArrayList <>();
         for (File f :
                 archive.getAllFiles()) {
             if (check.checkFile(key, f)) {
