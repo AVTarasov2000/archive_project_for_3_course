@@ -1,27 +1,53 @@
 package entitys;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+
 
 public class Archive {
 
-    ArrayList<File> files;
+    String name;
+//    ArrayList<File> files;
+    HashMap<String, File> files;
 
-    public Archive() {
-        this.files = new ArrayList <File>();
+    public Archive(String name) {
+        this.name = name;
+        this.files = new HashMap<String, File>();
     }
 
-    public Archive(ArrayList <File> files) {
-        this.files = files;
+    public Archive(String name, ArrayList <File> files) {
+        this.name = name;
+        this.files = new HashMap<String, File>();
+        for (File f :
+                files) {
+            this.files.put(f.name, f);
+        }
     }
 
-    public ArrayList <File> getFiles() {
-        return files;
+    public Collection<File> getAllFiles() {
+        return files.values();
     }
 
-    public static boolean getByMetaInf(Object key, File file){
-        return file.getMetaInf().compareTo((String) key)==0;
+    public void addFile(File file){
+        files.put(file.name, file);
     }
 
+    public File getFile(String name){
+        return files.get(name);
+    }
+
+
+
+    @Override
+    public String toString(){
+        StringBuilder sb = new StringBuilder();
+        for (File f :
+                files.values()) {
+            sb.append(f.toString()).append("\n");
+        }
+        return sb.toString();
+    }
 
 
 

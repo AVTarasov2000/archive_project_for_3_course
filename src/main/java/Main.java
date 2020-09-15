@@ -1,16 +1,17 @@
 import entitys.Archive;
 import entitys.File;
-import interfaces.FunctionalInterfaces.FileChecker;
-import logic.ArchiveSorts;
+import utils.ArchiveUtils;
+import utils.FileUtils;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Scanner;
 
 public class Main {
 
     public static boolean getByMetaInf(Object key, File file){
-        return file.getMetaInf().compareTo((String) key)==0;
+        return file.getName().compareTo((String) key)==0;
     }
 
     public static void main(String[] args){
@@ -21,8 +22,12 @@ public class Main {
         arr.add(file1);
         arr.add(file2);
         arr.add(file3);
-        Archive archive = new Archive(arr);
-        ArrayList<File> res = ArchiveSorts.GetBy(archive,"bb", Archive::getByMetaInf);
-        System.out.print(res);
+        Archive archive = new Archive("abdyabdya", arr);
+        ArrayList<File> res = ArchiveUtils.GetBy(archive,"bb", ArchiveUtils::getByName);
+        System.out.println(res);
+        System.out.println(archive);
+        Scanner scanner = new Scanner(System.in);
+        String str = scanner.nextLine();
+        System.out.println(FileUtils.createFile(str.split(" ")));
     }
 }

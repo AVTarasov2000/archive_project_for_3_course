@@ -5,13 +5,13 @@ import java.util.Date;
 public class File {
 
     Date datetime;
-    String metaInf;
+    String name;
     String type;
     String place;
 
-    public File(Date datetime, String metaInf, String type, String place) {
+    public File(Date datetime, String name, String type, String place) {
         this.datetime = datetime;
-        this.metaInf = metaInf;
+        this.name = name;
         this.type = type;
         this.place = place;
     }
@@ -24,12 +24,12 @@ public class File {
         this.datetime = datetime;
     }
 
-    public String getMetaInf() {
-        return metaInf;
+    public String getName() {
+        return name;
     }
 
-    public void setMetaInf(String metaInf) {
-        this.metaInf = metaInf;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getType() {
@@ -51,7 +51,7 @@ public class File {
     @Override
     public String toString() {
         return "Date: " + datetime.toString()+
-                "| MetaInf: "+metaInf+
+                "| MetaInf: "+ name +
                 "| type: "+ type +
                 "| place: " + place;
     }
