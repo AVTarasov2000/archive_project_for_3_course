@@ -10,14 +10,10 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static boolean getByMetaInf(Object key, File file){
-        return file.getName().compareTo((String) key)==0;
-    }
-
     public static void main(String[] args){
-        File file1 = new File(new Date(2020, Calendar.FEBRUARY,1), "aa","aa","aa");
-        File file2 = new File(new Date(2020, Calendar.MARCH,1), "bb","bb","bb");
-        File file3 = new File(new Date(2020, Calendar.APRIL,1), "cc","cc","cc");
+        File file1 = new File(1, new Date(2020, Calendar.FEBRUARY,1), "aa","aa","aa");
+        File file2 = new File(1, new Date(2020, Calendar.MARCH,1), "bb","bb","bb");
+        File file3 = new File(1, new Date(2020, Calendar.APRIL,1), "cc","cc","cc");
         ArrayList<File> arr = new ArrayList <File>();
         arr.add(file1);
         arr.add(file2);

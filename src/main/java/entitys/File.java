@@ -4,12 +4,13 @@ import java.util.Date;
 
 public class File {
 
-    Date datetime;
-    String name;
-    String type;
-    String place;
+    private Date datetime;
+    private String name;
+    private String type;
+    private String place;
+    private int id;
 
-    public File(Date datetime, String name, String type, String place) {
+    public File(int id, Date datetime, String name, String type, String place) {
         this.datetime = datetime;
         this.name = name;
         this.type = type;
@@ -46,6 +47,14 @@ public class File {
 
     public void setPlace(String place) {
         this.place = place;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override

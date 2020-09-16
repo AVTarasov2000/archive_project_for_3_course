@@ -1,4 +1,4 @@
-package interfaces.FunctionalInterfaces;
+package interfaces.functionalInterfaces;
 
 
 import entitys.File;

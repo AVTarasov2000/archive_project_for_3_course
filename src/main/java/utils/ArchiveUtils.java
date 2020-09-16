@@ -2,7 +2,7 @@ package utils;
 
 import entitys.Archive;
 import entitys.File;
-import interfaces.FunctionalInterfaces.FileChecker;
+import interfaces.functionalInterfaces.FileChecker;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -18,6 +18,7 @@ public class ArchiveUtils {
         return file.getType().compareTo((String) key)==0;
     }
 
+    // TODO: 16/09/2020 поиск по году году и месяцу и т д
     public static boolean getByDate(Object key, File file){
         return file.getDatetime().compareTo((Date) key)==0;
     }
