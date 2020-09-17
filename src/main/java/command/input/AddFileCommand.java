@@ -1,4 +1,4 @@
-package command;
+package command.input;
 
 import controller.ArchiveController;
 import entitys.File;

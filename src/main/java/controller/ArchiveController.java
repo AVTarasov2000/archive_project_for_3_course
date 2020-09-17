@@ -54,5 +54,4 @@ public class ArchiveController {
         return ArchiveUtils.GetBy(archive,key, ArchiveUtils::getByDateDay);
     }
 
-
 }
