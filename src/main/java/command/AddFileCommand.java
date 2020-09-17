@@ -1,21 +1,21 @@
 package command;
 
+import controller.ArchiveController;
 import entitys.File;
 import interfaces.Command;
-import utils.ArchiveUtils;
 
 public class AddFileCommand extends Command {
 
-    private ArchiveUtils archiveUtils;
+    private ArchiveController archiveUtils;
     private File file;
 
-    public AddFileCommand(ArchiveUtils archiveUtils, File file) {
+    public AddFileCommand(ArchiveController archiveUtils, File file) {
         this.archiveUtils = archiveUtils;
         this.file = file;
     }
 
     @Override
     public void execute() {
-
+        archiveUtils.addFile(file);
     }
 }

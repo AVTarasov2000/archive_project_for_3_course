@@ -1,20 +1,20 @@
 package command;
 
+import controller.ArchiveController;
 import interfaces.Command;
-import utils.ArchiveUtils;
 
 public class RemoveFileCommand extends Command {
 
-    private ArchiveUtils archiveUtils;
+    private ArchiveController archiveUtils;
     private int id;
 
-    public RemoveFileCommand(ArchiveUtils archiveUtils, int id) {
+    public RemoveFileCommand(ArchiveController archiveUtils, int id) {
         this.archiveUtils = archiveUtils;
         this.id = id;
     }
 
     @Override
     public void execute() {
-
+        archiveUtils.removeFile(id);
     }
 }

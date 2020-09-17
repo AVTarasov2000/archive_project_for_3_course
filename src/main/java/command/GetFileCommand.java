@@ -3,18 +3,18 @@ package command;
 import controller.ArchiveController;
 import interfaces.Command;
 
-public class GetByTypeCommand extends Command {
+public class GetFileCommand extends Command {
 
     private ArchiveController archiveUtils;
-    private String type;
+    private int id;
 
-    public GetByTypeCommand(ArchiveController archiveUtils, String type) {
+    public GetFileCommand(ArchiveController archiveUtils, int id) {
         this.archiveUtils = archiveUtils;
-        this.type = type;
+        this.id = id;
     }
 
     @Override
     public void execute() {
-        archiveUtils.getByType(type);
+        archiveUtils.getFile(id);
     }
 }

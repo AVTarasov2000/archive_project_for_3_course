@@ -3,18 +3,20 @@ package command;
 import controller.ArchiveController;
 import interfaces.Command;
 
-public class GetByTypeCommand extends Command {
+import java.util.Date;
+
+public class GetByDateDay extends Command {
 
     private ArchiveController archiveUtils;
-    private String type;
+    private Date key;
 
-    public GetByTypeCommand(ArchiveController archiveUtils, String type) {
+    public GetByDateDay(ArchiveController archiveUtils, Date key) {
         this.archiveUtils = archiveUtils;
-        this.type = type;
+        this.key = key;
     }
 
     @Override
     public void execute() {
-        archiveUtils.getByType(type);
+        archiveUtils.getByDateDay(key);
     }
 }

@@ -4,12 +4,16 @@ import entitys.Archive;
 import entitys.File;
 import utils.ArchiveUtils;
 
-import java.util.ArrayList;
+
+import java.util.Date;
+import java.util.List;
 
 public class ArchiveController {
 
     private Archive archive;
 
+
+    // TODO: 16/09/2020 возвращать значения так же через паттерн команда
     public ArchiveController(Archive archive) {
         this.archive = archive;
     }
@@ -26,16 +30,28 @@ public class ArchiveController {
         archive.removeFile(id);
     }
 
-    public ArrayList<File> getByType(String key){
+    public List<File> getByType(String key){
         return ArchiveUtils.GetBy(archive,key, ArchiveUtils::getByType);
     }
 
-    public ArrayList<File> getByName(String key){
+    public List<File> getByName(String key){
         return ArchiveUtils.GetBy(archive,key, ArchiveUtils::getByName);
     }
 
-    public ArrayList<File> getByDate(String key){
+    public List <File> getByDate(Date key){
         return ArchiveUtils.GetBy(archive,key, ArchiveUtils::getByDate);
+    }
+
+    public List <File> getByDateYear(Date key){
+        return ArchiveUtils.GetBy(archive,key, ArchiveUtils::getByDateYear);
+    }
+
+    public List <File> getByDateMons(Date key){
+        return ArchiveUtils.GetBy(archive,key, ArchiveUtils::getByDateMonth);
+    }
+
+    public List <File> getByDateDay(Date key){
+        return ArchiveUtils.GetBy(archive,key, ArchiveUtils::getByDateDay);
     }
 
 

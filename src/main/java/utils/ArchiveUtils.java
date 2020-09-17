@@ -18,10 +18,26 @@ public class ArchiveUtils {
         return file.getType().compareTo((String) key)==0;
     }
 
-    // TODO: 16/09/2020 поиск по году году и месяцу и т д
     public static boolean getByDate(Object key, File file){
         return file.getDatetime().compareTo((Date) key)==0;
     }
+
+    public static boolean getByDateYear(Object key, File file){
+        return ((Date) key).getYear() == file.getDatetime().getYear();
+    }
+
+    public static boolean getByDateMonth(Object key, File file){
+        return ((Date) key).getYear() == file.getDatetime().getYear()
+                && ((Date) key).getMonth() == file.getDatetime().getMonth();
+    }
+
+    public static boolean getByDateDay(Object key, File file){
+        return ((Date) key).getYear() == file.getDatetime().getYear()
+                && ((Date) key).getMonth() == file.getDatetime().getMonth()
+                && ((Date) key).getDay() == file.getDatetime().getDay();
+    }
+
+
 
     public static ArrayList<File> GetBy(Archive archive, Object key, FileChecker check){
         ArrayList<File> result = new ArrayList <>();
