@@ -1,20 +1,20 @@
 package command.input;
 
 import controller.ArchiveController;
-import interfaces.Command;
+import controller.OutputController;
+import interfaces.ArchiveAccessCommand;
 
-public class GetByTypeCommand extends Command {
+public class GetByTypeCommand extends ArchiveAccessCommand {
 
-    private ArchiveController archiveUtils;
     private String type;
 
-    public GetByTypeCommand(ArchiveController archiveUtils, String type) {
-        this.archiveUtils = archiveUtils;
+    public GetByTypeCommand(ArchiveController archiveUtils, OutputController outputController, String type) {
+        super(archiveUtils, outputController);
         this.type = type;
     }
 
     @Override
     public void execute() {
-        archiveUtils.getByType(type);
+        outputController.receiveFileList(archiveUtils.getByType(type));
     }
 }

@@ -1,16 +1,16 @@
 package command.input;
 
 import controller.ArchiveController;
+import controller.OutputController;
 import entitys.File;
-import interfaces.Command;
+import interfaces.ArchiveAccessCommand;
 
-public class AddFileCommand extends Command {
+public class AddFileCommand extends ArchiveAccessCommand {
 
-    private ArchiveController archiveUtils;
     private File file;
 
-    public AddFileCommand(ArchiveController archiveUtils, File file) {
-        this.archiveUtils = archiveUtils;
+    public AddFileCommand(ArchiveController archiveUtils, OutputController outputController, File file) {
+        super(archiveUtils, outputController);
         this.file = file;
     }
 

@@ -1,20 +1,20 @@
 package command.input;
 
 import controller.ArchiveController;
-import interfaces.Command;
+import controller.OutputController;
+import interfaces.ArchiveAccessCommand;
 
-public class GetFileCommand extends Command {
+public class GetFileCommand extends ArchiveAccessCommand {
 
-    private ArchiveController archiveUtils;
-    private int id;
+    private Integer id;
 
-    public GetFileCommand(ArchiveController archiveUtils, int id) {
-        this.archiveUtils = archiveUtils;
+    public GetFileCommand(ArchiveController archiveUtils, OutputController outputController, Integer id) {
+        super(archiveUtils, outputController);
         this.id = id;
     }
 
     @Override
     public void execute() {
-        archiveUtils.getFile(id);
+        outputController.receiveFile(archiveUtils.getFile(id));
     }
 }

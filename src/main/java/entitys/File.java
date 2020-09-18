@@ -11,6 +11,7 @@ public class File {
     private int id;
 
     public File(int id, Date datetime, String name, String type, String place) {
+        this.id = id;
         this.datetime = datetime;
         this.name = name;
         this.type = type;

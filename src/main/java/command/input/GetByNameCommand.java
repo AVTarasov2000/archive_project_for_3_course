@@ -1,20 +1,21 @@
 package command.input;
 
 import controller.ArchiveController;
-import interfaces.Command;
+import controller.OutputController;
+import entitys.File;
+import interfaces.ArchiveAccessCommand;
 
-public class GetByNameCommand extends Command {
+public class GetByNameCommand extends ArchiveAccessCommand {
 
-    private ArchiveController archiveUtils;
     private String name;
 
-    public GetByNameCommand(ArchiveController archiveUtils, String name) {
-        this.archiveUtils = archiveUtils;
+    public GetByNameCommand(ArchiveController archiveUtils, OutputController outputController, String name) {
+        super(archiveUtils, outputController);
         this.name = name;
     }
 
     @Override
     public void execute() {
-        archiveUtils.getByName(name);
+        outputController.receiveFileList(archiveUtils.getByName(name));
     }
 }

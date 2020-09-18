@@ -1,15 +1,15 @@
 package command.input;
 
 import controller.ArchiveController;
-import interfaces.Command;
+import controller.OutputController;
+import interfaces.ArchiveAccessCommand;
 
-public class RemoveFileCommand extends Command {
+public class RemoveFileCommand extends ArchiveAccessCommand {
 
-    private ArchiveController archiveUtils;
-    private int id;
+    private Integer id;
 
-    public RemoveFileCommand(ArchiveController archiveUtils, int id) {
-        this.archiveUtils = archiveUtils;
+    public RemoveFileCommand(ArchiveController archiveUtils, OutputController outputController, Integer id) {
+        super(archiveUtils, outputController);
         this.id = id;
     }
 

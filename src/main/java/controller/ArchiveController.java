@@ -13,7 +13,6 @@ public class ArchiveController {
     private Archive archive;
 
 
-    // TODO: 16/09/2020 возвращать значения так же через паттерн команда
     public ArchiveController(Archive archive) {
         this.archive = archive;
     }

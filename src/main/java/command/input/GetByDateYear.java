@@ -1,22 +1,22 @@
 package command.input;
 
 import controller.ArchiveController;
-import interfaces.Command;
+import controller.OutputController;
+import interfaces.ArchiveAccessCommand;
 
 import java.util.Date;
 
-public class GetByDateYear extends Command {
+public class GetByDateYear extends ArchiveAccessCommand {
 
-    private ArchiveController archiveUtils;
     private Date key;
 
-    public GetByDateYear(ArchiveController archiveUtils, Date key) {
-        this.archiveUtils = archiveUtils;
+    public GetByDateYear(ArchiveController archiveUtils, OutputController outputController, Date key) {
+        super(archiveUtils, outputController);
         this.key = key;
     }
 
     @Override
     public void execute() {
-        archiveUtils.getByDateYear(key);
+        outputController.receiveFileList(archiveUtils.getByDateYear(key));
     }
 }
