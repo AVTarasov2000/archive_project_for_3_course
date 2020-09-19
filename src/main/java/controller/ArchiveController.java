@@ -2,6 +2,7 @@ package controller;
 
 import entitys.Archive;
 import entitys.File;
+import interfaces.functionalInterfaces.FileChecker;
 import utils.ArchiveUtils;
 
 
@@ -11,7 +12,6 @@ import java.util.List;
 public class ArchiveController {
 
     private Archive archive;
-
 
     public ArchiveController(Archive archive) {
         this.archive = archive;
@@ -30,27 +30,27 @@ public class ArchiveController {
     }
 
     public List<File> getByType(String key){
-        return ArchiveUtils.GetBy(archive,key, ArchiveUtils::getByType);
+        return ArchiveUtils.GetBy(archive,key, new FileChecker[]{ArchiveUtils::getByType},new Integer[]{0});
     }
 
     public List<File> getByName(String key){
-        return ArchiveUtils.GetBy(archive,key, ArchiveUtils::getByName);
+        return ArchiveUtils.GetBy(archive,key, new FileChecker[]{ArchiveUtils::getByName}, new Integer[]{0});
     }
 
-    public List <File> getByDate(Date key){
-        return ArchiveUtils.GetBy(archive,key, ArchiveUtils::getByDate);
+    public List <File> getByDate(Date key, Integer comparatorValue){
+        return ArchiveUtils.GetBy(archive,key, new FileChecker[]{ArchiveUtils::getByDate}, new Integer[]{comparatorValue});
     }
 
     public List <File> getByDateYear(Date key){
-        return ArchiveUtils.GetBy(archive,key, ArchiveUtils::getByDateYear);
+        return ArchiveUtils.GetBy(archive,key, new FileChecker[]{ArchiveUtils::getByDateYear}, new Integer[]{0});
     }
 
     public List <File> getByDateMons(Date key){
-        return ArchiveUtils.GetBy(archive,key, ArchiveUtils::getByDateMonth);
+        return ArchiveUtils.GetBy(archive,key, new FileChecker[]{ArchiveUtils::getByDateMonth}, new Integer[]{0});
     }
 
     public List <File> getByDateDay(Date key){
-        return ArchiveUtils.GetBy(archive,key, ArchiveUtils::getByDateDay);
+        return ArchiveUtils.GetBy(archive,key, new FileChecker[]{ArchiveUtils::getByDateDay}, new Integer[]{0});
     }
 
 }

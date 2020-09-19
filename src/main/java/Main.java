@@ -1,15 +1,16 @@
-import command.input.AddFileCommand;
-import command.input.GetByDateDay;
-import command.input.GetByNameCommand;
+import command.AddFileCommand;
+import command.GetByNameCommand;
 import controller.ArchiveController;
+import controller.InputController;
 import controller.OutputController;
 import entitys.Archive;
 import entitys.File;
-import utils.ArchiveUtils;
+import enums.ArgumentsEnum;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 
 public class Main {
 
@@ -23,21 +24,27 @@ public class Main {
         arr.add(file2);
         arr.add(file3);
         Archive archive = new Archive("abdyabdya", arr);
-        ArrayList<File> res = ArchiveUtils.GetBy(archive,"bb", ArchiveUtils::getByName);
-        System.out.println(res);
-        System.out.println(archive);
+//        ArrayList<File> res = ArchiveUtils.GetBy(archive,"bb", ArchiveUtils::getByName);
+//        System.out.println(res);
+//        System.out.println(archive);
 
-
+        HashMap<String, Object> test = new HashMap <>();
         OutputController outputController = new OutputController();
-        Object[] arg = {"vv",file4};
+        test.put(ArgumentsEnum.ID.getArgument(), 1);
+        test.put(ArgumentsEnum.FILE.getArgument(), file4);
+        test.put(ArgumentsEnum.NAME.getArgument(), "vv");
         ArchiveController archiveController = new ArchiveController(archive);
-        AddFileCommand addFileCommand = new AddFileCommand(archiveController,outputController, (File) arg[1]);
+        AddFileCommand addFileCommand = new AddFileCommand(archiveController,outputController, test);
         addFileCommand.execute();
         System.out.println(archive);
-        GetByNameCommand getByDateDay = new GetByNameCommand(archiveController, outputController, (String) arg[0]);
+        GetByNameCommand getByNameCommand = new GetByNameCommand(archiveController, outputController, test);
+        getByNameCommand.execute();
+        test.put(ArgumentsEnum.NAME.getArgument(), "aa");
+        getByNameCommand.execute();
 
-        getByDateDay.execute();
-
+        InputController inputController = new InputController(addFileCommand,getByNameCommand,null, null,
+        null,null, null, null, null, test);
+        inputController.sendCommand("get -name bb");
 
     }
 }
