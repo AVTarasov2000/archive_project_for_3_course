@@ -63,7 +63,10 @@ public class InputController {
         this.command = commands[0];
         for (int i = 1; i < commands.length; i++) {
             if(commands[i].charAt(0)=='-'){
-                argumentsInCommand.put(commands[i].substring(1), commands[i+1]);
+                if (commands[i].substring(1).compareTo(CommandEnum.ID.getCommand())==0)
+                    argumentsInCommand.put(commands[i].substring(1), Integer.parseInt(commands[i+1]));
+                else
+                    argumentsInCommand.put(commands[i].substring(1), commands[i+1]);
             }
         }
     }
@@ -71,7 +74,6 @@ public class InputController {
     public void sendCommand(String command){
         commandInterpreter(command);
         getCommand().execute();
-//        archiveAccessCommandHashMap.get(this.command).execute();
     }
 
     private ArchiveAccessCommand getCommand(){

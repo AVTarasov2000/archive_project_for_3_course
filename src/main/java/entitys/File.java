@@ -60,8 +60,9 @@ public class File {
 
     @Override
     public String toString() {
-        return "Date: " + datetime.toString()+
-                "| MetaInf: "+ name +
+        return "ID: " +id+
+                "| Date: " + datetime.toString()+
+                "| Name: "+ name +
                 "| type: "+ type +
                 "| place: " + place;
     }
