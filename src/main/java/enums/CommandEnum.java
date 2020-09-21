@@ -8,7 +8,8 @@ public enum CommandEnum {
     DATE("date"),
     NAME("name"),
     TYPE("type"),
-    ID("id");
+    ID("id"),
+    PLACE("place");
 
     private final String command;
 

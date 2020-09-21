@@ -1,9 +1,12 @@
 package controller;
 
 import command.*;
+import enums.ArgumentsEnum;
 import enums.CommandEnum;
 import interfaces.ArchiveAccessCommand;
+import utils.FileUtils;
 
+import java.util.Date;
 import java.util.HashMap;
 
 public class InputController {
@@ -12,7 +15,7 @@ public class InputController {
     GetByNameCommand getByNameCommand;
     GetFileCommand getFileCommand;
     GetByTypeCommand getByTypeCommand;
-    RemoveFileCommand removeFileCommand;
+    RemoveFileCommand deleteFileCommand;
     GetByDateDay getByDateDay;
     GetByDateMonth getByDateMonth;
     GetByDateYear getByDateYear;
@@ -27,7 +30,7 @@ public class InputController {
                            GetByNameCommand getByNameCommand,
                            GetFileCommand getFileCommand,
                            GetByTypeCommand getByTypeCommand,
-                           RemoveFileCommand removeFileCommand,
+                           RemoveFileCommand deleteFileCommand,
                            GetByDateDay getByDateDay,
                            GetByDateMonth getByDateMonth,
                            GetByDateYear getByDateYear,
@@ -37,7 +40,7 @@ public class InputController {
         this.getByNameCommand = getByNameCommand;
         this.getFileCommand = getFileCommand;
         this.getByTypeCommand = getByTypeCommand;
-        this.removeFileCommand = removeFileCommand;
+        this.deleteFileCommand = deleteFileCommand;
         this.getByDateDay = getByDateDay;
         this.getByDateMonth = getByDateMonth;
         this.getByDateYear = getByDateYear;
@@ -45,7 +48,7 @@ public class InputController {
         this.argumentsInCommand= argumentsInCommand;
         archiveAccessCommandHashMap.put(CommandEnum.ADD.getCommand(), addFileCommand);
         archiveAccessCommandHashMap.put(CommandEnum.GET.getCommand(), getByNameCommand);
-        archiveAccessCommandHashMap.put(CommandEnum.DELETE.getCommand(), removeFileCommand);
+        archiveAccessCommandHashMap.put(CommandEnum.DELETE.getCommand(), deleteFileCommand);
 //        archiveAccessCommandHashMap.put();
 //        archiveAccessCommandHashMap.put();
 //        archiveAccessCommandHashMap.put();
@@ -67,7 +70,31 @@ public class InputController {
 
     public void sendCommand(String command){
         commandInterpreter(command);
-        archiveAccessCommandHashMap.get(this.command).execute();
+        getCommand().execute();
+//        archiveAccessCommandHashMap.get(this.command).execute();
+    }
+
+    private ArchiveAccessCommand getCommand(){
+        if (command.compareTo(CommandEnum.ADD.getCommand())==0){
+            argumentsInCommand.put(ArgumentsEnum.FILE.getArgument(), FileUtils.createFile(
+                    (Date) argumentsInCommand.get(CommandEnum.DATE.getCommand()),
+                    (String) argumentsInCommand.get(CommandEnum.NAME.getCommand()),
+                    (String) argumentsInCommand.get(CommandEnum.TYPE.getCommand()),
+                    (String) argumentsInCommand.get(CommandEnum.PLACE.getCommand())));
+            return addFileCommand;
+        } else if (command.compareTo(CommandEnum.GET.getCommand())==0){
+            if (argumentsInCommand.get(CommandEnum.NAME.getCommand())!=null){
+                return getByNameCommand;
+            }else if (argumentsInCommand.get(CommandEnum.TYPE.getCommand())!=null){
+                return getByTypeCommand;
+            }else if(argumentsInCommand.get(CommandEnum.DATE.getCommand())!=null){
+                return getByDateCommand;
+            }
+        } else if (command.compareTo(CommandEnum.DELETE.getCommand())==0){
+            return deleteFileCommand;
+        }
+        return null;
+
     }
 
 
