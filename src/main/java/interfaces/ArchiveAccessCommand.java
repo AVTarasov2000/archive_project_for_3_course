@@ -1,20 +1,20 @@
 package interfaces;
 
 
-import controller.ArchiveController;
-import controller.OutputController;
+import services.ArchiveService;
+import services.OutputService;
 
 import java.util.HashMap;
 
 public abstract class ArchiveAccessCommand {
 
-    protected ArchiveController archiveUtils;
-    protected OutputController outputController;
+    protected ArchiveService archiveUtils;
+    protected OutputService outputService;
     protected HashMap <String, Object> arguments;
 
-    public ArchiveAccessCommand(ArchiveController archiveUtils, OutputController outputController, HashMap<String, Object> arguments) {
+    public ArchiveAccessCommand(ArchiveService archiveUtils, OutputService outputService, HashMap<String, Object> arguments) {
         this.archiveUtils = archiveUtils;
-        this.outputController = outputController;
+        this.outputService = outputService;
         this.arguments = arguments;
     }
 

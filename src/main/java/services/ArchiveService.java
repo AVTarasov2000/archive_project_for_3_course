@@ -1,4 +1,4 @@
-package controller;
+package services;
 
 import entitys.Archive;
 import entitys.File;
@@ -9,11 +9,11 @@ import utils.ArchiveUtils;
 import java.util.Date;
 import java.util.List;
 
-public class ArchiveController {
+public class ArchiveService {
 
     private Archive archive;
 
-    public ArchiveController(Archive archive) {
+    public ArchiveService(Archive archive) {
         this.archive = archive;
     }
 
@@ -30,27 +30,27 @@ public class ArchiveController {
     }
 
     public List<File> getByType(String key){
-        return ArchiveUtils.GetBy(archive,key, new FileChecker[]{ArchiveUtils::getByType},new Integer[]{0});
+        return ArchiveUtils.getBy(archive,key, new FileChecker[]{ArchiveUtils::getByType},new Integer[]{0});
     }
 
     public List<File> getByName(String key){
-        return ArchiveUtils.GetBy(archive,key, new FileChecker[]{ArchiveUtils::getByName}, new Integer[]{0});
+        return ArchiveUtils.getBy(archive,key, new FileChecker[]{ArchiveUtils::getByName}, new Integer[]{0});
     }
 
     public List <File> getByDate(Date key, Integer comparatorValue){
-        return ArchiveUtils.GetBy(archive,key, new FileChecker[]{ArchiveUtils::getByDate}, new Integer[]{comparatorValue});
+        return ArchiveUtils.getBy(archive,key, new FileChecker[]{ArchiveUtils::getByDate}, new Integer[]{comparatorValue});
     }
 
     public List <File> getByDateYear(Date key){
-        return ArchiveUtils.GetBy(archive,key, new FileChecker[]{ArchiveUtils::getByDateYear}, new Integer[]{0});
+        return ArchiveUtils.getBy(archive,key, new FileChecker[]{ArchiveUtils::getByDateYear}, new Integer[]{0});
     }
 
     public List <File> getByDateMons(Date key){
-        return ArchiveUtils.GetBy(archive,key, new FileChecker[]{ArchiveUtils::getByDateMonth}, new Integer[]{0});
+        return ArchiveUtils.getBy(archive,key, new FileChecker[]{ArchiveUtils::getByDateMonth}, new Integer[]{0});
     }
 
     public List <File> getByDateDay(Date key){
-        return ArchiveUtils.GetBy(archive,key, new FileChecker[]{ArchiveUtils::getByDateDay}, new Integer[]{0});
+        return ArchiveUtils.getBy(archive,key, new FileChecker[]{ArchiveUtils::getByDateDay}, new Integer[]{0});
     }
 
 }

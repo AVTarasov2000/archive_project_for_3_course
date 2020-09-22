@@ -1,24 +1,25 @@
 package command;
 
-import controller.ArchiveController;
-import controller.OutputController;
-import enums.ArgumentsEnum;
+import annotations.Command;
+import services.ArchiveService;
+import services.OutputService;
+import enums.Arguments;
 import interfaces.ArchiveAccessCommand;
 
 import java.util.Date;
 import java.util.HashMap;
 
+
+@Command
 public class GetByDateCommand extends ArchiveAccessCommand {
 
-
-
-    public GetByDateCommand(ArchiveController archiveUtils, OutputController outputController, HashMap <String, Object> arguments) {
-        super(archiveUtils, outputController, arguments);
+    public GetByDateCommand(ArchiveService archiveUtils, OutputService outputService, HashMap <String, Object> arguments) {
+        super(archiveUtils, outputService, arguments);
     }
 
     @Override
     public void execute()
     {
-        outputController.receiveFileList(archiveUtils.getByDate((Date)arguments.get(ArgumentsEnum.KEY.getArgument()), (Integer)arguments.get(ArgumentsEnum.COMPARE_VALUE.getArgument())));
+        outputService.receiveFileList(archiveUtils.getByDate((Date)arguments.get(Arguments.KEY.getArgument()), (Integer)arguments.get(Arguments.COMPARE_VALUE.getArgument())));
     }
 }

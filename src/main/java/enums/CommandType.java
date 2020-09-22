@@ -1,6 +1,6 @@
 package enums;
 
-public enum CommandEnum {
+public enum CommandType {
 
     GET("get"),
     ADD("add"),
@@ -13,7 +13,7 @@ public enum CommandEnum {
 
     private final String command;
 
-    CommandEnum(String command) {
+    CommandType(String command) {
         this.command = command;
     }
 

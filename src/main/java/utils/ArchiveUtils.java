@@ -37,7 +37,7 @@ public class ArchiveUtils {
                 && ((Date) key).getDay() == file.getDatetime().getDay();
     }
 
-    public static ArrayList<File> GetBy(Archive archive, Object key, FileChecker[] checker, Integer[] compareValues){
+    public static ArrayList<File> getBy(Archive archive, Object key, FileChecker[] checker, Integer[] compareValues){
         ArrayList<File> result = new ArrayList <>();
         if(checker.length!=compareValues.length) try {
             throw new Exception("different length of compareValues and check Functions");

@@ -1,10 +1,10 @@
-package controller;
+package services;
 
 import entitys.File;
 
 import java.util.List;
 
-public class OutputController{
+public class OutputService {
 
     public void receiveFile(File file){
         System.out.println(file);

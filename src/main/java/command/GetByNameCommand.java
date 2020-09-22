@@ -1,22 +1,23 @@
 package command;
 
-import controller.ArchiveController;
-import controller.OutputController;
-import entitys.File;
-import enums.ArgumentsEnum;
+import annotations.Command;
+import services.ArchiveService;
+import services.OutputService;
+import enums.Arguments;
 import interfaces.ArchiveAccessCommand;
 
 import java.util.HashMap;
 
+@Command
 public class GetByNameCommand extends ArchiveAccessCommand {
 
 
-    public GetByNameCommand(ArchiveController archiveUtils, OutputController outputController, HashMap <String, Object> arguments) {
-        super(archiveUtils, outputController, arguments);
+    public GetByNameCommand(ArchiveService archiveUtils, OutputService outputService, HashMap <String, Object> arguments) {
+        super(archiveUtils, outputService, arguments);
     }
 
     @Override
     public void execute() {
-        outputController.receiveFileList(archiveUtils.getByName((String)arguments.get(ArgumentsEnum.NAME.getArgument())));
+        outputService.receiveFileList(archiveUtils.getByName((String)arguments.get(Arguments.NAME.getArgument())));
     }
 }

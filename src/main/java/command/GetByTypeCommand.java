@@ -1,21 +1,23 @@
 package command;
 
-import controller.ArchiveController;
-import controller.OutputController;
-import enums.ArgumentsEnum;
+import annotations.Command;
+import services.ArchiveService;
+import services.OutputService;
+import enums.Arguments;
 import interfaces.ArchiveAccessCommand;
 
 import java.util.HashMap;
 
+@Command
 public class GetByTypeCommand extends ArchiveAccessCommand {
 
 
-    public GetByTypeCommand(ArchiveController archiveUtils, OutputController outputController, HashMap <String, Object> arguments) {
-        super(archiveUtils, outputController, arguments);
+    public GetByTypeCommand(ArchiveService archiveUtils, OutputService outputService, HashMap <String, Object> arguments) {
+        super(archiveUtils, outputService, arguments);
     }
 
     @Override
     public void execute() {
-        outputController.receiveFileList(archiveUtils.getByType((String) arguments.get(ArgumentsEnum.TYPE.getArgument())));
+        outputService.receiveFileList(archiveUtils.getByType((String) arguments.get(Arguments.TYPE.getArgument())));
     }
 }

@@ -1,6 +1,6 @@
 package enums;
 
-public enum  ArgumentsEnum {
+public enum Arguments {
 
     KEY("key"),
     COMPARE_VALUE("compareValue"),
@@ -13,7 +13,7 @@ public enum  ArgumentsEnum {
 
     private final String command;
 
-    ArgumentsEnum(String command) {
+    Arguments(String command) {
         this.command = command;
     }
 
