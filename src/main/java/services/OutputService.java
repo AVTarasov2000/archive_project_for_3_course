@@ -1,10 +1,11 @@
 package services;
 
 import entitys.File;
+import interfaces.Output;
 
 import java.util.List;
 
-public class OutputService {
+public class OutputService implements Output {
 
     public void receiveFile(File file){
         System.out.println(file);

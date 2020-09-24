@@ -1,6 +1,6 @@
 package services;
 
-import entitys.Archive;
+import dao.Archive;
 import entitys.File;
 import interfaces.functionalInterfaces.FileChecker;
 import utils.ArchiveUtils;

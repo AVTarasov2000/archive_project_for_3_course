@@ -1,8 +1,8 @@
 package command;
 
 import annotations.Command;
+import interfaces.Output;
 import services.ArchiveService;
-import services.OutputService;
 import entitys.File;
 import enums.Arguments;
 import interfaces.ArchiveAccessCommand;
@@ -13,7 +13,7 @@ import java.util.HashMap;
 public class AddFileCommand extends ArchiveAccessCommand {
 
 
-    public AddFileCommand(ArchiveService archiveUtils, OutputService outputService, HashMap<String, Object> arguments) {
+    public AddFileCommand(ArchiveService archiveUtils, Output outputService, HashMap<String, Object> arguments) {
         super(archiveUtils, outputService, arguments);
     }
 

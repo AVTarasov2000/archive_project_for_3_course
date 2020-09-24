@@ -1,4 +1,6 @@
-package entitys;
+package dao;
+
+import entitys.File;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -29,6 +31,7 @@ public class Archive {
     public Collection<File> getAllFiles() {
         return files.values();
     }
+
 
     public void addFile(File file){
         files.put(file.getId(), file);
