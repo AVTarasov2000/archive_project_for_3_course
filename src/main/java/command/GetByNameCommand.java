@@ -1,10 +1,12 @@
 package command;
 
 import annotations.Command;
+import entitys.File;
 import interfaces.Output;
 import services.ArchiveService;
 import enums.Arguments;
 import interfaces.ArchiveAccessCommand;
+import throwable.InvalidArgumentsMapException;
 
 import java.util.HashMap;
 
@@ -12,12 +14,20 @@ import java.util.HashMap;
 public class GetByNameCommand extends ArchiveAccessCommand {
 
 
-    public GetByNameCommand(ArchiveService archiveUtils, Output outputService, HashMap <String, Object> arguments) {
-        super(archiveUtils, outputService, arguments);
+    public GetByNameCommand(ArchiveService archiveService, Output outputService, HashMap <String, Object> arguments) {
+        super(archiveService, outputService, arguments);
     }
 
     @Override
     public void execute() {
-        outputService.receiveFileList(archiveUtils.getByName((String)arguments.get(Arguments.NAME.getArgument())));
+        Object name = arguments.get(Arguments.NAME.getArgument());
+        if(name==null|| !(name instanceof String)){
+            try {
+                throw new InvalidArgumentsMapException();
+            } catch (InvalidArgumentsMapException e) {
+                e.printStackTrace();
+            }
+        }
+        outputService.receiveFileList(archiveService.getByName((String) name));
     }
 }

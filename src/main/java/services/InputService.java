@@ -16,9 +16,6 @@ public class InputService {
     GetFileCommand getFileCommand;
     GetByTypeCommand getByTypeCommand;
     RemoveFileCommand deleteFileCommand;
-    GetByDateDay getByDateDay;
-    GetByDateMonth getByDateMonth;
-    GetByDateYear getByDateYear;
     GetByDateCommand getByDateCommand;
     HashMap<String, Object> argumentsInCommand;
     String command;
@@ -29,9 +26,6 @@ public class InputService {
                         GetFileCommand getFileCommand,
                         GetByTypeCommand getByTypeCommand,
                         RemoveFileCommand deleteFileCommand,
-                        GetByDateDay getByDateDay,
-                        GetByDateMonth getByDateMonth,
-                        GetByDateYear getByDateYear,
                         GetByDateCommand getByDateCommand,
                         HashMap<String, Object> argumentsInCommand) {
         this.addFileCommand = addFileCommand;
@@ -39,9 +33,6 @@ public class InputService {
         this.getFileCommand = getFileCommand;
         this.getByTypeCommand = getByTypeCommand;
         this.deleteFileCommand = deleteFileCommand;
-        this.getByDateDay = getByDateDay;
-        this.getByDateMonth = getByDateMonth;
-        this.getByDateYear = getByDateYear;
         this.getByDateCommand = getByDateCommand;
         this.argumentsInCommand= argumentsInCommand;
 

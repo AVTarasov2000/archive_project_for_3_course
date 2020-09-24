@@ -6,6 +6,7 @@ import services.ArchiveService;
 import entitys.File;
 import enums.Arguments;
 import interfaces.ArchiveAccessCommand;
+import throwable.InvalidArgumentsMapException;
 
 import java.util.HashMap;
 
@@ -13,12 +14,20 @@ import java.util.HashMap;
 public class AddFileCommand extends ArchiveAccessCommand {
 
 
-    public AddFileCommand(ArchiveService archiveUtils, Output outputService, HashMap<String, Object> arguments) {
-        super(archiveUtils, outputService, arguments);
+    public AddFileCommand(ArchiveService archiveService, Output outputService, HashMap<String, Object> arguments) {
+        super(archiveService, outputService, arguments);
     }
 
     @Override
     public void execute() {
-        archiveUtils.addFile((File) arguments.get(Arguments.FILE.getArgument()));
+        Object file = arguments.get(Arguments.FILE.getArgument());
+        if(file==null || !(file instanceof File)){
+            try {
+                throw new InvalidArgumentsMapException();
+            } catch (InvalidArgumentsMapException e) {
+                e.printStackTrace();
+            }
+        }
+        archiveService.addFile((File) file);
     }
 }

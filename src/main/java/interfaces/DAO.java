@@ -13,13 +13,16 @@ public interface DAO {
 
     public void removeFile(int id);
 
-    public void changeFile(int id, File file);
+    public File getFile(int id);
+
+    public void editFile(int id, File file);
 
     public List<File> getByType(String key);
 
     public List<File> getByName(String key);
 
-    public List <File> getByDate(Date key, Integer comparatorValue);
+    public List <File> getByDate(Date key);
 
+    public List<File> getByArguments(String name, String type, Date from, Date to);
 
 }

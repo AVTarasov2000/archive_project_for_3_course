@@ -1,10 +1,12 @@
 package command;
 
 import annotations.Command;
+import entitys.File;
 import interfaces.Output;
 import services.ArchiveService;
 import enums.Arguments;
 import interfaces.ArchiveAccessCommand;
+import throwable.InvalidArgumentsMapException;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -13,13 +15,21 @@ import java.util.HashMap;
 @Command
 public class GetByDateCommand extends ArchiveAccessCommand {
 
-    public GetByDateCommand(ArchiveService archiveUtils, Output outputService, HashMap <String, Object> arguments) {
-        super(archiveUtils, outputService, arguments);
+    public GetByDateCommand(ArchiveService archiveService, Output outputService, HashMap <String, Object> arguments) {
+        super(archiveService, outputService, arguments);
     }
 
     @Override
     public void execute()
     {
-        outputService.receiveFileList(archiveUtils.getByDate((Date)arguments.get(Arguments.KEY.getArgument()), (Integer)arguments.get(Arguments.COMPARE_VALUE.getArgument())));
+        Object date = arguments.get(Arguments.DATE.getArgument());
+        if(date==null|| !(date instanceof Date)){
+            try {
+                throw new InvalidArgumentsMapException();
+            } catch (InvalidArgumentsMapException e) {
+                e.printStackTrace();
+            }
+        }
+        outputService.receiveFileList(archiveService.getByDate((Date) date));
     }
 }

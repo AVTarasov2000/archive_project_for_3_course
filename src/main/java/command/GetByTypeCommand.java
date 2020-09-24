@@ -5,6 +5,7 @@ import interfaces.Output;
 import services.ArchiveService;
 import enums.Arguments;
 import interfaces.ArchiveAccessCommand;
+import throwable.InvalidArgumentsMapException;
 
 import java.util.HashMap;
 
@@ -12,12 +13,20 @@ import java.util.HashMap;
 public class GetByTypeCommand extends ArchiveAccessCommand {
 
 
-    public GetByTypeCommand(ArchiveService archiveUtils, Output outputService, HashMap <String, Object> arguments) {
-        super(archiveUtils, outputService, arguments);
+    public GetByTypeCommand(ArchiveService archiveService, Output outputService, HashMap <String, Object> arguments) {
+        super(archiveService, outputService, arguments);
     }
 
     @Override
     public void execute() {
-        outputService.receiveFileList(archiveUtils.getByType((String) arguments.get(Arguments.TYPE.getArgument())));
+        Object type = arguments.get(Arguments.TYPE.getArgument());
+        if(type==null|| !(type instanceof String)){
+            try {
+                throw new InvalidArgumentsMapException();
+            } catch (InvalidArgumentsMapException e) {
+                e.printStackTrace();
+            }
+        }
+        outputService.receiveFileList(archiveService.getByType((String) type));
     }
 }

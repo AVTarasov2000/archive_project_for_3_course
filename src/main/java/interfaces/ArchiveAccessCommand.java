@@ -4,16 +4,16 @@ package interfaces;
 import services.ArchiveService;
 
 
-import java.util.HashMap;
+import java.util.Map;
 
 public abstract class ArchiveAccessCommand {
 
-    protected ArchiveService archiveUtils;
+    protected ArchiveService archiveService;
     protected Output outputService;
-    protected HashMap <String, Object> arguments;
+    protected Map <String, Object> arguments;
 
-    public ArchiveAccessCommand(ArchiveService archiveUtils, Output outputService, HashMap<String, Object> arguments) {
-        this.archiveUtils = archiveUtils;
+    public ArchiveAccessCommand(ArchiveService archiveService, Output outputService, Map<String, Object> arguments) {
+        this.archiveService = archiveService;
         this.outputService = outputService;
         this.arguments = arguments;
     }

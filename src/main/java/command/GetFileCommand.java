@@ -1,10 +1,12 @@
 package command;
 
 import annotations.Command;
+import entitys.File;
 import interfaces.Output;
 import services.ArchiveService;
 import enums.Arguments;
 import interfaces.ArchiveAccessCommand;
+import throwable.InvalidArgumentsMapException;
 
 import java.util.HashMap;
 
@@ -12,12 +14,20 @@ import java.util.HashMap;
 public class GetFileCommand extends ArchiveAccessCommand {
 
 
-    public GetFileCommand(ArchiveService archiveUtils, Output outputService, HashMap <String, Object> arguments) {
-        super(archiveUtils, outputService, arguments);
+    public GetFileCommand(ArchiveService archiveService, Output outputService, HashMap <String, Object> arguments) {
+        super(archiveService, outputService, arguments);
     }
 
     @Override
     public void execute() {
-        outputService.receiveFile(archiveUtils.getFile((Integer) arguments.get(Arguments.ID.getArgument())));
+        Object id = arguments.get(Arguments.ID.getArgument());
+        if(id==null|| !(id instanceof Integer)){
+            try {
+                throw new InvalidArgumentsMapException();
+            } catch (InvalidArgumentsMapException e) {
+                e.printStackTrace();
+            }
+        }
+        outputService.receiveFile(archiveService.getFile((Integer) id));
     }
 }

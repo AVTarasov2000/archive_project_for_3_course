@@ -19,14 +19,10 @@ public class Main {
         GetFileCommand getFileCommand = new GetFileCommand(archiveService, outputService, arguments);
         GetByTypeCommand getByTypeCommand = new GetByTypeCommand(archiveService, outputService, arguments);
         RemoveFileCommand deleteFileCommand = new RemoveFileCommand(archiveService, outputService, arguments);
-        GetByDateDay getByDateDay = new GetByDateDay(archiveService, outputService, arguments);
-        GetByDateMonth getByDateMonth = new GetByDateMonth(archiveService, outputService, arguments);
-        GetByDateYear getByDateYear = new GetByDateYear(archiveService, outputService, arguments);
         GetByDateCommand getByDateCommand = new GetByDateCommand(archiveService, outputService, arguments);
         InputService inputService = new InputService(addFileCommand,getByNameCommand,
                 getFileCommand, getByTypeCommand,
-                deleteFileCommand,getByDateDay,
-                getByDateMonth, getByDateYear,
+                deleteFileCommand,
                 getByDateCommand, arguments);
         Scanner scanner = new Scanner(System.in);
         while (true){
