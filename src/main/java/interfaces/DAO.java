@@ -1,11 +1,20 @@
 package interfaces;
 
+import entitys.Archive;
 import entitys.File;
 
 import java.util.Date;
 import java.util.List;
 
 public interface DAO {
+
+    public void choseArchive(int archiveId);
+
+    public void addArchive(String name);
+
+    public void deleteArchive(int id);
+
+    public List<Archive> getAllArchives();
 
     public List<File> getAllFiles();
 

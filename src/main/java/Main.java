@@ -1,8 +1,9 @@
 import command.*;
+import dao.DataBase;
+import interfaces.DAO;
 import services.ArchiveService;
 import services.InputService;
 import services.OutputService;
-import dao.Archive;
 
 import java.util.*;
 
@@ -10,10 +11,10 @@ public class Main {
 
     public static void main(String[] args){
 
-        Archive archive = new Archive("abdyabdya");
+        DAO archives = new DataBase();
         HashMap<String, Object> arguments = new HashMap <>();
         OutputService outputService = new OutputService();
-        ArchiveService archiveService = new ArchiveService(archive);
+        ArchiveService archiveService = new ArchiveService(archives);
         AddFileCommand addFileCommand = new AddFileCommand(archiveService, outputService, arguments);
         GetByNameCommand getByNameCommand = new GetByNameCommand(archiveService, outputService, arguments);
         GetFileCommand getFileCommand = new GetFileCommand(archiveService, outputService, arguments);

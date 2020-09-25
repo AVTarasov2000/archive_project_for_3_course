@@ -1,0 +1,142 @@
+package dao;
+
+import entitys.Archive;
+import entitys.File;
+import interfaces.DAO;
+
+import java.util.*;
+import java.util.stream.Collectors;
+
+public class DataBase implements DAO {
+
+    public static Map <Integer, String> archiveNames;
+    public static Map<Integer, List<File>> archives;
+    private static int nextArchiveId = 0;
+    private int archiveId;
+
+    static {
+        archiveNames = new HashMap <>();
+        archives = new HashMap <>();
+
+        archiveNames.put(0, "test1");
+        archives.put(0, Arrays.asList(
+                new File(0, new Date(2017, Calendar.JULY, 10),"file1","type1","place1"),
+                new File(1, new Date(2017, Calendar.JULY, 11),"file1","type1","place2"),
+                new File(2, new Date(2017, Calendar.JULY, 12),"file1","type2","place1"),
+                new File(3, new Date(2017, Calendar.JULY, 13),"file1","type2","place2"),
+                new File(4, new Date(2017, Calendar.JULY, 14),"file2","type1","place1"),
+                new File(5, new Date(2017, Calendar.JULY, 15),"file2","type1","place2"),
+                new File(6, new Date(2017, Calendar.JULY, 16),"file2","type2","place1"),
+                new File(7, new Date(2017, Calendar.JULY, 17),"file2","type2","place2")
+        ));
+
+        archiveNames.put(1, "test2");
+        archives.put(1, Arrays.asList(
+                new File(0, new Date(2017, Calendar.JULY, 10),"file1","type1","place1"),
+                new File(1, new Date(2017, Calendar.JULY, 11),"file1","type1","place2"),
+                new File(2, new Date(2017, Calendar.JULY, 12),"file1","type2","place1"),
+                new File(3, new Date(2017, Calendar.JULY, 13),"file1","type2","place2"),
+                new File(4, new Date(2017, Calendar.JULY, 14),"file2","type1","place1"),
+                new File(5, new Date(2017, Calendar.JULY, 15),"file2","type1","place2"),
+                new File(6, new Date(2017, Calendar.JULY, 16),"file2","type2","place1"),
+                new File(7, new Date(2017, Calendar.JULY, 17),"file2","type2","place2")
+        ));
+        nextArchiveId = 2;
+    }
+
+
+    public DataBase() {
+    }
+
+
+    @Override
+    public void choseArchive(int archiveId) {
+        this.archiveId = archiveId;
+    }
+
+    @Override
+    public void addArchive(String name) {
+        archiveNames.put(nextArchiveId,name);
+        archives.put(nextArchiveId, new ArrayList <>());
+        nextArchiveId++;
+    }
+
+    @Override
+    public void deleteArchive(int id) {
+        archives.remove(id);
+        archiveNames.remove(id);
+    }
+
+    @Override
+    public List <Archive> getAllArchives() {
+        List<Archive> res = new ArrayList <>();
+        for (int key :
+                archiveNames.keySet()) {
+            res.add(new Archive(key,archiveNames.get(key)));
+        }
+        return res;
+    }
+
+    @Override
+    public List <File> getAllFiles() {
+        return archives.get(archiveId);
+    }
+
+    @Override
+    public void addFile(File file) {
+        archives.get(archiveId).add(file);
+    }
+
+    @Override
+    public void removeFile(int id) {
+        archives.get(archiveId).removeIf(file -> file.getId() == id);
+
+    }
+
+    @Override
+    public File getFile(int id) {
+        for (File f :
+                archives.get(archiveId)) {
+            if (f.getId() == id) {
+                return f;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public void editFile(int id, File file) {
+        archives.get(archiveId).removeIf(f -> f.getId() == id);
+        file.setId(id);
+        archives.get(archiveId).add(file);
+    }
+
+    @Override
+    public List <File> getByType(String key) {
+        return archives.get(archiveId).stream().filter(file->file.getType().compareTo(key)==0).collect(Collectors.toList());
+    }
+
+    @Override
+    public List <File> getByName(String key) {
+        return archives.get(archiveId).stream().filter(file->file.getName().compareTo(key)==0).collect(Collectors.toList());
+    }
+
+    @Override
+    public List <File> getByDate(Date key) {
+        return archives.get(archiveId).stream().filter(file->file.getDatetime().compareTo(key)==0).collect(Collectors.toList());
+    }
+
+    @Override
+    public List <File> getByArguments(String name, String type, Date from, Date to) {
+        List<File> res = archives.get(archiveId);
+        if(name!=null)
+            res = res.stream().filter(file->file.getName().compareTo(name)==0).collect(Collectors.toList());
+        if (type!=null)
+            res = res.stream().filter(file->file.getType().compareTo(type)==0).collect(Collectors.toList());
+        if (from!=null)
+            res = res.stream().filter(file->file.getDatetime().compareTo(from)>0).collect(Collectors.toList());
+        if (to!=null)
+            res = res.stream().filter(file->file.getDatetime().compareTo(to)<0).collect(Collectors.toList());
+        return res;
+    }
+}
