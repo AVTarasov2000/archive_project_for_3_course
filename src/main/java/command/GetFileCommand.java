@@ -12,11 +12,12 @@ import java.util.HashMap;
 
 @Command(name = "get_file")
 public class GetFileCommand extends ArchiveAccessCommand {
-
-
-    public GetFileCommand(ArchiveService archiveService, Output outputService, HashMap <String, Object> arguments) {
-        super(archiveService, outputService, arguments);
+    public GetFileCommand() {
     }
+
+//    public GetFileCommand(ArchiveService archiveService, Output outputService, HashMap <String, Object> arguments) {
+//        super(archiveService, outputService, arguments);
+//    }
 
     @Override
     public void execute() {

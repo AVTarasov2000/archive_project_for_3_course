@@ -13,10 +13,11 @@ import java.util.Map;
 
 @Command(name = "get_by_arguments")
 public class GetByArgumentsCommand extends ArchiveAccessCommand {
-
-    public GetByArgumentsCommand(ArchiveService archiveService, Output outputService, Map <String, Object> arguments) {
-        super(archiveService, outputService, arguments);
+    public GetByArgumentsCommand() {
     }
+//    public GetByArgumentsCommand(ArchiveService archiveService, Output outputService, Map <String, Object> arguments) {
+//        super(archiveService, outputService, arguments);
+//    }
 
     @Override
     public void execute() {

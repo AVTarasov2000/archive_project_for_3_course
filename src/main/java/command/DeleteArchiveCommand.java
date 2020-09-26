@@ -11,10 +11,12 @@ import java.util.Map;
 
 @Command(name = "delete_archive")
 public class DeleteArchiveCommand extends ArchiveAccessCommand {
-
-    public DeleteArchiveCommand(ArchiveService archiveService, Output outputService, Map <String, Object> arguments) {
-        super(archiveService, outputService, arguments);
+    public DeleteArchiveCommand() {
     }
+
+    //    public DeleteArchiveCommand(ArchiveService archiveService, Output outputService, Map <String, Object> arguments) {
+//        super(archiveService, outputService, arguments);
+//    }
 
     @Override
     public void execute() {

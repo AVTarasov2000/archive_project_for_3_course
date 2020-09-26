@@ -12,9 +12,12 @@ import java.util.HashMap;
 @Command(name = "remove_file")
 public class RemoveFileCommand extends ArchiveAccessCommand {
 
-    public RemoveFileCommand(ArchiveService archiveService, Output outputService, HashMap <String, Object> arguments) {
-        super(archiveService, outputService, arguments);
+    public RemoveFileCommand() {
     }
+
+//    public RemoveFileCommand(ArchiveService archiveService, Output outputService, HashMap <String, Object> arguments) {
+//        super(archiveService, outputService, arguments);
+//    }
 
     @Override
     public void execute()

@@ -9,10 +9,11 @@ import java.util.Map;
 
 @Command(name = "get_all_files")
 public class GetAllFilesCommand extends ArchiveAccessCommand {
-
-    public GetAllFilesCommand(ArchiveService archiveService, Output outputService, Map <String, Object> arguments) {
-        super(archiveService, outputService, arguments);
+    public GetAllFilesCommand() {
     }
+//    public GetAllFilesCommand(ArchiveService archiveService, Output outputService, Map <String, Object> arguments) {
+//        super(archiveService, outputService, arguments);
+//    }
 
     @Override
     public void execute() {

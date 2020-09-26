@@ -12,11 +12,11 @@ import java.util.HashMap;
 
 @Command(name = "get_by_name")
 public class GetByNameCommand extends ArchiveAccessCommand {
-
-
-    public GetByNameCommand(ArchiveService archiveService, Output outputService, HashMap <String, Object> arguments) {
-        super(archiveService, outputService, arguments);
+    public GetByNameCommand() {
     }
+//    public GetByNameCommand(ArchiveService archiveService, Output outputService, HashMap <String, Object> arguments) {
+//        super(archiveService, outputService, arguments);
+//    }
 
     @Override
     public void execute() {

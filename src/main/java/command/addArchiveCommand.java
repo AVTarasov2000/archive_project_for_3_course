@@ -11,10 +11,12 @@ import java.util.Map;
 
 @Command(name = "add_archive")
 public class addArchiveCommand extends ArchiveAccessCommand {
-
-    public addArchiveCommand(ArchiveService archiveService, Output outputService, Map <String, Object> arguments) {
-        super(archiveService, outputService, arguments);
+    public addArchiveCommand() {
     }
+
+//    public addArchiveCommand(ArchiveService archiveService, Output outputService, Map <String, Object> arguments) {
+//        super(archiveService, outputService, arguments);
+//    }
 
     @Override
     public void execute() {
