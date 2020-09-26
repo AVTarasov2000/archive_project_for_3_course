@@ -1,84 +1,135 @@
 package services;
 
-import command.*;
+
+import entitys.File;
 import enums.Arguments;
-import enums.CommandType;
-import interfaces.ArchiveAccessCommand;
-import utils.FileUtils;
 
 import java.util.Date;
-import java.util.HashMap;
+import java.util.Scanner;
 
 public class InputService {
 
-    AddFileCommand addFileCommand;
-    GetByNameCommand getByNameCommand;
-    GetFileCommand getFileCommand;
-    GetByTypeCommand getByTypeCommand;
-    RemoveFileCommand deleteFileCommand;
-    GetByDateCommand getByDateCommand;
-    HashMap<String, Object> argumentsInCommand;
-    String command;
+    CommandService commandService;
+    int condition = 0;
+    int command;
 
-
-    public InputService(AddFileCommand addFileCommand,
-                        GetByNameCommand getByNameCommand,
-                        GetFileCommand getFileCommand,
-                        GetByTypeCommand getByTypeCommand,
-                        RemoveFileCommand deleteFileCommand,
-                        GetByDateCommand getByDateCommand,
-                        HashMap<String, Object> argumentsInCommand) {
-        this.addFileCommand = addFileCommand;
-        this.getByNameCommand = getByNameCommand;
-        this.getFileCommand = getFileCommand;
-        this.getByTypeCommand = getByTypeCommand;
-        this.deleteFileCommand = deleteFileCommand;
-        this.getByDateCommand = getByDateCommand;
-        this.argumentsInCommand= argumentsInCommand;
-
-
+    public InputService(CommandService commandService) {
+        this.commandService = commandService;
+        System.out.println("THE APPLICATION IS STARTED\n");
+        applicationLoop();
     }
 
-    private void commandInterpreter(String command){
-        String[] commands = command.split(" ");
-        this.command = commands[0];
-        for (int i = 1; i < commands.length; i++) {
-            if(commands[i].charAt(0)=='-'){
-                if (commands[i].substring(1).compareTo(CommandType.ID.getCommand())==0)
-                    argumentsInCommand.put(commands[i].substring(1), Integer.parseInt(commands[i+1]));
-                else
-                    argumentsInCommand.put(commands[i].substring(1), commands[i+1]);
+    public void applicationLoop(){
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            if (condition == 0) {
+                System.out.println(
+                        "\nto chose archive wright: 1 \n" +
+                            "to add archive wright: 2 \n" +
+                                "to delete archive wright: 3\n" +
+                                    "to get all archives wright: 4"
+                );
+                command = scanner.nextInt();
+                switch (command){
+                    case 1:
+                        System.out.println("wright archive id");
+                        commandService.setArgument(Arguments.ID.getArgument(), scanner.nextInt());
+                        commandService.executeCommand("chose_archive");
+                        condition=1;
+                        break;
+                    case 2:
+                        System.out.println("write archive name");
+                        String name = scanner.next();
+                        commandService.setArgument(Arguments.NAME.getArgument(), name);
+                        commandService.executeCommand("add_archive");
+                        break;
+                    case 3:
+                        System.out.println("wright archive id");
+                        commandService.setArgument(Arguments.ID.getArgument(), scanner.nextInt());
+                        commandService.executeCommand("delete_archive");
+                        break;
+                    case 4:
+                        commandService.executeCommand("get_all_archives");
+                        break;
+                }
+            }
+            else if(condition==1){
+                System.out.println(
+                            "\nto add file wright: 1\n" +
+                                "to delete file wright: 2\n" +
+                                    "to edit file wright: 3\n" +
+                                        "to get files by args wright: 4\n" +
+                                            "to get all files wright: 5\n" +
+                                                "to go choosing archives: 6"
+                );
+                command = scanner.nextInt();
+                File f;
+                String name;
+                String type;
+                String place;
+                int id;
+                switch (command){
+                    case 1:
+                        System.out.println("wright args <name> <type> <place>");
+                        name = scanner.next();
+                        type = scanner.next();
+                        place = scanner.next();
+                        f = new File(0, new Date(), name, type, place);
+                        commandService.setArgument(Arguments.FILE.getArgument(),f);
+                        commandService.executeCommand("add_file");
+                        break;
+                    case 2:
+                        System.out.println("write file id");
+                        commandService.setArgument(Arguments.ID.getArgument(), scanner.nextInt());
+                        commandService.executeCommand("remove_file");
+                        break;
+                    case 3:
+                        System.out.println("wright args <id> <name> <type> <place>");
+                        id = scanner.nextInt();
+                        name = scanner.next();
+                        type = scanner.next();
+                        place = scanner.next();
+                        f = new File(id, new Date(), name, type, place);
+                        commandService.setArgument(Arguments.ID.getArgument(),id);
+                        commandService.setArgument(Arguments.FILE.getArgument(),f);
+                        commandService.executeCommand("edit_file");
+                        break;
+                    case 4:
+                        // TODO: 27/09/2020 класс даты рассчитан для двухтысячных использовать другой!!!
+                        System.out.println("wright args <name> <type> <date from(yyyy mm dd)> <date to(yyyy mm dd)>");
+                        name = scanner.next();
+                        type = scanner.next();
+                        int year = scanner.nextInt();
+                        int month = scanner.nextInt();
+                        int date = scanner.nextInt();
+                        Date from = new Date(year);
+                        from.setYear(year);
+                        from.setMonth(month);
+                        from.setDate(date);
+                        year = scanner.nextInt();
+                        month = scanner.nextInt();
+                        date = scanner.nextInt();
+                        Date to = new Date(year, month, date);
+                        to.setYear(year);
+                        to.setMonth(month);
+                        to.setDate(date);
+                        commandService.setArgument(Arguments.NAME.getArgument(),name);
+                        commandService.setArgument(Arguments.TYPE.getArgument(),type);
+                        commandService.setArgument(Arguments.DATE_FROM.getArgument(),from);
+                        commandService.setArgument(Arguments.DATE_TO.getArgument(),to);
+                        commandService.executeCommand("get_by_name");
+                        break;
+                    case 5:
+                        commandService.executeCommand("get_all_files");
+                        break;
+                    case 6:
+                        condition=0;
+                        break;
+                }
             }
         }
     }
 
-    public void sendCommand(String command){
-        commandInterpreter(command);
-        getCommand().execute();
-    }
-
-    private ArchiveAccessCommand getCommand(){
-        if (command.compareTo(CommandType.ADD.getCommand())==0){
-            argumentsInCommand.put(Arguments.FILE.getArgument(), FileUtils.createFile(
-                    (Date) argumentsInCommand.get(CommandType.DATE.getCommand()),
-                    (String) argumentsInCommand.get(CommandType.NAME.getCommand()),
-                    (String) argumentsInCommand.get(CommandType.TYPE.getCommand()),
-                    (String) argumentsInCommand.get(CommandType.PLACE.getCommand())));
-            return addFileCommand;
-        } else if (command.compareTo(CommandType.GET.getCommand())==0){
-            if (argumentsInCommand.get(CommandType.NAME.getCommand())!=null){
-                return getByNameCommand;
-            }else if (argumentsInCommand.get(CommandType.TYPE.getCommand())!=null){
-                return getByTypeCommand;
-            }else if(argumentsInCommand.get(CommandType.DATE.getCommand())!=null){
-                return getByDateCommand;
-            }
-        } else if (command.compareTo(CommandType.DELETE.getCommand())==0){
-            return deleteFileCommand;
-        }
-        return null;
-
-    }
 
 
 

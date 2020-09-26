@@ -1,5 +1,6 @@
 import command.*;
 import dao.DataBase;
+import enums.Arguments;
 import interfaces.DAO;
 import services.ArchiveService;
 import services.CommandService;
@@ -16,17 +17,16 @@ public class Main {
         HashMap<String, Object> arguments = new HashMap <>();
         OutputService outputService = new OutputService();
         ArchiveService archiveService = new ArchiveService(archives);
-//        AddFileCommand addFileCommand = new AddFileCommand(archiveService, outputService, arguments);
-//        GetByNameCommand getByNameCommand = new GetByNameCommand(archiveService, outputService, arguments);
-//        GetFileCommand getFileCommand = new GetFileCommand(archiveService, outputService, arguments);
-//        GetByTypeCommand getByTypeCommand = new GetByTypeCommand(archiveService, outputService, arguments);
-//        RemoveFileCommand deleteFileCommand = new RemoveFileCommand(archiveService, outputService, arguments);
-//        GetByDateCommand getByDateCommand = new GetByDateCommand(archiveService, outputService, arguments);
-//        InputService inputService = new InputService(addFileCommand,getByNameCommand,
-//                getFileCommand, getByTypeCommand,
-//                deleteFileCommand,
-//                getByDateCommand, arguments);
         CommandService commandService = new CommandService(archiveService, outputService, arguments);
+
+        InputService inputService = new InputService(commandService);
+
+//        commandService.executeCommand("get_all_archives");
+//        commandService.setArgument(Arguments.ID.getArgument(),0);
+//        commandService.executeCommand("get_all_files");
+//        commandService.setArgument(Arguments.ID.getArgument(), 1);
+//        commandService.executeCommand("get_all_files");
+
 //        Scanner scanner = new Scanner(System.in);
 //        while (true){
 //            String input = scanner.nextLine();

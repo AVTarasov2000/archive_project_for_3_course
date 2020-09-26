@@ -24,7 +24,7 @@ public class OutputService implements Output {
     public void receiveArchivesList(List <Archive> archives) {
         for (Archive arch :
                 archives) {
-            System.out.printf(arch.toString());
+            System.out.printf(arch.toString()+"\n");
         }
     }
 

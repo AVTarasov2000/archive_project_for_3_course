@@ -19,7 +19,7 @@ public class DataBase implements DAO {
         archives = new HashMap <>();
 
         archiveNames.put(0, "test1");
-        archives.put(0, Arrays.asList(
+        archives.put(0, new ArrayList <>(Arrays.asList(
                 new File(0, new Date(2017, Calendar.JULY, 10),"file1","type1","place1"),
                 new File(1, new Date(2017, Calendar.JULY, 11),"file1","type1","place2"),
                 new File(2, new Date(2017, Calendar.JULY, 12),"file1","type2","place1"),
@@ -28,10 +28,10 @@ public class DataBase implements DAO {
                 new File(5, new Date(2017, Calendar.JULY, 15),"file2","type1","place2"),
                 new File(6, new Date(2017, Calendar.JULY, 16),"file2","type2","place1"),
                 new File(7, new Date(2017, Calendar.JULY, 17),"file2","type2","place2")
-        ));
+        )));
 
         archiveNames.put(1, "test2");
-        archives.put(1, Arrays.asList(
+        archives.put(1, new ArrayList <>(Arrays.asList(
                 new File(0, new Date(2017, Calendar.JULY, 10),"file1","type1","place1"),
                 new File(1, new Date(2017, Calendar.JULY, 11),"file1","type1","place2"),
                 new File(2, new Date(2017, Calendar.JULY, 12),"file1","type2","place1"),
@@ -40,7 +40,7 @@ public class DataBase implements DAO {
                 new File(5, new Date(2017, Calendar.JULY, 15),"file2","type1","place2"),
                 new File(6, new Date(2017, Calendar.JULY, 16),"file2","type2","place1"),
                 new File(7, new Date(2017, Calendar.JULY, 17),"file2","type2","place2")
-        ));
+        )));
         nextArchiveId = 2;
     }
 
@@ -83,14 +83,15 @@ public class DataBase implements DAO {
     }
 
     @Override
-    public void addFile(File file) {
+    public void addFile(File file)
+    {
+        file.setId(archives.get(archiveId).size());
         archives.get(archiveId).add(file);
     }
 
     @Override
     public void removeFile(int id) {
         archives.get(archiveId).removeIf(file -> file.getId() == id);
-
     }
 
     @Override
@@ -134,9 +135,9 @@ public class DataBase implements DAO {
         if (type!=null)
             res = res.stream().filter(file->file.getType().compareTo(type)==0).collect(Collectors.toList());
         if (from!=null)
-            res = res.stream().filter(file->file.getDatetime().compareTo(from)>0).collect(Collectors.toList());
+            res = res.stream().filter(file->file.getDatetime().compareTo(from)<0).collect(Collectors.toList());
         if (to!=null)
-            res = res.stream().filter(file->file.getDatetime().compareTo(to)<0).collect(Collectors.toList());
+            res = res.stream().filter(file->file.getDatetime().compareTo(to)>0).collect(Collectors.toList());
         return res;
     }
 }

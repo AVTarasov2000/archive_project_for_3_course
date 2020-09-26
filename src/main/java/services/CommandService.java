@@ -3,11 +3,8 @@ package services;
 import annotations.Command;
 import interfaces.ArchiveAccessCommand;
 import interfaces.Output;
-import jdk.internal.net.http.common.Pair;
 import org.reflections8.Reflections;
-import org.reflections8.scanners.TypeAnnotationsScanner;
 
-import java.lang.reflect.Constructor;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -31,9 +28,7 @@ public class CommandService {
                 aac.setArguments(arguments);
                 aac.setOutputService(outputService);
                 commandMap.put(target.name(), aac);
-            } catch (InstantiationException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
+            } catch (InstantiationException | IllegalAccessException e) {
                 e.printStackTrace();
             }
         }
@@ -43,12 +38,12 @@ public class CommandService {
         arguments.put(name, arg);
     }
 
-    public void setArguments(Pair<String, Object>... args) {
-        for (Pair<String, Object> p :
-                args) {
-            arguments.put(p.first, p.second);
-        }
-    }
+//    public void setArguments(Pair <String, Object>... args) {
+//        for (Pair<String, Object> p :
+//                args) {
+//            arguments.put(p.getLeft(), p.getRight());
+//        }
+//    }
 
     public void executeCommand(String name){
         commandMap.get(name).execute();
