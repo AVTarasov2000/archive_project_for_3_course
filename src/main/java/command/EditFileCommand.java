@@ -1,5 +1,6 @@
 package command;
 
+import annotations.Command;
 import entitys.File;
 import enums.Arguments;
 import interfaces.ArchiveAccessCommand;
@@ -9,6 +10,7 @@ import throwable.InvalidArgumentsMapException;
 
 import java.util.HashMap;
 
+@Command(name = "edit_file")
 public class EditFileCommand extends ArchiveAccessCommand {
 
     public EditFileCommand(ArchiveService archiveService, Output outputService, HashMap <String, Object> arguments) {

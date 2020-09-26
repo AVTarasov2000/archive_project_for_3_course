@@ -10,7 +10,7 @@ import throwable.InvalidArgumentsMapException;
 
 import java.util.HashMap;
 
-@Command
+@Command(name = "add_file")
 public class AddFileCommand extends ArchiveAccessCommand {
 
 

@@ -2,6 +2,7 @@ import command.*;
 import dao.DataBase;
 import interfaces.DAO;
 import services.ArchiveService;
+import services.CommandService;
 import services.InputService;
 import services.OutputService;
 
@@ -25,13 +26,14 @@ public class Main {
                 getFileCommand, getByTypeCommand,
                 deleteFileCommand,
                 getByDateCommand, arguments);
-        Scanner scanner = new Scanner(System.in);
-        while (true){
-            String input = scanner.nextLine();
-            if(input.compareTo("exit")==0){
-                break;
-            }
-            inputService.sendCommand(input);
-        }
+        CommandService commandService = new CommandService(archiveService, outputService, arguments);
+//        Scanner scanner = new Scanner(System.in);
+//        while (true){
+//            String input = scanner.nextLine();
+//            if(input.compareTo("exit")==0){
+//                break;
+//            }
+//            inputService.sendCommand(input);
+//        }
     }
 }

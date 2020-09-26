@@ -9,7 +9,7 @@ import throwable.InvalidArgumentsMapException;
 
 import java.util.HashMap;
 
-@Command
+@Command(name = "get_by_type")
 public class GetByTypeCommand extends ArchiveAccessCommand {
 
 

@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 
-@Command
+@Command(name = "get_by_date")
 public class GetByDateCommand extends ArchiveAccessCommand {
 
     public GetByDateCommand(ArchiveService archiveService, Output outputService, HashMap <String, Object> arguments) {

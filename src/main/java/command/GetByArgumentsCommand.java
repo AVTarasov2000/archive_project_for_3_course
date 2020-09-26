@@ -1,5 +1,6 @@
 package command;
 
+import annotations.Command;
 import entitys.File;
 import enums.Arguments;
 import interfaces.ArchiveAccessCommand;
@@ -10,6 +11,7 @@ import throwable.InvalidArgumentsMapException;
 import java.util.Date;
 import java.util.Map;
 
+@Command(name = "get_by_arguments")
 public class GetByArgumentsCommand extends ArchiveAccessCommand {
 
     public GetByArgumentsCommand(ArchiveService archiveService, Output outputService, Map <String, Object> arguments) {
