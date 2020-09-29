@@ -10,8 +10,8 @@ import throwable.InvalidArgumentsMapException;
 import java.util.Map;
 
 @Command(name = "add_archive")
-public class addArchiveCommand extends ArchiveAccessCommand {
-    public addArchiveCommand() {
+public class AddArchiveCommand extends ArchiveAccessCommand {
+    public AddArchiveCommand() {
     }
 
 //    public addArchiveCommand(ArchiveService archiveService, Output outputService, Map <String, Object> arguments) {
