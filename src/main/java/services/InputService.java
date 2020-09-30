@@ -4,7 +4,8 @@ package services;
 import entitys.File;
 import enums.Arguments;
 
-import java.util.Date;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 public class InputService {
@@ -74,7 +75,7 @@ public class InputService {
                         name = scanner.next();
                         type = scanner.next();
                         place = scanner.next();
-                        f = new File(0, new Date(), name, type, place);
+                        f = new File(0, new GregorianCalendar(), name, type, place);
                         commandService.setArgument(Arguments.FILE.getArgument(),f);
                         commandService.executeCommand("add_file");
                         break;
@@ -89,7 +90,8 @@ public class InputService {
                         name = scanner.next();
                         type = scanner.next();
                         place = scanner.next();
-                        f = new File(id, new Date(), name, type, place);
+                        f = new File(id, new GregorianCalendar() {
+                        }, name, type, place);
                         commandService.setArgument(Arguments.ID.getArgument(),id);
                         commandService.setArgument(Arguments.FILE.getArgument(),f);
                         commandService.executeCommand("edit_file");
@@ -102,17 +104,11 @@ public class InputService {
                         int year = scanner.nextInt();
                         int month = scanner.nextInt();
                         int date = scanner.nextInt();
-                        Date from = new Date(year);
-                        from.setYear(year);
-                        from.setMonth(month);
-                        from.setDate(date);
+                        Calendar from = new GregorianCalendar(year,month,date);
                         year = scanner.nextInt();
                         month = scanner.nextInt();
                         date = scanner.nextInt();
-                        Date to = new Date(year, month, date);
-                        to.setYear(year);
-                        to.setMonth(month);
-                        to.setDate(date);
+                        Calendar to = new GregorianCalendar(year, month, date);
                         commandService.setArgument(Arguments.NAME.getArgument(),name);
                         commandService.setArgument(Arguments.TYPE.getArgument(),type);
                         commandService.setArgument(Arguments.DATE_FROM.getArgument(),from);

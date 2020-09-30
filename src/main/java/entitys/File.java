@@ -1,16 +1,16 @@
 package entitys;
 
-import java.util.Date;
+import java.util.Calendar;
 
 public class File {
 
-    private Date datetime;
+    private Calendar datetime;
     private String name;
     private String type;
     private String place;
     private int id;
 
-    public File(int id, Date datetime, String name, String type, String place) {
+    public File(int id, Calendar datetime, String name, String type, String place) {
         this.id = id;
         this.datetime = datetime;
         this.name = name;
@@ -18,11 +18,11 @@ public class File {
         this.place = place;
     }
 
-    public Date getDatetime() {
+    public Calendar getDatetime() {
         return datetime;
     }
 
-    public void setDatetime(Date datetime) {
+    public void setDatetime(Calendar datetime) {
         this.datetime = datetime;
     }
 

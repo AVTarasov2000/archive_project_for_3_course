@@ -4,6 +4,7 @@ import entitys.Archive;
 import entitys.File;
 import interfaces.DAO;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -60,11 +61,11 @@ public class ArchiveService {
         return dao.getByName(key, archiveId);
     }
 
-    public List<File> getByDate(Date key){
+    public List<File> getByDate(Calendar key){
         return dao.getByDate(key, archiveId);
     }
 
-    public List<File> getByArguments(String name, String type, Date from, Date to){
+    public List<File> getByArguments(String name, String type, Calendar from, Calendar to){
         return dao.getByArguments(name, type, from, to, archiveId);
     }
 

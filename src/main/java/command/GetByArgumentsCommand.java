@@ -8,6 +8,7 @@ import interfaces.Output;
 import services.ArchiveService;
 import throwable.InvalidArgumentsMapException;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
 
@@ -36,8 +37,8 @@ public class GetByArgumentsCommand extends ArchiveAccessCommand {
         archiveService.getByArguments(
                 (String) name,
                 (String) type,
-                (Date) from,
-                (Date) to
+                (Calendar) from,
+                (Calendar) to
         );
     }
 }

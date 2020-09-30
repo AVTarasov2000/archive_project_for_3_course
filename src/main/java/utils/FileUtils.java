@@ -2,7 +2,9 @@ package utils;
 
 import entitys.File;
 
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class FileUtils {
 
@@ -10,17 +12,17 @@ public class FileUtils {
     public static AutoIncrement autoIncrement = new AutoIncrement();
 
     public static File createFile(String[] parameters){
-        return new File(autoIncrement.increment(), new Date(), parameters[0],parameters[1],parameters[2]);
+        return new File(autoIncrement.increment(), new GregorianCalendar(), parameters[0],parameters[1],parameters[2]);
     }
 
-    public static File createFile(Date date, String name, String type, String place){
+    public static File createFile(Calendar date, String name, String type, String place){
         if (date==null)
-            date = new Date();
+            date = new GregorianCalendar();
         return new File(autoIncrement.increment(), date,name, type, place);
     }
 
     public static File createFile(String name, String type, String place){
-        return new File(autoIncrement.increment(), new Date(),name, type, place);
+        return new File(autoIncrement.increment(), new GregorianCalendar(),name, type, place);
     }
 
 

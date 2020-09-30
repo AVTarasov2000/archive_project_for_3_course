@@ -3,6 +3,7 @@ package interfaces;
 import entitys.Archive;
 import entitys.File;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -28,8 +29,8 @@ public interface DAO {
 
     public List<File> getByName(String key, int archiveId);
 
-    public List <File> getByDate(Date key, int archiveId);
+    public List <File> getByDate(Calendar key, int archiveId);
 
-    public List<File> getByArguments(String name, String type, Date from, Date to, int archiveId);
+    public List<File> getByArguments(String name, String type, Calendar from, Calendar to, int archiveId);
 
 }
