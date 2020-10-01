@@ -129,9 +129,9 @@ public class DataBase implements DAO {
         if (type!=null)
             res = res.stream().filter(file->file.getType().compareTo(type)==0).collect(Collectors.toList());
         if (from!=null)
-            res = res.stream().filter(file->file.getDatetime().compareTo(from)<0).collect(Collectors.toList());
+            res = res.stream().filter(file->file.getDatetime().compareTo(from)>0).collect(Collectors.toList());
         if (to!=null)
-            res = res.stream().filter(file->file.getDatetime().compareTo(to)>0).collect(Collectors.toList());
+            res = res.stream().filter(file->file.getDatetime().compareTo(to)<0).collect(Collectors.toList());
         return res;
     }
 }

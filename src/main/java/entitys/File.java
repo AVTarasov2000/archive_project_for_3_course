@@ -61,7 +61,7 @@ public class File {
     @Override
     public String toString() {
         return "ID: " +id+
-                "| Date: " + datetime.toString()+
+                "| Date: " + datetime.get(Calendar.YEAR)+"/"+datetime.get(Calendar.MONTH)+"/"+datetime.get(Calendar.DAY_OF_MONTH)+
                 "| Name: "+ name +
                 "| type: "+ type +
                 "| place: " + place;

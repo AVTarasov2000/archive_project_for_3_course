@@ -10,8 +10,12 @@ import java.util.List;
 
 public class ArchiveService {
 
-    private DAO dao;
+    private final DAO dao;
     private int archiveId;
+
+    public ArchiveService(DAO dao) {
+        this.dao = dao;
+    }
 
     public void choseArchive(int archiveId){
         this.archiveId = archiveId;
@@ -31,10 +35,6 @@ public class ArchiveService {
 
     public List<File> getAllFiles(){
         return dao.getAllFiles(archiveId);
-    }
-
-    public ArchiveService(DAO dao) {
-        this.dao = dao;
     }
 
     public void addFile(File file){

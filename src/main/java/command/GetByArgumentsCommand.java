@@ -27,18 +27,18 @@ public class GetByArgumentsCommand extends ArchiveAccessCommand {
         Object from = arguments.get(Arguments.DATE_FROM.getArgument());
         Object to = arguments.get(Arguments.DATE_TO.getArgument());
         if(name == null|| type == null || !(type instanceof String) || !(name instanceof String) ||
-                from == null|| to == null || !(from instanceof Date) || !(to instanceof Date)){
+                from == null|| to == null || !(from instanceof Calendar) || !(to instanceof Calendar)){
             try {
                 throw new InvalidArgumentsMapException();
             } catch (InvalidArgumentsMapException e) {
                 e.printStackTrace();
             }
         }
-        archiveService.getByArguments(
+        outputService.receiveFileList(archiveService.getByArguments(
                 (String) name,
                 (String) type,
                 (Calendar) from,
                 (Calendar) to
-        );
+        ));
     }
 }

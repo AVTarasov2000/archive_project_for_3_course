@@ -16,6 +16,9 @@ public class InputService {
 
     public InputService(CommandService commandService) {
         this.commandService = commandService;
+    }
+
+    public void start(){
         System.out.println("THE APPLICATION IS STARTED\n");
         applicationLoop();
     }
@@ -97,7 +100,6 @@ public class InputService {
                         commandService.executeCommand("edit_file");
                         break;
                     case 4:
-                        // TODO: 27/09/2020 класс даты рассчитан для двухтысячных использовать другой!!!
                         System.out.println("wright args <name> <type> <date from(yyyy mm dd)> <date to(yyyy mm dd)>");
                         name = scanner.next();
                         type = scanner.next();
@@ -113,7 +115,7 @@ public class InputService {
                         commandService.setArgument(Arguments.TYPE.getArgument(),type);
                         commandService.setArgument(Arguments.DATE_FROM.getArgument(),from);
                         commandService.setArgument(Arguments.DATE_TO.getArgument(),to);
-                        commandService.executeCommand("get_by_name");
+                        commandService.executeCommand("get_by_arguments");
                         break;
                     case 5:
                         commandService.executeCommand("get_all_files");
