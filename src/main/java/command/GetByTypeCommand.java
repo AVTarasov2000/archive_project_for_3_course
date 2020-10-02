@@ -1,6 +1,7 @@
 package command;
 
 import annotations.Command;
+import enums.FileType;
 import interfaces.Output;
 import services.ArchiveService;
 import enums.Arguments;
@@ -20,13 +21,13 @@ public class GetByTypeCommand extends ArchiveAccessCommand {
     @Override
     public void execute() {
         Object type = arguments.get(Arguments.TYPE.getArgument());
-        if(type==null|| !(type instanceof String)){
+        if(type==null|| !(type instanceof FileType)){
             try {
                 throw new InvalidArgumentsMapException();
             } catch (InvalidArgumentsMapException e) {
                 e.printStackTrace();
             }
         }
-        outputService.receiveFileList(archiveService.getByType((String) type));
+        outputService.receiveFileList(archiveService.getByType((FileType) type));
     }
 }

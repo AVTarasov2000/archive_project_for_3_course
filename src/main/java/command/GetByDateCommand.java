@@ -25,7 +25,7 @@ public class GetByDateCommand extends ArchiveAccessCommand {
     public void execute()
     {
         Object date = arguments.get(Arguments.DATE.getArgument());
-        if(date==null|| !(date instanceof Date)){
+        if(date==null|| !(date instanceof Calendar)){
             try {
                 throw new InvalidArgumentsMapException();
             } catch (InvalidArgumentsMapException e) {

@@ -2,6 +2,7 @@ package services;
 
 import entitys.Archive;
 import entitys.File;
+import enums.FileType;
 import interfaces.DAO;
 
 import java.util.Calendar;
@@ -53,7 +54,7 @@ public class ArchiveService {
         dao.editFile(id, file, archiveId);
     }
 
-    public List<File> getByType(String key){
+    public List<File> getByType(FileType key){
         return dao.getByType(key, archiveId);
     }
 
@@ -65,7 +66,7 @@ public class ArchiveService {
         return dao.getByDate(key, archiveId);
     }
 
-    public List<File> getByArguments(String name, String type, Calendar from, Calendar to){
+    public List<File> getByArguments(String name, FileType type, Calendar from, Calendar to){
         return dao.getByArguments(name, type, from, to, archiveId);
     }
 

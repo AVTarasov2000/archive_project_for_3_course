@@ -2,6 +2,7 @@ package dao;
 
 import entitys.Archive;
 import entitys.File;
+import enums.FileType;
 import interfaces.DAO;
 
 import java.util.*;
@@ -19,26 +20,26 @@ public class DataBase implements DAO {
 
         archiveNames.put(0, "test1");
         archives.put(0, new ArrayList <>(Arrays.asList(
-                new File(0, new GregorianCalendar(2017, Calendar.JULY, 10),"file1","type1","place1"),
-                new File(1, new GregorianCalendar(2017, Calendar.JULY, 11),"file1","type1","place2"),
-                new File(2, new GregorianCalendar(2017, Calendar.JULY, 12),"file1","type2","place1"),
-                new File(3, new GregorianCalendar(2017, Calendar.JULY, 13),"file1","type2","place2"),
-                new File(4, new GregorianCalendar(2017, Calendar.JULY, 14),"file2","type1","place1"),
-                new File(5, new GregorianCalendar(2017, Calendar.JULY, 15),"file2","type1","place2"),
-                new File(6, new GregorianCalendar(2017, Calendar.JULY, 16),"file2","type2","place1"),
-                new File(7, new GregorianCalendar(2017, Calendar.JULY, 17),"file2","type2","place2")
+                new File(0, new GregorianCalendar(2017, Calendar.JULY, 10),"file1", FileType.DOCUMENT,"place1"),
+                new File(1, new GregorianCalendar(2017, Calendar.JULY, 11),"file1",FileType.DOCUMENT,"place2"),
+                new File(2, new GregorianCalendar(2017, Calendar.JULY, 12),"file1",FileType.MEDIA_LOG,"place1"),
+                new File(3, new GregorianCalendar(2017, Calendar.JULY, 13),"file1",FileType.MEDIA_LOG,"place2"),
+                new File(4, new GregorianCalendar(2017, Calendar.JULY, 14),"file2",FileType.DOCUMENT,"place1"),
+                new File(5, new GregorianCalendar(2017, Calendar.JULY, 15),"file2",FileType.DOCUMENT,"place2"),
+                new File(6, new GregorianCalendar(2017, Calendar.JULY, 16),"file2",FileType.MEDIA_LOG,"place1"),
+                new File(7, new GregorianCalendar(2017, Calendar.JULY, 17),"file2",FileType.MEDIA_LOG,"place2")
         )));
 
         archiveNames.put(1, "test2");
         archives.put(1, new ArrayList <>(Arrays.asList(
-                new File(0, new GregorianCalendar(2017, Calendar.JULY, 10),"file1","type1","place1"),
-                new File(1, new GregorianCalendar(2017, Calendar.JULY, 11),"file1","type1","place2"),
-                new File(2, new GregorianCalendar(2017, Calendar.JULY, 12),"file1","type2","place1"),
-                new File(3, new GregorianCalendar(2017, Calendar.JULY, 13),"file1","type2","place2"),
-                new File(4, new GregorianCalendar(2017, Calendar.JULY, 14),"file2","type1","place1"),
-                new File(5, new GregorianCalendar(2017, Calendar.JULY, 15),"file2","type1","place2"),
-                new File(6, new GregorianCalendar(2017, Calendar.JULY, 16),"file2","type2","place1"),
-                new File(7, new GregorianCalendar(2017, Calendar.JULY, 17),"file2","type2","place2")
+                new File(0, new GregorianCalendar(2017, Calendar.JULY, 10),"file1",FileType.DOCUMENT,"place1"),
+                new File(1, new GregorianCalendar(2017, Calendar.JULY, 11),"file1",FileType.DOCUMENT,"place2"),
+                new File(2, new GregorianCalendar(2017, Calendar.JULY, 12),"file1",FileType.MEDIA_LOG,"place1"),
+                new File(3, new GregorianCalendar(2017, Calendar.JULY, 13),"file1",FileType.MEDIA_LOG,"place2"),
+                new File(4, new GregorianCalendar(2017, Calendar.JULY, 14),"file2",FileType.DOCUMENT,"place1"),
+                new File(5, new GregorianCalendar(2017, Calendar.JULY, 15),"file2",FileType.DOCUMENT,"place2"),
+                new File(6, new GregorianCalendar(2017, Calendar.JULY, 16),"file2",FileType.MEDIA_LOG,"place1"),
+                new File(7, new GregorianCalendar(2017, Calendar.JULY, 17),"file2",FileType.MEDIA_LOG,"place2")
         )));
         nextArchiveId = 2;
     }
@@ -107,7 +108,7 @@ public class DataBase implements DAO {
     }
 
     @Override
-    public List <File> getByType(String key, int archiveId) {
+    public List <File> getByType(FileType key, int archiveId) {
         return archives.get(archiveId).stream().filter(file->file.getType().compareTo(key)==0).collect(Collectors.toList());
     }
 
@@ -122,7 +123,7 @@ public class DataBase implements DAO {
     }
 
     @Override
-    public List <File> getByArguments(String name, String type, Calendar from, Calendar to, int archiveId) {
+    public List <File> getByArguments(String name, FileType type, Calendar from, Calendar to, int archiveId) {
         List<File> res = archives.get(archiveId);
         if(name!=null)
             res = res.stream().filter(file->file.getName().compareTo(name)==0).collect(Collectors.toList());

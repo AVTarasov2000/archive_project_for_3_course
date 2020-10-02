@@ -1,16 +1,18 @@
 package entitys;
 
+import enums.FileType;
+
 import java.util.Calendar;
 
 public class File {
 
     private Calendar datetime;
     private String name;
-    private String type;
+    private FileType type;
     private String place;
     private int id;
 
-    public File(int id, Calendar datetime, String name, String type, String place) {
+    public File(int id, Calendar datetime, String name, FileType type, String place) {
         this.id = id;
         this.datetime = datetime;
         this.name = name;
@@ -34,11 +36,11 @@ public class File {
         this.name = name;
     }
 
-    public String getType() {
+    public FileType getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(FileType type) {
         this.type = type;
     }
 
