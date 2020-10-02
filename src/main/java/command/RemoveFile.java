@@ -1,25 +1,27 @@
 package command;
 
 import annotations.Command;
-import enums.Arguments;
-import interfaces.ArchiveAccessCommand;
 import interfaces.Output;
 import services.ArchiveService;
+import enums.Arguments;
+import interfaces.ArchiveAccessCommand;
 import throwable.InvalidArgumentsMapException;
 
-import java.util.Map;
+import java.util.HashMap;
 
-@Command(name = "delete_archive")
-public class DeleteArchiveCommand extends ArchiveAccessCommand {
-    public DeleteArchiveCommand() {
+@Command(name = "remove_file")
+public class RemoveFile extends ArchiveAccessCommand {
+
+    public RemoveFile() {
     }
 
-    //    public DeleteArchiveCommand(ArchiveService archiveService, Output outputService, Map <String, Object> arguments) {
+//    public RemoveFileCommand(ArchiveService archiveService, Output outputService, HashMap <String, Object> arguments) {
 //        super(archiveService, outputService, arguments);
 //    }
 
     @Override
-    public void execute() {
+    public void execute()
+    {
         Object id = arguments.get(Arguments.ID.getArgument());
         if(id==null|| !(id instanceof Integer)){
             try {
@@ -28,6 +30,6 @@ public class DeleteArchiveCommand extends ArchiveAccessCommand {
                 e.printStackTrace();
             }
         }
-        archiveService.deleteArchive((Integer) id);
+        archiveService.removeFile((Integer) id);
     }
 }

@@ -11,8 +11,8 @@ import throwable.InvalidArgumentsMapException;
 import java.util.HashMap;
 
 @Command(name = "edit_file")
-public class EditFileCommand extends ArchiveAccessCommand {
-    public EditFileCommand() {
+public class EditFile extends ArchiveAccessCommand {
+    public EditFile() {
     }
 
     //    public EditFileCommand(ArchiveService archiveService, Output outputService, HashMap <String, Object> arguments) {

@@ -14,8 +14,8 @@ import java.util.Date;
 import java.util.Map;
 
 @Command(name = "get_by_arguments")
-public class GetByArgumentsCommand extends ArchiveAccessCommand {
-    public GetByArgumentsCommand() {
+public class GetByArguments extends ArchiveAccessCommand {
+    public GetByArguments() {
     }
 //    public GetByArgumentsCommand(ArchiveService archiveService, Output outputService, Map <String, Object> arguments) {
 //        super(archiveService, outputService, arguments);

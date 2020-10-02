@@ -1,20 +1,20 @@
 package command;
 
 import annotations.Command;
-import entitys.File;
-import interfaces.Output;
-import services.ArchiveService;
 import enums.Arguments;
 import interfaces.ArchiveAccessCommand;
+import interfaces.Output;
+import services.ArchiveService;
 import throwable.InvalidArgumentsMapException;
 
-import java.util.HashMap;
+import java.util.Map;
 
-@Command(name = "get_by_name")
-public class GetByNameCommand extends ArchiveAccessCommand {
-    public GetByNameCommand() {
+@Command(name = "add_archive")
+public class AddArchive extends ArchiveAccessCommand {
+    public AddArchive() {
     }
-//    public GetByNameCommand(ArchiveService archiveService, Output outputService, HashMap <String, Object> arguments) {
+
+//    public addArchiveCommand(ArchiveService archiveService, Output outputService, Map <String, Object> arguments) {
 //        super(archiveService, outputService, arguments);
 //    }
 
@@ -28,6 +28,6 @@ public class GetByNameCommand extends ArchiveAccessCommand {
                 e.printStackTrace();
             }
         }
-        outputService.receiveFileList(archiveService.getByName((String) name));
+        archiveService.addArchive((String) name);
     }
 }

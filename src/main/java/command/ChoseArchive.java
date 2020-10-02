@@ -9,25 +9,25 @@ import throwable.InvalidArgumentsMapException;
 
 import java.util.Map;
 
-@Command(name = "add_archive")
-public class AddArchiveCommand extends ArchiveAccessCommand {
-    public AddArchiveCommand() {
+@Command(name = "chose_archive")
+public class ChoseArchive extends ArchiveAccessCommand {
+    public ChoseArchive() {
     }
 
-//    public addArchiveCommand(ArchiveService archiveService, Output outputService, Map <String, Object> arguments) {
+    //    public ChoseArchiveCommand(ArchiveService archiveService, Output outputService, Map <String, Object> arguments) {
 //        super(archiveService, outputService, arguments);
 //    }
 
     @Override
     public void execute() {
-        Object name = arguments.get(Arguments.NAME.getArgument());
-        if(name==null|| !(name instanceof String)){
+        Object id = arguments.get(Arguments.ID.getArgument());
+        if(id==null|| !(id instanceof Integer)){
             try {
                 throw new InvalidArgumentsMapException();
             } catch (InvalidArgumentsMapException e) {
                 e.printStackTrace();
             }
         }
-        archiveService.addArchive((String) name);
+        archiveService.choseArchive((Integer) id);
     }
 }

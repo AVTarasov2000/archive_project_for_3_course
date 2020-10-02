@@ -14,8 +14,8 @@ import java.util.HashMap;
 
 
 @Command(name = "get_by_date")
-public class GetByDateCommand extends ArchiveAccessCommand {
-    public GetByDateCommand() {
+public class GetByDate extends ArchiveAccessCommand {
+    public GetByDate() {
     }
 //    public GetByDateCommand(ArchiveService archiveService, Output outputService, HashMap <String, Object> arguments) {
 //        super(archiveService, outputService, arguments);

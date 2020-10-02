@@ -9,12 +9,12 @@ import throwable.InvalidArgumentsMapException;
 
 import java.util.Map;
 
-@Command(name = "chose_archive")
-public class ChoseArchiveCommand extends ArchiveAccessCommand {
-    public ChoseArchiveCommand() {
+@Command(name = "delete_archive")
+public class DeleteArchive extends ArchiveAccessCommand {
+    public DeleteArchive() {
     }
 
-    //    public ChoseArchiveCommand(ArchiveService archiveService, Output outputService, Map <String, Object> arguments) {
+    //    public DeleteArchiveCommand(ArchiveService archiveService, Output outputService, Map <String, Object> arguments) {
 //        super(archiveService, outputService, arguments);
 //    }
 
@@ -28,6 +28,6 @@ public class ChoseArchiveCommand extends ArchiveAccessCommand {
                 e.printStackTrace();
             }
         }
-        archiveService.choseArchive((Integer) id);
+        archiveService.deleteArchive((Integer) id);
     }
 }

@@ -7,8 +7,8 @@ import services.ArchiveService;
 import java.util.Map;
 
 @Command(name = "get_all_archives")
-public class GetAllArchivesCommand extends ArchiveAccessCommand {
-    public GetAllArchivesCommand() {
+public class GetAllArchives extends ArchiveAccessCommand {
+    public GetAllArchives() {
     }
 //    public GetAllArchivesCommand(ArchiveService archiveService, Output outputService, Map <String, Object> arguments) {
 //        super(archiveService, outputService, arguments);

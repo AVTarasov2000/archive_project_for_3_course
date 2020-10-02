@@ -11,8 +11,8 @@ import throwable.InvalidArgumentsMapException;
 import java.util.HashMap;
 
 @Command(name = "add_file")
-public class AddFileCommand extends ArchiveAccessCommand {
-    public AddFileCommand() {
+public class AddFile extends ArchiveAccessCommand {
+    public AddFile() {
     }
 //    public AddFileCommand(ArchiveService archiveService, Output outputService, HashMap<String, Object> arguments) {
 //        super(archiveService, outputService, arguments);

@@ -1,7 +1,7 @@
 package command;
 
 import annotations.Command;
-import enums.FileType;
+import entitys.File;
 import interfaces.Output;
 import services.ArchiveService;
 import enums.Arguments;
@@ -10,24 +10,25 @@ import throwable.InvalidArgumentsMapException;
 
 import java.util.HashMap;
 
-@Command(name = "get_by_type")
-public class GetByTypeCommand extends ArchiveAccessCommand {
-    public GetByTypeCommand() {
+@Command(name = "get_file")
+public class GetFile extends ArchiveAccessCommand {
+    public GetFile() {
     }
-//    public GetByTypeCommand(ArchiveService archiveService, Output outputService, HashMap <String, Object> arguments) {
+
+//    public GetFileCommand(ArchiveService archiveService, Output outputService, HashMap <String, Object> arguments) {
 //        super(archiveService, outputService, arguments);
 //    }
 
     @Override
     public void execute() {
-        Object type = arguments.get(Arguments.TYPE.getArgument());
-        if(type==null|| !(type instanceof FileType)){
+        Object id = arguments.get(Arguments.ID.getArgument());
+        if(id==null|| !(id instanceof Integer)){
             try {
                 throw new InvalidArgumentsMapException();
             } catch (InvalidArgumentsMapException e) {
                 e.printStackTrace();
             }
         }
-        outputService.receiveFileList(archiveService.getByType((FileType) type));
+        outputService.receiveFile(archiveService.getFile((Integer) id));
     }
 }
