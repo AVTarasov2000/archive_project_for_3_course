@@ -1,10 +1,13 @@
 package command;
 
 import annotations.Command;
+import enums.Arguments;
 import interfaces.ArchiveAccessCommand;
 import interfaces.Output;
 import services.ArchiveService;
-import java.util.Map;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Command(name = "get_all_archives")
 public class GetAllArchives extends ArchiveAccessCommand {
@@ -17,5 +20,10 @@ public class GetAllArchives extends ArchiveAccessCommand {
     @Override
     public void execute() {
         outputService.receiveArchivesList(archiveService.getAllArchives());
+    }
+
+    @Override
+    public List <Arguments> getRequiredArguments() {
+        return new ArrayList <>();
     }
 }

@@ -9,9 +9,7 @@ import interfaces.Output;
 import services.ArchiveService;
 import throwable.InvalidArgumentsMapException;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Map;
+import java.util.*;
 
 @Command(name = "get_by_arguments")
 public class GetByArguments extends ArchiveAccessCommand {
@@ -41,5 +39,10 @@ public class GetByArguments extends ArchiveAccessCommand {
                 (Calendar) from,
                 (Calendar) to
         ));
+    }
+
+    @Override
+    public List <Arguments> getRequiredArguments() {
+        return Arrays.asList(Arguments.NAME, Arguments.TYPE, Arguments.DATE_FROM, Arguments.DATE_TO);
     }
 }

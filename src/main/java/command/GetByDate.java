@@ -8,9 +8,7 @@ import enums.Arguments;
 import interfaces.ArchiveAccessCommand;
 import throwable.InvalidArgumentsMapException;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
+import java.util.*;
 
 
 @Command(name = "get_by_date")
@@ -33,5 +31,10 @@ public class GetByDate extends ArchiveAccessCommand {
             }
         }
         outputService.receiveFileList(archiveService.getByDate((Calendar) date));
+    }
+
+    @Override
+    public List <Arguments> getRequiredArguments() {
+        return Arrays.asList(Arguments.DATE);
     }
 }

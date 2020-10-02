@@ -8,7 +8,9 @@ import enums.Arguments;
 import interfaces.ArchiveAccessCommand;
 import throwable.InvalidArgumentsMapException;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 @Command(name = "add_file")
 public class AddFile extends ArchiveAccessCommand {
@@ -29,5 +31,10 @@ public class AddFile extends ArchiveAccessCommand {
             }
         }
         archiveService.addFile((File) file);
+    }
+
+    @Override
+    public List <Arguments> getRequiredArguments() {
+        return Arrays.asList(Arguments.FILE);
     }
 }

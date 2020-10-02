@@ -8,7 +8,9 @@ import interfaces.Output;
 import services.ArchiveService;
 import throwable.InvalidArgumentsMapException;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 @Command(name = "edit_file")
 public class EditFile extends ArchiveAccessCommand {
@@ -36,4 +38,8 @@ public class EditFile extends ArchiveAccessCommand {
                 (File) file);
     }
 
+    @Override
+    public List <Arguments> getRequiredArguments() {
+        return Arrays.asList(Arguments.FILE, Arguments.ID);
+    }
 }

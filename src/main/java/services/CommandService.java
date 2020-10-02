@@ -1,11 +1,13 @@
 package services;
 
 import annotations.Command;
+import enums.Arguments;
 import interfaces.ArchiveAccessCommand;
 import interfaces.Output;
 import org.reflections8.Reflections;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -45,10 +47,24 @@ public class CommandService {
 //        }
 //    }
 
-    public void executeCommand(String name){
-        commandMap.get(name).execute();
+    public int executeCommand(String name){
+        ArchiveAccessCommand command = commandMap.get(name);
+        if (isArgumentsValid(command.getRequiredArguments())) {
+            command.execute();
+            return 0;
+        }
+        return 1;
+
     }
 
+    private boolean isArgumentsValid(List<Arguments> arguments){
+        for (Arguments arg :
+                arguments) {
+            if (this.arguments.get(arg) == null)
+                return false;
+        }
+        return true;
+    }
 
 
 }

@@ -7,6 +7,8 @@ import interfaces.Output;
 import services.ArchiveService;
 import throwable.InvalidArgumentsMapException;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 @Command(name = "delete_archive")
@@ -29,5 +31,9 @@ public class DeleteArchive extends ArchiveAccessCommand {
             }
         }
         archiveService.deleteArchive((Integer) id);
+    }
+    @Override
+    public List <Arguments> getRequiredArguments() {
+        return Arrays.asList(Arguments.ID);
     }
 }

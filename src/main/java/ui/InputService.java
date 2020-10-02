@@ -43,7 +43,7 @@ public class InputService {
     private void choseArchive(Scanner scanner){
         System.out.println("wright archive id");
         commandService.setArgument(Arguments.ID.getArgument(), scanner.nextInt());
-        commandService.executeCommand("chose_archive");
+        int feedBack = commandService.executeCommand("chose_archive");
         condition=1;
     }
 
@@ -51,16 +51,16 @@ public class InputService {
         System.out.println("write archive name");
         String name = scanner.next();
         commandService.setArgument(Arguments.NAME.getArgument(), name);
-        commandService.executeCommand("add_archive");
+        int feedBack = commandService.executeCommand("add_archive");
     }
 
     private void deleteArchive(Scanner scanner){
         System.out.println("wright archive id");
         commandService.setArgument(Arguments.ID.getArgument(), scanner.nextInt());
-        commandService.executeCommand("delete_archive");
+        int feedBack = commandService.executeCommand("delete_archive");
     }
 
-    private void getAllArchives(Scanner scanner){
+    private void getAllArchives(){
         commandService.executeCommand("get_all_archives");
     }
 
@@ -71,13 +71,13 @@ public class InputService {
         String place = scanner.next();
         File f = new File(0, new GregorianCalendar(), name, type, place);
         commandService.setArgument(Arguments.FILE.getArgument(),f);
-        commandService.executeCommand("add_file");
+        int feedBack = commandService.executeCommand("add_file");
     }
 
     private void deleteFile(Scanner scanner){
         System.out.println("write file id");
         commandService.setArgument(Arguments.ID.getArgument(), scanner.nextInt());
-        commandService.executeCommand("remove_file");
+        int feedBack = commandService.executeCommand("remove_file");
     }
 
     private void editFile(Scanner scanner){
@@ -90,7 +90,7 @@ public class InputService {
         }, name, type, place);
         commandService.setArgument(Arguments.ID.getArgument(),id);
         commandService.setArgument(Arguments.FILE.getArgument(),f);
-        commandService.executeCommand("edit_file");
+        int feedBack = commandService.executeCommand("edit_file");
     }
 
     private void getFilesByArgs(Scanner scanner){
@@ -109,11 +109,11 @@ public class InputService {
         commandService.setArgument(Arguments.TYPE.getArgument(),type);
         commandService.setArgument(Arguments.DATE_FROM.getArgument(),from);
         commandService.setArgument(Arguments.DATE_TO.getArgument(),to);
-        commandService.executeCommand("get_by_arguments");
+        int feedBack = commandService.executeCommand("get_by_arguments");
     }
 
     public void getAllFiles(){
-        commandService.executeCommand("get_all_files");
+        int feedBack = commandService.executeCommand("get_all_files");
     }
 
 
@@ -141,7 +141,7 @@ public class InputService {
                         deleteArchive(scanner);
                         break;
                     case 4:
-                        getAllArchives(scanner);
+                        getAllArchives();
                         break;
                     case 5:
                         return;

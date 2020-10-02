@@ -8,7 +8,9 @@ import enums.Arguments;
 import interfaces.ArchiveAccessCommand;
 import throwable.InvalidArgumentsMapException;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 @Command(name = "get_file")
 public class GetFile extends ArchiveAccessCommand {
@@ -30,5 +32,10 @@ public class GetFile extends ArchiveAccessCommand {
             }
         }
         outputService.receiveFile(archiveService.getFile((Integer) id));
+    }
+
+    @Override
+    public List <Arguments> getRequiredArguments() {
+        return Arrays.asList(Arguments.ID);
     }
 }

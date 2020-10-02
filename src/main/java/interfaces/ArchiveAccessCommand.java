@@ -1,9 +1,11 @@
 package interfaces;
 
 
+import enums.Arguments;
 import services.ArchiveService;
 
 
+import java.util.List;
 import java.util.Map;
 
 public abstract class ArchiveAccessCommand {
@@ -35,5 +37,6 @@ public abstract class ArchiveAccessCommand {
 
     public abstract void execute();
 
+    public abstract List<Arguments> getRequiredArguments();
 
 }

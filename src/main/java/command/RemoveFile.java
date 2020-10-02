@@ -7,7 +7,9 @@ import enums.Arguments;
 import interfaces.ArchiveAccessCommand;
 import throwable.InvalidArgumentsMapException;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 @Command(name = "remove_file")
 public class RemoveFile extends ArchiveAccessCommand {
@@ -31,5 +33,10 @@ public class RemoveFile extends ArchiveAccessCommand {
             }
         }
         archiveService.removeFile((Integer) id);
+    }
+
+    @Override
+    public List <Arguments> getRequiredArguments() {
+        return Arrays.asList(Arguments.ID);
     }
 }

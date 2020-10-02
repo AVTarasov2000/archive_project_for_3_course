@@ -7,6 +7,9 @@ import interfaces.Output;
 import services.ArchiveService;
 import throwable.InvalidArgumentsMapException;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 @Command(name = "add_archive")
@@ -29,5 +32,10 @@ public class AddArchive extends ArchiveAccessCommand {
             }
         }
         archiveService.addArchive((String) name);
+    }
+
+    @Override
+    public List <Arguments> getRequiredArguments() {
+        return Arrays.asList(Arguments.NAME);
     }
 }
