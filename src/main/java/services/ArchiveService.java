@@ -1,56 +1,73 @@
 package services;
 
-import dao.Archive;
+import entitys.Archive;
 import entitys.File;
-import interfaces.functionalInterfaces.FileChecker;
-import utils.ArchiveUtils;
+import enums.FileType;
+import interfaces.DAO;
 
-
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 public class ArchiveService {
 
-    private Archive archive;
+    private final DAO dao;
+    private int archiveId;
 
-    public ArchiveService(Archive archive) {
-        this.archive = archive;
+    public ArchiveService(DAO dao) {
+        this.dao = dao;
+    }
+
+    public void choseArchive(int archiveId){
+        this.archiveId = archiveId;
+    }
+
+    public void addArchive(String name){
+        dao.addArchive(name);
+    }
+
+    public void deleteArchive(int id){
+        dao.deleteArchive(id);
+    }
+
+    public List<Archive> getAllArchives(){
+        return dao.getAllArchives();
+    }
+
+    public List<File> getAllFiles(){
+        return dao.getAllFiles(archiveId);
     }
 
     public void addFile(File file){
-        archive.addFile(file);
+        dao.addFile(file, archiveId);
     }
 
     public File getFile(int id){
-        return archive.getFile(id);
+        return dao.getFile(id, archiveId);
     }
 
     public void removeFile(int id){
-        archive.removeFile(id);
+        dao.removeFile(id, archiveId);
     }
 
-    public List<File> getByType(String key){
-        return ArchiveUtils.getBy(archive,key, new FileChecker[]{ArchiveUtils::getByType},new Integer[]{0});
+    public void editFile(int id, File file){
+        dao.editFile(id, file, archiveId);
+    }
+
+    public List<File> getByType(FileType key){
+        return dao.getByType(key, archiveId);
     }
 
     public List<File> getByName(String key){
-        return ArchiveUtils.getBy(archive,key, new FileChecker[]{ArchiveUtils::getByName}, new Integer[]{0});
+        return dao.getByName(key, archiveId);
     }
 
-    public List <File> getByDate(Date key, Integer comparatorValue){
-        return ArchiveUtils.getBy(archive,key, new FileChecker[]{ArchiveUtils::getByDate}, new Integer[]{comparatorValue});
+    public List<File> getByDate(Calendar key){
+        return dao.getByDate(key, archiveId);
     }
 
-    public List <File> getByDateYear(Date key){
-        return ArchiveUtils.getBy(archive,key, new FileChecker[]{ArchiveUtils::getByDateYear}, new Integer[]{0});
-    }
-
-    public List <File> getByDateMons(Date key){
-        return ArchiveUtils.getBy(archive,key, new FileChecker[]{ArchiveUtils::getByDateMonth}, new Integer[]{0});
-    }
-
-    public List <File> getByDateDay(Date key){
-        return ArchiveUtils.getBy(archive,key, new FileChecker[]{ArchiveUtils::getByDateDay}, new Integer[]{0});
+    public List<File> getByArguments(String name, FileType type, Calendar from, Calendar to){
+        return dao.getByArguments(name, type, from, to, archiveId);
     }
 
 }

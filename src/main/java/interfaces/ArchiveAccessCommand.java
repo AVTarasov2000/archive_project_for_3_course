@@ -1,24 +1,42 @@
 package interfaces;
 
 
+import enums.Arguments;
 import services.ArchiveService;
 
 
-import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public abstract class ArchiveAccessCommand {
 
-    protected ArchiveService archiveUtils;
+    protected ArchiveService archiveService;
     protected Output outputService;
-    protected HashMap <String, Object> arguments;
+    protected Map <String, Object> arguments;
 
-    public ArchiveAccessCommand(ArchiveService archiveUtils, Output outputService, HashMap<String, Object> arguments) {
-        this.archiveUtils = archiveUtils;
+    public ArchiveAccessCommand() {
+    }
+
+    public void setArchiveService(ArchiveService archiveService) {
+        this.archiveService = archiveService;
+    }
+
+    public void setOutputService(Output outputService) {
         this.outputService = outputService;
+    }
+
+    public void setArguments(Map <String, Object> arguments) {
         this.arguments = arguments;
     }
 
+//    public ArchiveAccessCommand(ArchiveService archiveService, Output outputService, Map<String, Object> arguments) {
+//        this.archiveService = archiveService;
+//        this.outputService = outputService;
+//        this.arguments = arguments;
+//    }
+
     public abstract void execute();
 
+    public abstract List<Arguments> getRequiredArguments();
 
 }

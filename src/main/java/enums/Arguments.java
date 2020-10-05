@@ -7,7 +7,10 @@ public enum Arguments {
     FILE("file"),
     TYPE("type"),
     ID("id"),
-    NAME("name");
+    NAME("name"),
+    DATE("date"),
+    DATE_FROM("date_from"),
+    DATE_TO("date_to");
 
 
 

@@ -1,25 +1,37 @@
 package interfaces;
 
+import entitys.Archive;
 import entitys.File;
+import enums.FileType;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 public interface DAO {
 
-    public List<File> getAllFiles();
+    public void addArchive(String name);
 
-    public void addFile(File file);
+    public void deleteArchive(int id);
 
-    public void removeFile(int id);
+    public List<Archive> getAllArchives();
 
-    public void changeFile(int id, File file);
+    public List<File> getAllFiles(int archiveId);
 
-    public List<File> getByType(String key);
+    public void addFile(File file, int archiveId);
 
-    public List<File> getByName(String key);
+    public void removeFile(int id, int archiveId);
 
-    public List <File> getByDate(Date key, Integer comparatorValue);
+    public File getFile(int id, int archiveId);
 
+    public void editFile(int id, File file, int archiveId);
+
+    public List<File> getByType(FileType key, int archiveId);
+
+    public List<File> getByName(String key, int archiveId);
+
+    public List <File> getByDate(Calendar key, int archiveId);
+
+    public List<File> getByArguments(String name, FileType type, Calendar from, Calendar to, int archiveId);
 
 }
