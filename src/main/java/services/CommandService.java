@@ -60,7 +60,7 @@ public class CommandService {
     private boolean isArgumentsValid(List<Arguments> arguments){
         for (Arguments arg :
                 arguments) {
-            if (this.arguments.get(arg) == null)
+            if (this.arguments.get(arg.getArgument()) == null)
                 return false;
         }
         return true;
