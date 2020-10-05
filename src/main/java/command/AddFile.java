@@ -1,15 +1,11 @@
 package command;
 
 import annotations.Command;
-import interfaces.Output;
-import services.ArchiveService;
 import entitys.File;
 import enums.Arguments;
-import interfaces.ArchiveAccessCommand;
 import throwable.InvalidArgumentsMapException;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 
 @Command(name = "add_file")

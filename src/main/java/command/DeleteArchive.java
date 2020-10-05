@@ -2,14 +2,10 @@ package command;
 
 import annotations.Command;
 import enums.Arguments;
-import interfaces.ArchiveAccessCommand;
-import interfaces.Output;
-import services.ArchiveService;
 import throwable.InvalidArgumentsMapException;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 @Command(name = "delete_archive")
 public class DeleteArchive extends ArchiveAccessCommand {

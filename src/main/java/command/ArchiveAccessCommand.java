@@ -1,7 +1,8 @@
-package interfaces;
+package command;
 
 
 import enums.Arguments;
+import interfaces.Output;
 import services.ArchiveService;
 
 

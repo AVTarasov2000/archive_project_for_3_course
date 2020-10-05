@@ -1,12 +1,8 @@
 package command;
 
 import annotations.Command;
-import entitys.File;
 import enums.Arguments;
 import enums.FileType;
-import interfaces.ArchiveAccessCommand;
-import interfaces.Output;
-import services.ArchiveService;
 import throwable.InvalidArgumentsMapException;
 
 import java.util.*;

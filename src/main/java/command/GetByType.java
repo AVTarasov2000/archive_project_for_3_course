@@ -2,14 +2,10 @@ package command;
 
 import annotations.Command;
 import enums.FileType;
-import interfaces.Output;
-import services.ArchiveService;
 import enums.Arguments;
-import interfaces.ArchiveAccessCommand;
 import throwable.InvalidArgumentsMapException;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 
 @Command(name = "get_by_type")

@@ -2,7 +2,7 @@ package services;
 
 import annotations.Command;
 import enums.Arguments;
-import interfaces.ArchiveAccessCommand;
+import command.ArchiveAccessCommand;
 import interfaces.Output;
 import org.reflections8.Reflections;
 
