@@ -9,10 +9,10 @@ public class File {
     private Calendar datetime;
     private String name;
     private FileType type;
-    private String place;
+    private Place place;
     private int id;
 
-    public File(int id, Calendar datetime, String name, FileType type, String place) {
+    public File(int id, Calendar datetime, String name, FileType type, Place place) {
         this.id = id;
         this.datetime = datetime;
         this.name = name;
@@ -44,11 +44,11 @@ public class File {
         this.type = type;
     }
 
-    public String getPlace() {
+    public Place getPlace() {
         return place;
     }
 
-    public void setPlace(String place) {
+    public void setPlace(Place place) {
         this.place = place;
     }
 

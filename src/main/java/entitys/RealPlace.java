@@ -35,4 +35,13 @@ public class RealPlace extends Place{
     public void setIndex(Integer index) {
         this.index = index;
     }
+
+    @Override
+    public String toString() {
+        return "RealPlace{" +
+                "shelving=" + shelving +
+                ", shelf=" + shelf +
+                ", index=" + index +
+                '}';
+    }
 }

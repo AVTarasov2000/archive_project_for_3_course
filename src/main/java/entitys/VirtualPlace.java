@@ -14,4 +14,11 @@ public class VirtualPlace extends Place{
     public void setLinkToFie(String linkToFie) {
         this.linkToFie = linkToFie;
     }
+
+    @Override
+    public String toString() {
+        return "VirtualPlace{" +
+                "linkToFie='" + linkToFie + '\'' +
+                '}';
+    }
 }
