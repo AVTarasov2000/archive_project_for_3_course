@@ -9,6 +9,7 @@ import services.CommandService;
 import utils.PlaceFabric;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
 
@@ -81,7 +82,7 @@ public class InputService {
         String name = scanner.next();
         FileType type = getTypeByStr(scanner.next());//FileType.valueOf(scanner.next());
         Place place = new PlaceFabric().createPlace(scanner.nextLine().replaceAll(" ","").split("_"));
-        File f = new File(0, new GregorianCalendar(), name, type, place);
+        File f = new File(0, new Date(), name, type, place);
         commandService.setArgument(Arguments.FILE.getArgument(),f);
         int feedBack = commandService.executeCommand("add_file");
     }
@@ -99,7 +100,7 @@ public class InputService {
         String name = scanner.next();
         FileType type = getTypeByStr(scanner.next()); //FileType.valueOf(scanner.next());
         Place place = new PlaceFabric().createPlace(scanner.nextLine().split("_"));
-        File f = new File(id, new GregorianCalendar() {
+        File f = new File(id, new Date() {
         }, name, type, place);
         commandService.setArgument(Arguments.ID.getArgument(),id);
         commandService.setArgument(Arguments.FILE.getArgument(),f);
@@ -114,11 +115,11 @@ public class InputService {
         int year = scanner.nextInt();
         int month = scanner.nextInt();
         int date = scanner.nextInt();
-        Calendar from = new GregorianCalendar(year,month,date);
+        Date from = new Date(year,month,date);
         year = scanner.nextInt();
         month = scanner.nextInt();
         date = scanner.nextInt();
-        Calendar to = new GregorianCalendar(year, month, date);
+        Date to = new Date(year, month, date);
         commandService.setArgument(Arguments.NAME.getArgument(),name);
         commandService.setArgument(Arguments.TYPE.getArgument(),type);
         commandService.setArgument(Arguments.DATE_FROM.getArgument(),from);

@@ -30,8 +30,8 @@ public interface DAO {
 
     public List<File> getByName(String key, int archiveId);
 
-    public List <File> getByDate(Calendar key, int archiveId);
+    public List <File> getByDate(Date key, int archiveId);
 
-    public List<File> getByArguments(String name, FileType type, Calendar from, Calendar to, int archiveId);
+    public List<File> getByArguments(String name, FileType type, Date from, Date to, int archiveId);
 
 }

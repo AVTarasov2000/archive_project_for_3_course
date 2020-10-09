@@ -19,14 +19,14 @@ public class GetByDate extends ArchiveAccessCommand {
     public void execute()
     {
         Object date = arguments.get(Arguments.DATE.getArgument());
-        if(date==null|| !(date instanceof Calendar)){
+        if(date==null|| !(date instanceof Date)){
             try {
                 throw new InvalidArgumentsMapException();
             } catch (InvalidArgumentsMapException e) {
                 e.printStackTrace();
             }
         }
-        outputService.receiveFileList(archiveService.getByDate((Calendar) date));
+        outputService.receiveFileList(archiveService.getByDate((Date) date));
     }
 
     @Override

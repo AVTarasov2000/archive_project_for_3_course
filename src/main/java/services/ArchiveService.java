@@ -62,11 +62,11 @@ public class ArchiveService {
         return dao.getByName(key, archiveId);
     }
 
-    public List<File> getByDate(Calendar key){
+    public List<File> getByDate(Date key){
         return dao.getByDate(key, archiveId);
     }
 
-    public List<File> getByArguments(String name, FileType type, Calendar from, Calendar to){
+    public List<File> getByArguments(String name, FileType type, Date from, Date to){
         return dao.getByArguments(name, type, from, to, archiveId);
     }
 

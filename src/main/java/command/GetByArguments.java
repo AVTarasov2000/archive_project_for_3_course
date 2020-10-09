@@ -22,7 +22,7 @@ public class GetByArguments extends ArchiveAccessCommand {
         Object from = arguments.get(Arguments.DATE_FROM.getArgument());
         Object to = arguments.get(Arguments.DATE_TO.getArgument());
         if(name == null|| type == null || !(type instanceof FileType) || !(name instanceof String) ||
-                from == null|| to == null || !(from instanceof Calendar) || !(to instanceof Calendar)){
+                from == null|| to == null || !(from instanceof Date) || !(to instanceof Date)){
             try {
                 throw new InvalidArgumentsMapException();
             } catch (InvalidArgumentsMapException e) {
@@ -32,8 +32,8 @@ public class GetByArguments extends ArchiveAccessCommand {
         outputService.receiveFileList(archiveService.getByArguments(
                 (String) name,
                 (FileType) type,
-                (Calendar) from,
-                (Calendar) to
+                (Date) from,
+                (Date) to
         ));
     }
 

@@ -3,16 +3,17 @@ package entitys;
 import enums.FileType;
 
 import java.util.Calendar;
+import java.util.Date;
 
 public class File {
 
-    private Calendar datetime;
+    private Date datetime;
     private String name;
     private FileType type;
     private Place place;
     private int id;
 
-    public File(int id, Calendar datetime, String name, FileType type, Place place) {
+    public File(int id, Date datetime, String name, FileType type, Place place) {
         this.id = id;
         this.datetime = datetime;
         this.name = name;
@@ -20,11 +21,11 @@ public class File {
         this.place = place;
     }
 
-    public Calendar getDatetime() {
+    public Date getDatetime() {
         return datetime;
     }
 
-    public void setDatetime(Calendar datetime) {
+    public void setDatetime(Date datetime) {
         this.datetime = datetime;
     }
 
@@ -63,7 +64,7 @@ public class File {
     @Override
     public String toString() {
         return "ID: " +id+
-                "| Date: " + datetime.get(Calendar.YEAR)+"/"+datetime.get(Calendar.MONTH)+"/"+datetime.get(Calendar.DAY_OF_MONTH)+
+                "| Date: " + datetime.toString()+
                 "| Name: "+ name +
                 "| type: "+ type +
                 "| place: " + place;
