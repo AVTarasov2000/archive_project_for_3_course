@@ -11,11 +11,11 @@ import java.util.List;
 
 public class DataBaseConnector implements DAO {
 
-    private QuerySender querySender = new QuerySender();
+    private SessionFactory sessionFactory;
 
     @Override
     public void addArchive(String name) {
-
+        Session session = sessionFactory.openSession();
     }
 
     @Override
@@ -25,11 +25,6 @@ public class DataBaseConnector implements DAO {
 
     @Override
     public List <Archive> getAllArchives() {
-//        List<Archive> res = new ArrayList <>();
-//        for (String str :
-//                querySender) {
-//
-//        }
         return null;
     }
 
