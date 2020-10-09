@@ -6,7 +6,7 @@ import entitys.VirtualPlace;
 
 public class PlaceFabric {
 
-    public static Place createPlace(String[] args){
+    public Place createPlace(String[] args){
         if (args.length==1){
             return new VirtualPlace(args[0]);
         }else if (args.length==3){

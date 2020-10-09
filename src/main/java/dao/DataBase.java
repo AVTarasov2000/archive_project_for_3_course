@@ -18,29 +18,30 @@ public class DataBase implements DAO {
     static {
         archiveNames = new HashMap <>();
         archives = new HashMap <>();
+        PlaceFabric placeFabric = new PlaceFabric();
 
         archiveNames.put(0, "test1");
         archives.put(0, new ArrayList <>(Arrays.asList(
-                new File(0, new GregorianCalendar(2017, Calendar.JULY, 10),"file1",FileType.DOCUMENT,PlaceFabric.createPlace("place1".split("_"))),
-                new File(1, new GregorianCalendar(2017, Calendar.JULY, 11),"file1",FileType.DOCUMENT,PlaceFabric.createPlace("place2".split("_"))),
-                new File(2, new GregorianCalendar(2017, Calendar.JULY, 12),"file1",FileType.MEDIA_LOG,PlaceFabric.createPlace("place1".split("_"))),
-                new File(3, new GregorianCalendar(2017, Calendar.JULY, 13),"file1",FileType.MEDIA_LOG,PlaceFabric.createPlace("place2".split("_"))),
-                new File(4, new GregorianCalendar(2017, Calendar.JULY, 14),"file2",FileType.DOCUMENT,PlaceFabric.createPlace("place1".split("_"))),
-                new File(5, new GregorianCalendar(2017, Calendar.JULY, 15),"file2",FileType.DOCUMENT,PlaceFabric.createPlace("place2".split("_"))),
-                new File(6, new GregorianCalendar(2017, Calendar.JULY, 16),"file2",FileType.MEDIA_LOG,PlaceFabric.createPlace("place1".split("_"))),
-                new File(7, new GregorianCalendar(2017, Calendar.JULY, 17),"file2",FileType.MEDIA_LOG,PlaceFabric.createPlace("place2".split("_")))
+                new File(0, new GregorianCalendar(2017, Calendar.JULY, 10),"file1", FileType.DOCUMENT,placeFabric.createPlace("place1".split("_"))),
+                new File(1, new GregorianCalendar(2017, Calendar.JULY, 11),"file1", FileType.DOCUMENT,placeFabric.createPlace("place2".split("_"))),
+                new File(2, new GregorianCalendar(2017, Calendar.JULY, 12),"file1",FileType.MEDIA_LOG,placeFabric.createPlace("place1".split("_"))),
+                new File(3, new GregorianCalendar(2017, Calendar.JULY, 13),"file1",FileType.MEDIA_LOG,placeFabric.createPlace("place2".split("_"))),
+                new File(4, new GregorianCalendar(2017, Calendar.JULY, 14),"file2", FileType.DOCUMENT,placeFabric.createPlace("place1".split("_"))),
+                new File(5, new GregorianCalendar(2017, Calendar.JULY, 15),"file2", FileType.DOCUMENT,placeFabric.createPlace("place2".split("_"))),
+                new File(6, new GregorianCalendar(2017, Calendar.JULY, 16),"file2",FileType.MEDIA_LOG,placeFabric.createPlace("place1".split("_"))),
+                new File(7, new GregorianCalendar(2017, Calendar.JULY, 17),"file2",FileType.MEDIA_LOG,placeFabric.createPlace("place2".split("_")))
         )));
 
         archiveNames.put(1, "test2");
         archives.put(1, new ArrayList <>(Arrays.asList(
-                new File(0, new GregorianCalendar(2017, Calendar.JULY, 10),"file1",FileType.DOCUMENT,PlaceFabric.createPlace("place1".split("_"))),
-                new File(1, new GregorianCalendar(2017, Calendar.JULY, 11),"file1",FileType.DOCUMENT,PlaceFabric.createPlace("place2".split("_"))),
-                new File(2, new GregorianCalendar(2017, Calendar.JULY, 12),"file1",FileType.MEDIA_LOG,PlaceFabric.createPlace("place1".split("_"))),
-                new File(3, new GregorianCalendar(2017, Calendar.JULY, 13),"file1",FileType.MEDIA_LOG,PlaceFabric.createPlace("place2".split("_"))),
-                new File(4, new GregorianCalendar(2017, Calendar.JULY, 14),"file2",FileType.DOCUMENT,PlaceFabric.createPlace("place1".split("_"))),
-                new File(5, new GregorianCalendar(2017, Calendar.JULY, 15),"file2",FileType.DOCUMENT,PlaceFabric.createPlace("place2".split("_"))),
-                new File(6, new GregorianCalendar(2017, Calendar.JULY, 16),"file2",FileType.MEDIA_LOG,PlaceFabric.createPlace("place1".split("_"))),
-                new File(7, new GregorianCalendar(2017, Calendar.JULY, 17),"file2",FileType.MEDIA_LOG,PlaceFabric.createPlace("place2".split("_")))
+                new File(0, new GregorianCalendar(2017, Calendar.JULY, 10),"file1", FileType.DOCUMENT,placeFabric.createPlace("place1".split("_"))),
+                new File(1, new GregorianCalendar(2017, Calendar.JULY, 11),"file1", FileType.DOCUMENT,placeFabric.createPlace("place2".split("_"))),
+                new File(2, new GregorianCalendar(2017, Calendar.JULY, 12),"file1",FileType.MEDIA_LOG,placeFabric.createPlace("place1".split("_"))),
+                new File(3, new GregorianCalendar(2017, Calendar.JULY, 13),"file1",FileType.MEDIA_LOG,placeFabric.createPlace("place2".split("_"))),
+                new File(4, new GregorianCalendar(2017, Calendar.JULY, 14),"file2", FileType.DOCUMENT,placeFabric.createPlace("place1".split("_"))),
+                new File(5, new GregorianCalendar(2017, Calendar.JULY, 15),"file2", FileType.DOCUMENT,placeFabric.createPlace("place2".split("_"))),
+                new File(6, new GregorianCalendar(2017, Calendar.JULY, 16),"file2",FileType.MEDIA_LOG,placeFabric.createPlace("place1".split("_"))),
+                new File(7, new GregorianCalendar(2017, Calendar.JULY, 17),"file2",FileType.MEDIA_LOG,placeFabric.createPlace("place2".split("_")))
         )));
         nextArchiveId = 2;
     }

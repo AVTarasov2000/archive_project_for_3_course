@@ -42,6 +42,15 @@ public class InputService {
 //        if(command!=-1)
 //    }
 
+    private void possibleTypes(){
+        System.out.print("possible file types: ");
+        for (FileType t :
+                FileType.values()) {
+            System.out.print(t.getType()+" | ");
+        }
+        System.out.println();
+    }
+
     private void choseArchive(Scanner scanner){
         System.out.println("wright archive id");
         commandService.setArgument(Arguments.ID.getArgument(), scanner.nextInt());
@@ -67,10 +76,11 @@ public class InputService {
     }
 
     private void addFile(Scanner scanner){
+        possibleTypes();
         System.out.println("place format: <shelving_shelf_index> or <linkToFile>\nwright args <name> <type> <place>");
         String name = scanner.next();
         FileType type = getTypeByStr(scanner.next());//FileType.valueOf(scanner.next());
-        Place place = PlaceFabric.createPlace(scanner.nextLine().replaceAll(" ","").split("_"));
+        Place place = new PlaceFabric().createPlace(scanner.nextLine().replaceAll(" ","").split("_"));
         File f = new File(0, new GregorianCalendar(), name, type, place);
         commandService.setArgument(Arguments.FILE.getArgument(),f);
         int feedBack = commandService.executeCommand("add_file");
@@ -83,11 +93,12 @@ public class InputService {
     }
 
     private void editFile(Scanner scanner){
+        possibleTypes();
         System.out.println("place format: <shelving_shelf_index> or <linkToFile>\nwright args <id> <name> <type> <place>");
         int id = scanner.nextInt();
         String name = scanner.next();
         FileType type = getTypeByStr(scanner.next()); //FileType.valueOf(scanner.next());
-        Place place = PlaceFabric.createPlace(scanner.nextLine().split("_"));
+        Place place = new PlaceFabric().createPlace(scanner.nextLine().split("_"));
         File f = new File(id, new GregorianCalendar() {
         }, name, type, place);
         commandService.setArgument(Arguments.ID.getArgument(),id);
@@ -96,6 +107,7 @@ public class InputService {
     }
 
     private void getFilesByArgs(Scanner scanner){
+        possibleTypes();
         System.out.println("wright args <name> <type> <date from(yyyy mm dd)> <date to(yyyy mm dd)>");
         String name = scanner.next();
         FileType type = getTypeByStr(scanner.next());//FileType.valueOf(scanner.next());
