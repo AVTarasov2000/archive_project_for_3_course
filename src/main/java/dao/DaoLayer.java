@@ -8,13 +8,13 @@ import interfaces.DAO;
 import java.util.Date;
 import java.util.List;
 
-public class DataBaseConnector implements DAO {
+public class DaoLayer implements DAO {
 
-    private MySessionFactory sessionFactory;
+
 
     @Override
     public void addArchive(String name) {
-        Session session = sessionFactory.openSession();
+
     }
 
     @Override
@@ -23,12 +23,12 @@ public class DataBaseConnector implements DAO {
     }
 
     @Override
-    public List <Archive> getAllArchives() {
+    public List<Archive> getAllArchives() {
         return null;
     }
 
     @Override
-    public List <File> getAllFiles(int archiveId) {
+    public List<File> getAllFiles(int archiveId) {
         return null;
     }
 
@@ -53,22 +53,22 @@ public class DataBaseConnector implements DAO {
     }
 
     @Override
-    public List <File> getByType(FileType key, int archiveId) {
+    public List<File> getByType(FileType key, int archiveId) {
         return null;
     }
 
     @Override
-    public List <File> getByName(String key, int archiveId) {
+    public List<File> getByName(String key, int archiveId) {
         return null;
     }
 
     @Override
-    public List <File> getByDate(Date key, int archiveId) {
+    public List<File> getByDate(Date key, int archiveId) {
         return null;
     }
 
     @Override
-    public List <File> getByArguments(String name, FileType type, Date from, Date to, int archiveId) {
+    public List<File> getByArguments(String name, FileType type, Date from, Date to, int archiveId) {
         return null;
     }
 }
