@@ -50,91 +50,151 @@ public class DataBase implements DAO {
     public DataBase() {
     }
 
-
     @Override
-    public void addArchive(String name) {
-        archiveNames.put(nextArchiveId,name);
-        archives.put(nextArchiveId, new ArrayList <>());
-        nextArchiveId++;
+    public void addArchive(Archive archive) {
+
     }
 
     @Override
-    public void deleteArchive(int id) {
-        archives.remove(id);
-        archiveNames.remove(id);
+    public void deleteArchive(Archive archive) {
+
     }
 
     @Override
     public List <Archive> getAllArchives() {
-        List<Archive> res = new ArrayList <>();
-        for (int key :
-                archiveNames.keySet()) {
-            res.add(new Archive(key,archiveNames.get(key)));
-        }
-        return res;
-    }
-
-    @Override
-    public List <File> getAllFiles(int archiveId) {
-        return archives.get(archiveId);
-    }
-
-    @Override
-    public void addFile(File file, int archiveId)
-    {
-        file.setId(archives.get(archiveId).size());
-        archives.get(archiveId).add(file);
-    }
-
-    @Override
-    public void removeFile(int id, int archiveId) {
-        archives.get(archiveId).removeIf(file -> file.getId() == id);
-    }
-
-    @Override
-    public File getFile(int id, int archiveId) {
-        for (File f :
-                archives.get(archiveId)) {
-            if (f.getId() == id) {
-                return f;
-            }
-        }
         return null;
     }
 
     @Override
-    public void editFile(int id, File file, int archiveId) {
-        archives.get(archiveId).removeIf(f -> f.getId() == id);
-        file.setId(id);
-        archives.get(archiveId).add(file);
+    public List <File> getAllFiles(Archive archive) {
+        return null;
     }
 
     @Override
-    public List <File> getByType(FileType key, int archiveId) {
-        return archives.get(archiveId).stream().filter(file->file.getType().compareTo(key)==0).collect(Collectors.toList());
+    public void addFile(File file, Archive archive) {
+
     }
 
     @Override
-    public List <File> getByName(String key, int archiveId) {
-        return archives.get(archiveId).stream().filter(file->file.getName().compareTo(key)==0).collect(Collectors.toList());
+    public void removeFile(File file, Archive archive) {
+
     }
 
     @Override
-    public List <File> getByDate(Date key, int archiveId) {
-        return archives.get(archiveId).stream().filter(file->file.getDatetime().compareTo(key)==0).collect(Collectors.toList());
+    public File getFile(File file, Archive archive) {
+        return null;
     }
 
     @Override
-    public List <File> getByArguments(String name, FileType type, Date from, Date to, int archiveId) {
-        List<File> res = archives.get(archiveId);
-        if(name!=null)
-            res = res.stream().filter(file->file.getName().compareTo(name)==0).collect(Collectors.toList());
-        if (type!=null)
-            res = res.stream().filter(file->file.getType().compareTo(type)==0).collect(Collectors.toList());
-        if (from!=null)
-            res = res.stream().filter(file->file.getDatetime().compareTo(from)>0).collect(Collectors.toList());
-        if (to!=null)
-            res = res.stream().filter(file->file.getDatetime().compareTo(to)<0).collect(Collectors.toList());
-        return res;
+    public void editFile(File file, Archive archive) {
+
     }
+
+    @Override
+    public List <File> getByType(FileType key, Archive archive) {
+        return null;
+    }
+
+    @Override
+    public List <File> getByName(String key, Archive archive) {
+        return null;
+    }
+
+    @Override
+    public List <File> getByDate(Date key, Archive archive) {
+        return null;
+    }
+
+    @Override
+    public List <File> getByArguments(String name, FileType type, Date from, Date to, Archive archive) {
+        return null;
+    }
+
+
+//    @Override
+//    public void addArchive(String name) {
+//        archiveNames.put(nextArchiveId,name);
+//        archives.put(nextArchiveId, new ArrayList <>());
+//        nextArchiveId++;
+//    }
+//
+//    @Override
+//    public void deleteArchive(Integer id) {
+//        archives.remove(id);
+//        archiveNames.remove(id);
+//    }
+//
+//    @Override
+//    public List <Archive> getAllArchives() {
+//        List<Archive> res = new ArrayList <>();
+//        for (int key :
+//                archiveNames.keySet()) {
+//            res.add(new Archive(key,archiveNames.get(key)));
+//        }
+//        return res;
+//    }
+//
+//    @Override
+//    public List <File> getAllFiles(int archiveId) {
+//        return archives.get(archiveId);
+//    }
+//
+//    @Override
+//    public void addFile(File file, int archiveId)
+//    {
+//        file.setId(archives.get(archiveId).size());
+//        archives.get(archiveId).add(file);
+//    }
+//
+//    @Override
+//    public void removeFile(int id, int archiveId) {
+//        archives.get(archiveId).removeIf(file -> file.getId() == id);
+//    }
+//
+//    @Override
+//    public File getFile(int id, int archiveId) {
+//        for (File f :
+//                archives.get(archiveId)) {
+//            if (f.getId() == id) {
+//                return f;
+//            }
+//        }
+//        return null;
+//    }
+//
+//    @Override
+//    public void editFile(int id, File file, int archiveId) {
+//        archives.get(archiveId).removeIf(f -> f.getId() == id);
+//        file.setId(id);
+//        archives.get(archiveId).add(file);
+//    }
+//
+//    @Override
+//    public List <File> getByType(FileType key, int archiveId) {
+//        return archives.get(archiveId).stream().filter(file->file.getType().compareTo(key)==0).collect(Collectors.toList());
+//    }
+//
+//    @Override
+//    public List <File> getByName(String key, int archiveId) {
+//        return archives.get(archiveId).stream().filter(file->file.getName().compareTo(key)==0).collect(Collectors.toList());
+//    }
+//
+//    @Override
+//    public List <File> getByDate(Date key, int archiveId) {
+//        return archives.get(archiveId).stream().filter(file->file.getDatetime().compareTo(key)==0).collect(Collectors.toList());
+//    }
+//
+//    @Override
+//    public List <File> getByArguments(String name, FileType type, Date from, Date to, int archiveId) {
+//        List<File> res = archives.get(archiveId);
+//        if(name!=null)
+//            res = res.stream().filter(file->file.getName().compareTo(name)==0).collect(Collectors.toList());
+//        if (type!=null)
+//            res = res.stream().filter(file->file.getType().compareTo(type)==0).collect(Collectors.toList());
+//        if (from!=null)
+//            res = res.stream().filter(file->file.getDatetime().compareTo(from)>0).collect(Collectors.toList());
+//        if (to!=null)
+//            res = res.stream().filter(file->file.getDatetime().compareTo(to)<0).collect(Collectors.toList());
+//        return res;
+//    }
 }

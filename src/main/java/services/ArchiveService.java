@@ -12,22 +12,22 @@ import java.util.List;
 public class ArchiveService {
 
     private final DAO dao;
-    private int archiveId;
+    private Archive archive;
 
     public ArchiveService(DAO dao) {
         this.dao = dao;
     }
 
-    public void choseArchive(int archiveId){
-        this.archiveId = archiveId;
+    public void choseArchive(Integer archiveId){
+        this.archive = new Archive(archiveId, null);
     }
 
     public void addArchive(String name){
-        dao.addArchive(name);
+        dao.addArchive(new Archive(null, name));
     }
 
-    public void deleteArchive(int id){
-        dao.deleteArchive(id);
+    public void deleteArchive(Integer id){
+        dao.deleteArchive(new Archive(id, null));
     }
 
     public List<Archive> getAllArchives(){
@@ -35,39 +35,39 @@ public class ArchiveService {
     }
 
     public List<File> getAllFiles(){
-        return dao.getAllFiles(archiveId);
+        return dao.getAllFiles(archive);
     }
 
     public void addFile(File file){
-        dao.addFile(file, archiveId);
+        dao.addFile(file, archive);
     }
 
     public File getFile(int id){
-        return dao.getFile(id, archiveId);
+        return dao.getFile(new File(id, null,null,null, null), archive);
     }
 
     public void removeFile(int id){
-        dao.removeFile(id, archiveId);
+        dao.removeFile(new File(id, null,null,null, null), archive);
     }
 
-    public void editFile(int id, File file){
-        dao.editFile(id, file, archiveId);
+    public void editFile(File file){
+        dao.editFile(file, archive);
     }
 
     public List<File> getByType(FileType key){
-        return dao.getByType(key, archiveId);
+        return dao.getByType(key, archive);
     }
 
     public List<File> getByName(String key){
-        return dao.getByName(key, archiveId);
+        return dao.getByName(key, archive);
     }
 
     public List<File> getByDate(Date key){
-        return dao.getByDate(key, archiveId);
+        return dao.getByDate(key, archive);
     }
 
     public List<File> getByArguments(String name, FileType type, Date from, Date to){
-        return dao.getByArguments(name, type, from, to, archiveId);
+        return dao.getByArguments(name, type, from, to, archive);
     }
 
 }

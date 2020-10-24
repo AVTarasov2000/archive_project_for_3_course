@@ -12,63 +12,72 @@ public class DataBaseConnector implements DAO {
 
     private MySessionFactory sessionFactory;
 
+
     @Override
-    public void addArchive(String name) {
-        Session session = sessionFactory.openSession();
+    public void addArchive(Archive archive) {
+        Session session = new Session();
+        Transaction tx = session.beginTransaction();
+        session.save(archive);
+        tx.commit();
+        session.close();
     }
 
     @Override
-    public void deleteArchive(int id) {
-
+    public void deleteArchive(Archive archive) {
+        Session session = new Session();
+        Transaction tx = session.beginTransaction();
+        session.delete(archive);
+        tx.commit();
+        session.close();
     }
 
     @Override
     public List <Archive> getAllArchives() {
+        return new Session().get(new Archive());
+    }
+
+    @Override
+    public List <File> getAllFiles(Archive archive) {
+        return new Session().get(new File());
+    }
+
+    @Override
+    public void addFile(File file, Archive archive) {
+
+    }
+
+    @Override
+    public void removeFile(File file, Archive archive) {
+
+    }
+
+    @Override
+    public File getFile(File file, Archive archive) {
         return null;
     }
 
     @Override
-    public List <File> getAllFiles(int archiveId) {
+    public void editFile(File file, Archive archive) {
+
+    }
+
+    @Override
+    public List <File> getByType(FileType key, Archive archive) {
         return null;
     }
 
     @Override
-    public void addFile(File file, int archiveId) {
-
-    }
-
-    @Override
-    public void removeFile(int id, int archiveId) {
-
-    }
-
-    @Override
-    public File getFile(int id, int archiveId) {
+    public List <File> getByName(String key, Archive archive) {
         return null;
     }
 
     @Override
-    public void editFile(int id, File file, int archiveId) {
-
-    }
-
-    @Override
-    public List <File> getByType(FileType key, int archiveId) {
+    public List <File> getByDate(Date key, Archive archive) {
         return null;
     }
 
     @Override
-    public List <File> getByName(String key, int archiveId) {
-        return null;
-    }
-
-    @Override
-    public List <File> getByDate(Date key, int archiveId) {
-        return null;
-    }
-
-    @Override
-    public List <File> getByArguments(String name, FileType type, Date from, Date to, int archiveId) {
+    public List <File> getByArguments(String name, FileType type, Date from, Date to, Archive archive) {
         return null;
     }
 }

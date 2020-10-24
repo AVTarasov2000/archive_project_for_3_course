@@ -29,9 +29,7 @@ public class EditFile extends ArchiveAccessCommand {
                 e.printStackTrace();
             }
         }
-        archiveService.editFile(
-                (Integer) id,
-                (File) file);
+        archiveService.editFile((File) file);
     }
 
     @Override

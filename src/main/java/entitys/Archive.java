@@ -1,18 +1,26 @@
 package entitys;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class Archive {
 
-    private int Id;
+    private Integer id;
     private String name;
 
-    public Archive(int id, String name) {
-        Id = id;
+    public Archive() {
+    }
+
+    public Archive(Integer id, String name) {
+        this.id = id;
         this.name = name;
     }
 
     @Override
     public String toString() {
-        return "Id=" + Id +
+        return "Id=" + id +
                 ", name=" + name;
     }
 }

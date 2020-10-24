@@ -1,19 +1,29 @@
 package entitys;
 
+import annotations.db.Column;
+import annotations.db.Entity;
+import annotations.db.Id;
+import annotations.db.Table;
 import enums.FileType;
+import lombok.Getter;
+import lombok.Setter;
 
-import java.util.Calendar;
 import java.util.Date;
 
+@Getter
+@Setter
 public class File {
 
     private Date datetime;
     private String name;
     private FileType type;
     private Place place;
-    private int id;
+    private Integer id;
 
-    public File(int id, Date datetime, String name, FileType type, Place place) {
+    public File() {
+    }
+
+    public File(Integer id, Date datetime, String name, FileType type, Place place) {
         this.id = id;
         this.datetime = datetime;
         this.name = name;
@@ -53,11 +63,11 @@ public class File {
         this.place = place;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
