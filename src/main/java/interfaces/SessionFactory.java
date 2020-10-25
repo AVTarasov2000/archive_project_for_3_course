@@ -1,8 +1,8 @@
 package interfaces;
 
-import dao.Session;
+import dao.MySession;
 
 public interface SessionFactory {
 
-    public Session openSession();
+    public MySession openSession();
 }

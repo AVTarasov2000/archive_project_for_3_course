@@ -1,7 +1,5 @@
 package dao;
 
-public class QuerySender {
-    public void send(Query query, TableReceiver tableReceiver) {
-
-    }
+public interface QuerySender {
+    void send(Query query, Receiver tableReceiver);
 }

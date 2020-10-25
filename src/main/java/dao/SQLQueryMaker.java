@@ -2,7 +2,7 @@ package dao;
 
 public class SQLQueryMaker implements QueryMaker {
 
-    public<T> Query makeQuery(DBMethods method, T entity, String... postfixes) {
+    public<T> SQLQuery makeQuery(DBMethods method, T entity, String... postfixes) {
         StringBuilder sb = new StringBuilder();
         for (String s :
                 postfixes) {
