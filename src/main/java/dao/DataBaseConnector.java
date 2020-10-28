@@ -1,83 +1,81 @@
 package dao;
 
-import entitys.Archive;
-import entitys.File;
 import enums.FileType;
 import interfaces.DAO;
+import interfaces.ObjectFactory;
 
 import java.util.Date;
 import java.util.List;
 
 public class DataBaseConnector implements DAO {
 
-    private MySessionFactory sessionFactory;
+
+    private ObjectFactory sessionFactory;
 
 
     @Override
-    public void addArchive(Archive archive) {
-        MySession session = new MySession();
-        Transaction tx = session.beginTransaction();
+    public void addArchive(DAOArchive archive) {
+        Session session = sessionFactory.getObject(Session.class);
         session.save(archive.getClass());
-        tx.commit();
         session.close();
     }
 
     @Override
-    public void deleteArchive(Archive archive) {
-        MySession session = new MySession();
-        Transaction tx = session.beginTransaction();
+    public void deleteArchive(DAOArchive archive) {
+        Session session = sessionFactory.getObject(Session.class);
         session.delete(archive.getClass());
-        tx.commit();
         session.close();
     }
 
     @Override
-    public List <Archive> getAllArchives() {
-        return new MySession().get(Archive.class);
+    public List <DAOArchive> getAllArchives() {
+        Session session = sessionFactory.getObject(Session.class);
+        return session.get(DAOArchive.class);
     }
 
     @Override
-    public List <File> getAllFiles(Archive archive) {
-        return new MySession().get(File.class);
+    public List <DAOFile> getAllFiles(DAOArchive archive) {
+        Session session = sessionFactory.getObject(Session.class);
+        return session.get(DAOFile.class);
     }
 
     @Override
-    public void addFile(File file, Archive archive) {
-
-    }
-
-    @Override
-    public void removeFile(File file, Archive archive) {
+    public void addFile(DAOFile file, DAOArchive archive) {
 
     }
 
     @Override
-    public File getFile(File file, Archive archive) {
+    public void removeFile(DAOFile file, DAOArchive archive) {
+
+    }
+
+    @Override
+    public DAOFile getFile(DAOFile file, DAOArchive archive) {
         return null;
     }
 
     @Override
-    public void editFile(File file, Archive archive) {
+    public void editFile(DAOFile file, DAOArchive archive) {
 
     }
 
     @Override
-    public List <File> getByType(FileType key, Archive archive) {
+    public List <DAOFile> getByType(FileType key, DAOArchive archive) {
         return null;
     }
 
     @Override
-    public List <File> getByName(String key, Archive archive) {
+    public List <DAOFile> getByName(String key, DAOArchive archive) {
         return null;
     }
 
     @Override
-    public List <File> getByDate(Date key, Archive archive) {
+    public List <DAOFile> getByDate(Date key, DAOArchive archive) {
         return null;
     }
 
     @Override
-    public List <File> getByArguments(String name, FileType type, Date from, Date to, Archive archive) {
+    public List <DAOFile> getByArguments(String name, FileType type, Date from, Date to, DAOArchive archive) {
         return null;
     }
 }

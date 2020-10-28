@@ -8,10 +8,13 @@ import java.util.List;
 public class MySession implements Session{
 
 
-
+    @InjectByType
     private QueryMaker queryMaker;
+    @InjectByType
     private Transaction transaction;
+    @InjectByType
     private QuerySender querySender;
+    @InjectByType
     private DataConverter dataConverter;
 
 
@@ -49,7 +52,4 @@ public class MySession implements Session{
         querySender.close();
     }
 
-    public Transaction beginTransaction() {
-        return null;
-    }
 }

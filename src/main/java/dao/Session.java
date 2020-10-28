@@ -11,5 +11,4 @@ public interface Session {
     <T> List <T> get(Class<T> entity);
     <T> List <T> selectQuery(Class<T> entity, String postfix);
     void close();
-    Transaction beginTransaction();
 }

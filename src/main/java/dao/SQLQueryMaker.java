@@ -48,6 +48,5 @@ public class SQLQueryMaker implements QueryMaker {
         }
 
         throw new Exception("need some realisation for new data base method");
-
     }
 }
