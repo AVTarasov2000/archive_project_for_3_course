@@ -1,5 +1,7 @@
 package dao;
 
+import dao.SQLMethods.Query;
+
 import java.sql.ResultSet;
 
 public interface QuerySender {

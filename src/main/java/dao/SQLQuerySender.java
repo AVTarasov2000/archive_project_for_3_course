@@ -1,5 +1,6 @@
 package dao;
 
+import dao.SQLMethods.Query;
 import lombok.SneakyThrows;
 
 import java.sql.ResultSet;

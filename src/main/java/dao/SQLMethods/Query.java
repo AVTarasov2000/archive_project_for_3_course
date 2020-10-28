@@ -1,4 +1,4 @@
-package dao;
+package dao.SQLMethods;
 
 import lombok.Getter;
 import lombok.Setter;

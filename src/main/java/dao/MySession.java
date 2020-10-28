@@ -1,6 +1,8 @@
 package dao;
 
 
+import dao.SQLMethods.Query;
+
 import java.util.List;
 
 public class MySession implements Session{
