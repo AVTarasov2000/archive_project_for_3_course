@@ -4,7 +4,6 @@ import entitys.Archive;
 import entitys.File;
 import enums.FileType;
 
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -14,7 +13,7 @@ public interface DAO {
 
     public void deleteArchive(Archive archive);
 
-    public List<Archive> getAllArchives();
+    public List <? extends Archive> getAllArchives();
 
     public List<File> getAllFiles(Archive archive);
 

@@ -11,15 +11,15 @@ public class SQLQuerySender implements QuerySender{
     ResultSet resultSet;
 
     @SneakyThrows
-    public void send(Query query, Receiver tableReceiver) {
+    public ResultSet send(Query query) {
         resultSet = statement.executeQuery(query.getQuery());
-        int columns = resultSet.getMetaData().getColumnCount();
-        while (resultSet.next()){
-            String[] row = new String[columns];
-            for (int i = 0; i < columns; i++) {
-                row[i]=resultSet.getString(i);
-            }
-            tableReceiver.addRow(row);
-        }
+        return resultSet;
+    }
+
+    @SneakyThrows
+    @Override
+    public void close() {
+        statement.close();
+        resultSet.close();
     }
 }

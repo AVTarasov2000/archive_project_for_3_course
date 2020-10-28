@@ -1,5 +1,8 @@
 package dao;
 
+import java.sql.ResultSet;
+
 public interface QuerySender {
-    void send(Query query, Receiver tableReceiver);
+    ResultSet send(Query query);
+    void close();
 }

@@ -17,7 +17,7 @@ public class DataBaseConnector implements DAO {
     public void addArchive(Archive archive) {
         MySession session = new MySession();
         Transaction tx = session.beginTransaction();
-        session.save(archive);
+        session.save(archive.getClass());
         tx.commit();
         session.close();
     }
@@ -26,19 +26,19 @@ public class DataBaseConnector implements DAO {
     public void deleteArchive(Archive archive) {
         MySession session = new MySession();
         Transaction tx = session.beginTransaction();
-        session.delete(archive);
+        session.delete(archive.getClass());
         tx.commit();
         session.close();
     }
 
     @Override
     public List <Archive> getAllArchives() {
-        return new MySession().get(new Archive());
+        return new MySession().get(Archive.class);
     }
 
     @Override
     public List <File> getAllFiles(Archive archive) {
-        return new MySession().get(new File());
+        return new MySession().get(File.class);
     }
 
     @Override

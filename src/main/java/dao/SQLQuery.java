@@ -5,6 +5,10 @@ import lombok.Setter;
 
 public class SQLQuery extends Query{
 
+    public SQLQuery(String query) {
+        this.query = query;
+    }
+
     @Getter @Setter String query;
 
 }
