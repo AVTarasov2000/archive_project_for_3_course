@@ -13,7 +13,7 @@ public interface DAO {
 
     public void deleteArchive(DAOArchive archive);
 
-    public List <? extends DAOArchive> getAllArchives();
+    public List <DAOArchive> getAllArchives();
 
     public List<DAOFile> getAllFiles(DAOArchive archive);
 

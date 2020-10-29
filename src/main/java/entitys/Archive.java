@@ -1,11 +1,12 @@
 package entitys;
 
+import dao.DAOArchive;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class Archive {
+public class Archive extends DAOArchive {
 
     private Integer id;
     private String name;

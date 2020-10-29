@@ -11,7 +11,6 @@ public class SQLQuerySender implements QuerySender{
 
     @InjectByType
     Statement statement;
-    @InjectByType
     ResultSet resultSet;
 
     @SneakyThrows

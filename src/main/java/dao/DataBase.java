@@ -9,7 +9,7 @@ import utils.PlaceFabric;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class DataBase implements DAO {
+public class DataBase {
 
     public static Map <Integer, String> archiveNames;
     public static Map<Integer, List<File>> archives;
@@ -47,68 +47,68 @@ public class DataBase implements DAO {
     }
 
 
-    public DataBase() {
-    }
-
-    @Override
-    public void addArchive(DAOArchive archive) {
-
-    }
-
-    @Override
-    public void deleteArchive(DAOArchive archive) {
-
-    }
-
-    @Override
-    public List <? extends DAOArchive> getAllArchives() {
-        return null;
-    }
-
-    @Override
-    public List <DAOFile> getAllFiles(DAOArchive archive) {
-        return null;
-    }
-
-    @Override
-    public void addFile(DAOFile file, DAOArchive archive) {
-
-    }
-
-    @Override
-    public void removeFile(DAOFile file, DAOArchive archive) {
-
-    }
-
-    @Override
-    public DAOFile getFile(DAOFile file, DAOArchive archive) {
-        return null;
-    }
-
-    @Override
-    public void editFile(DAOFile file, DAOArchive archive) {
-
-    }
-
-    @Override
-    public List <DAOFile> getByType(FileType key, DAOArchive archive) {
-        return null;
-    }
-
-    @Override
-    public List <DAOFile> getByName(String key, DAOArchive archive) {
-        return null;
-    }
-
-    @Override
-    public List <DAOFile> getByDate(Date key, DAOArchive archive) {
-        return null;
-    }
-
-    @Override
-    public List <DAOFile> getByArguments(String name, FileType type, Date from, Date to, DAOArchive archive) {
-        return null;
-    }
+//    public DataBase() {
+//    }
+//
+//    @Override
+//    public void addArchive(DAOArchive archive) {
+//
+//    }
+//
+//    @Override
+//    public void deleteArchive(DAOArchive archive) {
+//
+//    }
+//
+//    @Override
+//    public List <? extends DAOArchive> getAllArchives() {
+//        return null;
+//    }
+//
+//    @Override
+//    public List <DAOFile> getAllFiles(DAOArchive archive) {
+//        return null;
+//    }
+//
+//    @Override
+//    public void addFile(DAOFile file, DAOArchive archive) {
+//
+//    }
+//
+//    @Override
+//    public void removeFile(DAOFile file, DAOArchive archive) {
+//
+//    }
+//
+//    @Override
+//    public DAOFile getFile(DAOFile file, DAOArchive archive) {
+//        return null;
+//    }
+//
+//    @Override
+//    public void editFile(DAOFile file, DAOArchive archive) {
+//
+//    }
+//
+//    @Override
+//    public List <DAOFile> getByType(FileType key, DAOArchive archive) {
+//        return null;
+//    }
+//
+//    @Override
+//    public List <DAOFile> getByName(String key, DAOArchive archive) {
+//        return null;
+//    }
+//
+//    @Override
+//    public List <DAOFile> getByDate(Date key, DAOArchive archive) {
+//        return null;
+//    }
+//
+//    @Override
+//    public List <DAOFile> getByArguments(String name, FileType type, Date from, Date to, DAOArchive archive) {
+//        return null;
+//    }
 
     //    @Override
 //    public void addArchive(String name) {
