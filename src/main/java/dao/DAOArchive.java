@@ -2,11 +2,13 @@ package dao;
 
 import annotations.db.Column;
 import annotations.db.Id;
+import annotations.db.Table;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@Table(name = "archive.archive")
 public class DAOArchive {
     @Id
     @Column

@@ -13,6 +13,7 @@ public class SQLQueryMaker implements QueryMaker {
 
     @SneakyThrows
     public<T> Query makeQuery(@NonNull DBMethods method, T entity, String... conditions) {
+        System.out.println(entity.getClass().getAnnotations().length); // TODO: 29/10/2020 переделать аннотацию табле
         if (!entity.getClass().isAnnotationPresent(Table.class))
             throw new AnnotationTypeMismatchException(null, "class is not annotated");
 

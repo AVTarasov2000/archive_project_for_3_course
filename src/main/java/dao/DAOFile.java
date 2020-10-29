@@ -12,7 +12,7 @@ import java.util.Date;
 
 @Getter
 @Setter
-@Table
+@Table(name = "archive.files")
 public class DAOFile {
 
     @Column

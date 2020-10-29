@@ -1,9 +1,7 @@
 package dao.JDBCTests;
 
 //STEP 1. Import required packages
-import java.sql.DriverManager;
-import java.sql.Connection;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class JDBCPostgreSQLExample {
 
@@ -35,6 +33,23 @@ public class JDBCPostgreSQLExample {
             System.out.println("Connection Failed");
             e.printStackTrace();
             return;
+        }
+
+        Statement statement = null;
+        try {
+            statement = connection.createStatement();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+//        System.out.println(statement);
+        try {
+            ResultSet rs = statement.executeQuery("SELECT * FROM library.author");
+            while (rs.next()) {
+                System.out.println(rs.getString(1)+rs.getString(2));
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
 
         if (connection != null) {

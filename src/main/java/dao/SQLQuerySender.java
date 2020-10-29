@@ -9,12 +9,12 @@ import java.sql.Statement;
 
 public class SQLQuerySender implements QuerySender{
 
-    @InjectByType
     Statement statement;
     ResultSet resultSet;
 
     @SneakyThrows
     public ResultSet send(Query query) {
+        System.out.println(query.getQuery()); // TODO: 29/10/2020 заполнить поля
         resultSet = statement.executeQuery(query.getQuery());
         return resultSet;
     }
