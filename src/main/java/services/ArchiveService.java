@@ -71,7 +71,6 @@ public class ArchiveService {
             res.add(EntityConverter.convert(file));
         }
         return res;
-//        return dao.getByType(key, archive);
     }
 
     public List<File> getByName(String key){
@@ -80,7 +79,6 @@ public class ArchiveService {
             res.add(EntityConverter.convert(file));
         }
         return res;
-//        return dao.getByName(key, archive);
     }
 
     public List<File> getByDate(Date key){
@@ -89,7 +87,6 @@ public class ArchiveService {
             res.add(EntityConverter.convert(file));
         }
         return res;
-//        return dao.getByDate(key, archive);
     }
 
     public List<File> getByArguments(String name, FileType type, Date from, Date to){
@@ -98,7 +95,6 @@ public class ArchiveService {
             res.add(EntityConverter.convert(file));
         }
         return res;
-//        return dao.getByArguments(name, type, from, to, archive);
     }
 
 }
