@@ -19,13 +19,11 @@ public class DataBaseConnector implements DAO {
     @Override
     public void addArchive(DAOArchive archive) {
         session.save(archive.getClass());
-        session.close();
     }
 
     @Override
     public void deleteArchive(DAOArchive archive) {
         session.delete(archive.getClass());
-        session.close();
     }
 
     @Override

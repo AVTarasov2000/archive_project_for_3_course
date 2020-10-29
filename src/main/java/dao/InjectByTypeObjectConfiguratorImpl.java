@@ -11,8 +11,8 @@ public class InjectByTypeObjectConfiguratorImpl implements ObjectConfigurator {
     @SneakyThrows
     public void configure(Object t, DAOContext context) {
         Class<?> implClass = t.getClass();
-        for (Field field : implClass.getFields()) {
-            InjectByType injectByTypeAnnotation = field.getAnnotation(InjectByType.class);
+        for (Field field : implClass.getDeclaredFields()) {
+            InjectByType injectByTypeAnnotation = field.getDeclaredAnnotation(InjectByType.class);
             if (injectByTypeAnnotation!=null){
                 Class<?> type = field.getType();
                 Object o = context.getObject(type);

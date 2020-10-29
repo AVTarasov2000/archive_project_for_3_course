@@ -11,7 +11,7 @@ public class Main {
 
     public static void main(String[] args){
 
-        DAOContext daoContext = DAOInitialiser.init("src.main.java",
+        DAOContext daoContext = DAOInitialiser.init("",
                 new HashMap <>(Map.of(Session.class, MySession.class)));
         Session session = daoContext.getObject(Session.class);
         DAO archives = new DataBaseConnector(session);

@@ -11,7 +11,6 @@ import java.util.List;
 public class DefaultObjectFactory implements ObjectFactory {
 
     private List <ObjectConfigurator> configurators = new ArrayList <>();
-
     private  DAOContext context;
 
     @SneakyThrows
@@ -29,6 +28,6 @@ public class DefaultObjectFactory implements ObjectFactory {
 
         configurators.forEach(objectConfigurator -> objectConfigurator.configure(t, context));
 
-        return null;
+        return t;
     }
 }
