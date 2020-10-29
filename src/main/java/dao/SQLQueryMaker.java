@@ -13,11 +13,13 @@ public class SQLQueryMaker implements QueryMaker {
 
     @SneakyThrows
     public<T> Query makeQuery(@NonNull DBMethods method, T entity, String... conditions) {
-        System.out.println(entity.getClass().getAnnotations().length); // TODO: 29/10/2020 переделать аннотацию табле
-        if (!entity.getClass().isAnnotationPresent(Table.class))
+        Class<?> cls = (entity instanceof Class)? (Class) entity :entity.getClass();
+
+//        System.out.println(cls.toString()); // TODO: 29/10/2020 переделать аннотацию табле
+        if (!cls.isAnnotationPresent(Table.class))
             throw new AnnotationTypeMismatchException(null, "class is not annotated");
 
-        String table = entity.getClass().getAnnotation(Table.class).name();
+        String table = cls.getAnnotation(Table.class).name();
         if (table.equals(""))
             table = entity.getClass().getName();
 
@@ -26,11 +28,12 @@ public class SQLQueryMaker implements QueryMaker {
             conBuilder.append(condition).append(" AND ");
         }
 
-        Field[] fields = entity.getClass().getFields();
+        Field[] fields = cls.getDeclaredFields();
         String[] columnNames = new String[fields.length];
         String[] values = new String[fields.length];
 
         for (int i = 0; i < fields.length; i++) {
+            fields[i].setAccessible(true);
             columnNames[i] = fields[i].getAnnotation(Column.class).name();
             values[i] = fields[i].get(entity).toString();
         }
