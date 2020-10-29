@@ -1,5 +1,6 @@
 package dao;
 
+import annotations.db.InjectByType;
 import dao.SQLMethods.Query;
 import lombok.SneakyThrows;
 

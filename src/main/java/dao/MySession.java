@@ -1,6 +1,7 @@
 package dao;
 
 
+import annotations.db.InjectByType;
 import dao.SQLMethods.Query;
 
 import java.util.List;

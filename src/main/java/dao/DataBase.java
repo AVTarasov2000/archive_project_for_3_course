@@ -51,67 +51,66 @@ public class DataBase implements DAO {
     }
 
     @Override
-    public void addArchive(Archive archive) {
+    public void addArchive(DAOArchive archive) {
 
     }
 
     @Override
-    public void deleteArchive(Archive archive) {
+    public void deleteArchive(DAOArchive archive) {
 
     }
 
     @Override
-    public List <Archive> getAllArchives() {
+    public List <? extends DAOArchive> getAllArchives() {
         return null;
     }
 
     @Override
-    public List <File> getAllFiles(Archive archive) {
+    public List <DAOFile> getAllFiles(DAOArchive archive) {
         return null;
     }
 
     @Override
-    public void addFile(File file, Archive archive) {
+    public void addFile(DAOFile file, DAOArchive archive) {
 
     }
 
     @Override
-    public void removeFile(File file, Archive archive) {
+    public void removeFile(DAOFile file, DAOArchive archive) {
 
     }
 
     @Override
-    public File getFile(File file, Archive archive) {
+    public DAOFile getFile(DAOFile file, DAOArchive archive) {
         return null;
     }
 
     @Override
-    public void editFile(File file, Archive archive) {
+    public void editFile(DAOFile file, DAOArchive archive) {
 
     }
 
     @Override
-    public List <File> getByType(FileType key, Archive archive) {
+    public List <DAOFile> getByType(FileType key, DAOArchive archive) {
         return null;
     }
 
     @Override
-    public List <File> getByName(String key, Archive archive) {
+    public List <DAOFile> getByName(String key, DAOArchive archive) {
         return null;
     }
 
     @Override
-    public List <File> getByDate(Date key, Archive archive) {
+    public List <DAOFile> getByDate(Date key, DAOArchive archive) {
         return null;
     }
 
     @Override
-    public List <File> getByArguments(String name, FileType type, Date from, Date to, Archive archive) {
+    public List <DAOFile> getByArguments(String name, FileType type, Date from, Date to, DAOArchive archive) {
         return null;
     }
 
-
-//    @Override
+    //    @Override
 //    public void addArchive(String name) {
 //        archiveNames.put(nextArchiveId,name);
 //        archives.put(nextArchiveId, new ArrayList <>());

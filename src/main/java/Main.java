@@ -1,4 +1,4 @@
-import dao.DataBase;
+import dao.*;
 import interfaces.DAO;
 import services.ArchiveService;
 import services.CommandService;
@@ -11,7 +11,11 @@ public class Main {
 
     public static void main(String[] args){
 
-        DAO archives = new DataBase();
+        DAOContext daoContext = DAOInitialiser.init("src.main.java",
+                new HashMap <>(Map.of(Session.class, MySession.class)));
+        Session session = daoContext.getObject(Session.class);
+        DAO archives = new DataBaseConnector(session);
+//        DAO archives = new DataBase();
         HashMap<String, Object> arguments = new HashMap <>();
         OutputService outputService = new OutputService();
         ArchiveService archiveService = new ArchiveService(archives);

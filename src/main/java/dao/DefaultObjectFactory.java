@@ -1,16 +1,34 @@
 package dao;
 
+import annotations.db.Singleton;
 import interfaces.ObjectFactory;
+import lombok.SneakyThrows;
 
+import java.util.ArrayList;
+import java.util.List;
+
+@Singleton
 public class DefaultObjectFactory implements ObjectFactory {
 
-    private Config config;
+    private List <ObjectConfigurator> configurators = new ArrayList <>();
 
-    public<T> T getObject(Class<T> type) {
-        Class<? extends T> implClass = type;
-        if (type.isInterface()){
-            implClass = config.getIplClass(type);
+    private  DAOContext context;
+
+    @SneakyThrows
+    public DefaultObjectFactory(DAOContext context) {
+        this.context = context;
+        for (Class<? extends ObjectConfigurator> aClass :
+                context.getConfig().getScanner().getSubTypesOf(ObjectConfigurator.class)){
+            configurators.add(aClass.getDeclaredConstructor().newInstance());
         }
+    }
+
+    @SneakyThrows
+    public<T> T getObject(Class<T> implClass) {
+        T t = implClass.getDeclaredConstructor().newInstance();
+
+        configurators.forEach(objectConfigurator -> objectConfigurator.configure(t, context));
+
         return null;
     }
 }

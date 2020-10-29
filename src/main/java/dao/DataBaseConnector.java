@@ -10,32 +10,31 @@ import java.util.List;
 public class DataBaseConnector implements DAO {
 
 
-    private ObjectFactory sessionFactory;
+    private Session session;
 
+    public DataBaseConnector(Session session) {
+        this.session = session;
+    }
 
     @Override
     public void addArchive(DAOArchive archive) {
-        Session session = sessionFactory.getObject(Session.class);
         session.save(archive.getClass());
         session.close();
     }
 
     @Override
     public void deleteArchive(DAOArchive archive) {
-        Session session = sessionFactory.getObject(Session.class);
         session.delete(archive.getClass());
         session.close();
     }
 
     @Override
     public List <DAOArchive> getAllArchives() {
-        Session session = sessionFactory.getObject(Session.class);
         return session.get(DAOArchive.class);
     }
 
     @Override
     public List <DAOFile> getAllFiles(DAOArchive archive) {
-        Session session = sessionFactory.getObject(Session.class);
         return session.get(DAOFile.class);
     }
 
