@@ -15,7 +15,6 @@ public class SQLQueryMaker implements QueryMaker {
     public<T> Query makeQuery(@NonNull DBMethods method, T entity, String... conditions) {
         Class<?> cls = (entity instanceof Class)? (Class) entity :entity.getClass();
 
-//        System.out.println(cls.toString()); // TODO: 29/10/2020 переделать аннотацию табле
         if (!cls.isAnnotationPresent(Table.class))
             throw new AnnotationTypeMismatchException(null, "class is not annotated");
 
@@ -34,7 +33,10 @@ public class SQLQueryMaker implements QueryMaker {
 
         for (int i = 0; i < fields.length; i++) {
             fields[i].setAccessible(true);
-            columnNames[i] = fields[i].getAnnotation(Column.class).name();
+            String column = fields[i].getAnnotation(Column.class).name();
+            if (column.equals(""))
+                column = fields[i].getName();
+            columnNames[i] = column;
             values[i] = fields[i].get(entity).toString();
         }
 

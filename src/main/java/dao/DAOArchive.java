@@ -13,7 +13,7 @@ public class DAOArchive {
     @Id
     @Column
     private Integer id;
-    @Column
+    @Column(name = "name")
     private String name;
 
     public DAOArchive() {

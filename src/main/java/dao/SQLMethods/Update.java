@@ -1,16 +1,23 @@
 package dao.SQLMethods;
 
 
+import java.util.Arrays;
+import java.util.Iterator;
+
 public class Update extends Query {
-    public Update(String table, String[] names, String[] values, String conditions) {
-        if (names.length != values.length)
-            throw new IllegalArgumentException("length of names and values must be equal");
+    public Update(String table, String[] columnNames, String[] values, String conditions) {
+        if (columnNames.length != values.length)
+            throw new IllegalArgumentException("length of columnNames and values must be equal");
 
         StringBuilder sb = new StringBuilder();
-
-        for (int i = 0; i < names.length; i++) {
-            sb.append(names[i]).append(" = ").append(values[i]).append(", ");
+        Iterator <String> nameIter = Arrays.stream(columnNames).iterator();
+        Iterator <String> valueIter = Arrays.stream(values).iterator();
+        while (nameIter.hasNext() && valueIter.hasNext()){
+            sb.append(nameIter.next()).append(" = ").append(valueIter.next());
+            if (nameIter.hasNext() && valueIter.hasNext())
+                sb.append(" ,");
         }
+
 
         super.setQuery(String.format("UPDATE %s SET %s WHERE %s",
                 table,

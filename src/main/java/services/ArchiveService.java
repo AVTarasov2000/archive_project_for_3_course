@@ -22,11 +22,11 @@ public class ArchiveService {
     }
 
     public void choseArchive(Integer archiveId){
-        this.archive = new DAOArchive(archiveId, null);
+        this.archive = new DAOArchive(archiveId, "");
     }
 
     public void addArchive(String name){
-        dao.addArchive(new DAOArchive(null, name));
+        dao.addArchive(new DAOArchive(-1, name));
     }
 
     public void deleteArchive(Integer id){

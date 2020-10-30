@@ -15,18 +15,18 @@ import java.util.Date;
 @Table(name = "archive.files")
 public class DAOFile {
 
-    @Column
+    @Column(name = "datetime")
     private Date datetime;
-    @Column
+    @Column(name = "name")
     private String name;
-    @Column
+    @Column(name = "type")
     private FileType type;
-    @Column
+    @Column(name = "place")
     private Place place;
     @Id
-    @Column
+    @Column(name = "id")
     private Integer id;
-    @Column
+    @Column(name = "archiveId")
     private Integer archiveId;
 
     public DAOFile() {

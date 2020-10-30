@@ -1,3 +1,4 @@
+import annotations.db.Table;
 import dao.*;
 import interfaces.DAO;
 import services.ArchiveService;
