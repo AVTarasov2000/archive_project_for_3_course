@@ -8,7 +8,7 @@ import enums.FileType;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Date;
+import java.sql.Date;
 
 @Getter
 @Setter
@@ -34,7 +34,7 @@ public class DAOFile {
 
     public DAOFile(Integer id) {
         this.id = id;
-        this.datetime = new Date();
+        this.datetime = new Date(0);
         this.name = "";
         this.type = "";
         this.place = "";

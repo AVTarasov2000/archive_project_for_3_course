@@ -2,7 +2,7 @@ package dao;
 
 import lombok.SneakyThrows;
 
-import java.util.Date;
+import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
@@ -13,9 +13,8 @@ public class FromPostgreStringToObjectCasterImpl implements FromStringToObjectCa
         if (Integer.class.equals(cls)) {
             return Integer.parseInt(value);
         } else if (Date.class.equals(cls)) {
-//            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            DateFormat dateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss ZZZ yyyy");
-            return dateFormat.parse(value);
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            return new Date(dateFormat.parse(value).getTime());
         }else if (String.class.equals(cls)) {
             return value;
         }

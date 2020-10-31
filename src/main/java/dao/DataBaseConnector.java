@@ -3,7 +3,7 @@ package dao;
 import enums.FileType;
 import interfaces.DAO;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 public class DataBaseConnector implements DAO {
@@ -32,7 +32,8 @@ public class DataBaseConnector implements DAO {
 
     @Override
     public List <DAOFile> getAllFiles(DAOArchive archive) {
-        return session.get(DAOFile.class);
+        return session.selectQuery(DAOFile.class, "archive="+archive.getId());
+//        return session.get(DAOFile.class);
     }
 
     @Override
@@ -72,6 +73,8 @@ public class DataBaseConnector implements DAO {
 
     @Override
     public List <DAOFile> getByArguments(String name, FileType type, Date from, Date to, DAOArchive archive) {
-        return null;
+        return session.selectQuery(DAOFile.class,
+                "archive="+archive.getId(),"name='"+name+"'","type='"+type+"'",
+                "date>'"+from.toString()+"'::date", "date<'"+to.toString()+"'::date");
     }
 }

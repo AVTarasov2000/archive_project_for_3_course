@@ -9,6 +9,6 @@ public interface Session {
     <T> void update(T entity);
     <T> void create(T entity);
     <T> List <T> get(Class<T> entity);
-    <T> List <T> selectQuery(Class<T> entity, String postfix);
+    <T> List <T> selectQuery(Class<T> entity, String... postfix);
     void close();
 }

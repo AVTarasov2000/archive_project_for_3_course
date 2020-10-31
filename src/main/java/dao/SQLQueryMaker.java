@@ -9,8 +9,8 @@ import lombok.SneakyThrows;
 
 import java.lang.annotation.AnnotationTypeMismatchException;
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.sql.Date;
 
 public class SQLQueryMaker implements QueryMaker {
 
@@ -28,8 +28,11 @@ public class SQLQueryMaker implements QueryMaker {
             table = entity.getClass().getName();
 
         StringBuilder conBuilder = new StringBuilder();
-        for (String condition : conditions) {
-            conBuilder.append(condition).append(" AND ");
+        Iterator iterator = Arrays.stream(conditions).iterator();
+        while (iterator.hasNext()){
+            conBuilder.append(iterator.next());
+            if (iterator.hasNext())
+                conBuilder.append(" AND ");
         }
 
         Field[] fields = cls.getDeclaredFields();
@@ -51,6 +54,9 @@ public class SQLQueryMaker implements QueryMaker {
                 columnNames.add(columnName);
                 if (column.type() == String.class)
                     values.add("'" + fields[i].get(entity).toString() + "'");
+                else if(column.type() == Date.class){
+                    values.add("'" + fields[i].get(entity).toString() + "'::date");
+                }
                 else
                     values.add(fields[i].get(entity).toString());
             }

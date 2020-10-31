@@ -44,7 +44,7 @@ public class MySession implements Session{
         return dataConverter.convert(querySender.send(query), entityClass);
     }
 
-    public<T> List <T> selectQuery(Class<T> entityClass, String postfix){
+    public<T> List <T> selectQuery(Class<T> entityClass, String... postfix){
         Query query = queryMaker.makeQuery(DBMethods.SELECT, entityClass, postfix);
         return dataConverter.convert(querySender.send(query), entityClass);
     }

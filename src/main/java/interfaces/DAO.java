@@ -4,7 +4,7 @@ import dao.DAOArchive;
 import dao.DAOFile;
 import enums.FileType;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 public interface DAO {

@@ -83,7 +83,7 @@ public class ArchiveService {
 
     public List<File> getByDate(Date key){
         List<File> res = new ArrayList <>();
-        for (DAOFile file : dao.getByDate(key, archive)) {
+        for (DAOFile file : dao.getByDate(new java.sql.Date(key.getTime()), archive)) {
             res.add(EntityConverter.convert(file));
         }
         return res;
@@ -91,7 +91,7 @@ public class ArchiveService {
 
     public List<File> getByArguments(String name, FileType type, Date from, Date to){
         List<File> res = new ArrayList <>();
-        for (DAOFile file : dao.getByArguments(name, type, from, to, archive)) {
+        for (DAOFile file : dao.getByArguments(name, type, new java.sql.Date(from.getTime()), new java.sql.Date(to.getTime()), archive)) {
             res.add(EntityConverter.convert(file));
         }
         return res;
