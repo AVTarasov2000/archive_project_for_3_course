@@ -1,15 +1,21 @@
 package dao;
 
-import java.sql.Date;
+import lombok.SneakyThrows;
+
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 public class FromPostgreStringToObjectCasterImpl implements FromStringToObjectCaster {
+    @SneakyThrows
     @Override
     public <T> Object cast(Class <T> cls, String value) {
         if (Integer.class.equals(cls)) {
             return Integer.parseInt(value);
         } else if (Date.class.equals(cls)) {
-            String[] arr = value.split(" ");
-            return new Date(Integer.parseInt(arr[0]), Integer.parseInt(arr[0]), Integer.parseInt(arr[0]));
+//            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            DateFormat dateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss ZZZ yyyy");
+            return dateFormat.parse(value);
         }else if (String.class.equals(cls)) {
             return value;
         }

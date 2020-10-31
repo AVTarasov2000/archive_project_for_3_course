@@ -16,4 +16,13 @@ public enum FileType {
     public String getType() {
         return type;
     }
+
+    public static FileType getTypeByStr(String str){
+        for (FileType type:
+                FileType.values()) {
+            if(type.getType().equals(str) || type.name().equals(str))
+                return type;
+        }
+        throw new IllegalArgumentException("No enum found with str: [" + str + "]");
+    }
 }

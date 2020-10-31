@@ -2,7 +2,6 @@ package dao;
 
 import enums.FileType;
 import interfaces.DAO;
-import interfaces.ObjectFactory;
 
 import java.util.Date;
 import java.util.List;
@@ -37,13 +36,13 @@ public class DataBaseConnector implements DAO {
     }
 
     @Override
-    public void addFile(DAOFile file, DAOArchive archive) {
-
+    public void addFile(DAOFile file) {
+        session.save(file);
     }
 
     @Override
-    public void removeFile(DAOFile file, DAOArchive archive) {
-
+    public void removeFile(DAOFile file) {
+        session.delete(file);
     }
 
     @Override
@@ -52,8 +51,8 @@ public class DataBaseConnector implements DAO {
     }
 
     @Override
-    public void editFile(DAOFile file, DAOArchive archive) {
-
+    public void editFile(DAOFile file) {
+        session.update(file);
     }
 
     @Override

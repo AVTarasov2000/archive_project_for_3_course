@@ -38,10 +38,8 @@ public class RealPlace extends Place{
 
     @Override
     public String toString() {
-        return "RealPlace{" +
-                "shelving=" + shelving +
-                ", shelf=" + shelf +
-                ", index=" + index +
-                '}';
+        return shelving +
+                "_" + shelf +
+                "_" + index;
     }
 }

@@ -50,19 +50,19 @@ public class ArchiveService {
     }
 
     public void addFile(File file){
-        dao.addFile(EntityConverter.convert(file), archive);
+        dao.addFile(EntityConverter.convert(file, archive.getId()));
     }
 
     public File getFile(int id){
-        return EntityConverter.convert(dao.getFile(new DAOFile(id, null,null,null, null), archive));
+        return EntityConverter.convert(dao.getFile(new DAOFile(id), archive));
     }
 
     public void removeFile(int id){
-        dao.removeFile(new DAOFile(id, null,null,null, null), archive);
+        dao.removeFile(new DAOFile(id));
     }
 
     public void editFile(File file){
-        dao.editFile(EntityConverter.convert(file), archive);
+        dao.editFile(EntityConverter.convert(file, archive.getId()));
     }
 
     public List<File> getByType(FileType key){

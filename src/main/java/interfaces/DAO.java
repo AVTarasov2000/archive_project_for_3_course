@@ -17,13 +17,13 @@ public interface DAO {
 
     public List<DAOFile> getAllFiles(DAOArchive archive);
 
-    public void addFile(DAOFile file, DAOArchive archive);
+    public void addFile(DAOFile file);
 
-    public void removeFile(DAOFile file, DAOArchive archive);
+    public void removeFile(DAOFile file);
 
     public DAOFile getFile(DAOFile file, DAOArchive archive);
 
-    public void editFile(DAOFile file, DAOArchive archive);
+    public void editFile(DAOFile file);
 
     public List<DAOFile> getByType(FileType key, DAOArchive archive);
 

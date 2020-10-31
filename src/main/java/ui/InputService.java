@@ -37,11 +37,6 @@ public class InputService {
         throw new IllegalArgumentException("No enum found with str: [" + str + "]");
     }
 
-//    private int ifExit(Scanner scanner){
-//        System.out.println("to exit command write: -1");
-//        int command = scanner.nextInt();
-//        if(command!=-1)
-//    }
 
     private void possibleTypes(){
         System.out.print("possible file types: ");
@@ -80,7 +75,7 @@ public class InputService {
         possibleTypes();
         System.out.println("place format: <shelving_shelf_index> or <linkToFile>\nwright args <name> <type> <place>");
         String name = scanner.next();
-        FileType type = getTypeByStr(scanner.next());//FileType.valueOf(scanner.next());
+        FileType type = FileType.getTypeByStr(scanner.next());//FileType.valueOf(scanner.next());
         Place place = new PlaceFabric().createPlace(scanner.nextLine().replaceAll(" ","").split("_"));
         File f = new File(0, new Date(), name, type, place);
         commandService.setArgument(Arguments.FILE.getArgument(),f);
@@ -98,7 +93,7 @@ public class InputService {
         System.out.println("place format: <shelving_shelf_index> or <linkToFile>\nwright args <id> <name> <type> <place>");
         int id = scanner.nextInt();
         String name = scanner.next();
-        FileType type = getTypeByStr(scanner.next()); //FileType.valueOf(scanner.next());
+        FileType type = FileType.getTypeByStr(scanner.next()); //FileType.valueOf(scanner.next());
         Place place = new PlaceFabric().createPlace(scanner.nextLine().split("_"));
         File f = new File(id, new Date() {
         }, name, type, place);
@@ -111,7 +106,7 @@ public class InputService {
         possibleTypes();
         System.out.println("wright args <name> <type> <date from(yyyy mm dd)> <date to(yyyy mm dd)>");
         String name = scanner.next();
-        FileType type = getTypeByStr(scanner.next());//FileType.valueOf(scanner.next());
+        FileType type = FileType.getTypeByStr(scanner.next());//FileType.valueOf(scanner.next());
         int year = scanner.nextInt();
         int month = scanner.nextInt();
         int date = scanner.nextInt();

@@ -17,8 +17,6 @@ public class VirtualPlace extends Place{
 
     @Override
     public String toString() {
-        return "VirtualPlace{" +
-                "linkToFie='" + linkToFie + '\'' +
-                '}';
+        return linkToFie;
     }
 }

@@ -15,7 +15,7 @@ import java.util.Date;
 @Table(name = "archive.files")
 public class DAOFile {
 
-    @Column(name = "datetime", type = Date.class)
+    @Column(name = "date", type = Date.class)
     private Date datetime;
     @Column(name = "name", type = String.class)
     private String name;
@@ -26,17 +26,27 @@ public class DAOFile {
     @Id
     @Column(name = "id", type = Integer.class)
     private Integer id;
-    @Column(name = "archiveId", type = Integer.class)
+    @Column(name = "archive", type = Integer.class)
     private Integer archiveId;
 
     public DAOFile() {
     }
 
-    public DAOFile(Integer id, Date datetime, String name, FileType type, Place place) {
+    public DAOFile(Integer id) {
+        this.id = id;
+        this.datetime = new Date();
+        this.name = "";
+        this.type = "";
+        this.place = "";
+        this.archiveId = -1;
+    }
+
+    public DAOFile(Integer id, Date datetime, String name, FileType type, Place place, Integer archiveId) {
         this.id = id;
         this.datetime = datetime;
         this.name = name;
         this.type = type.toString();
         this.place = place.toString();
+        this.archiveId = archiveId;
     }
 }

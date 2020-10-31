@@ -2,16 +2,19 @@ package dao;
 
 import entitys.Archive;
 import entitys.File;
+import entitys.VirtualPlace;
+import enums.FileType;
+import utils.PlaceFabric;
 
 
 public class EntityConverter {
 
-    public static DAOFile convert(File f){
-        return new DAOFile();
+    public static DAOFile convert(File f, Integer archiveId){
+        return new DAOFile(f.getId(),f.getDatetime(),f.getName(),f.getType(),f.getPlace(), archiveId);
     }
 
     public static File convert(DAOFile f){
-        return new File();
+        return new File(f.getId(),f.getDatetime(),f.getName(), FileType.getTypeByStr(f.getType()),new PlaceFabric().createPlace(f.getPlace().split("_")));
     }
 
     public static DAOArchive convert(Archive f){
