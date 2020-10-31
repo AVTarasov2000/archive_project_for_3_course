@@ -23,7 +23,7 @@ public class DataBaseConnector implements DAO {
 
     @Override
     public void deleteArchive(DAOArchive archive) {
-        session.delete(archive.getClass());
+        session.delete(archive);
     }
 
     @Override

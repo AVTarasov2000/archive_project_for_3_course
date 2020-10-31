@@ -6,14 +6,17 @@ import services.CommandService;
 import ui.InputService;
 import ui.OutputService;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
 import java.util.*;
 
 public class Main {
 
     public static void main(String[] args){
-
         DAOContext daoContext = DAOInitialiser.init("",
                 new HashMap <>(Map.of(Session.class, MySession.class)));
+        daoContext.putInCache(Statement.class, JDBCStatement.getStatement());
         Session session = daoContext.getObject(Session.class);
         DAO archives = new DataBaseConnector(session);
 //        DAO archives = new DataBase();

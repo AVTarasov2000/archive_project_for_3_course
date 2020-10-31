@@ -1,6 +1,7 @@
 package dao;
 
 import annotations.db.Column;
+import annotations.db.Id;
 import annotations.db.Table;
 import dao.SQLMethods.*;
 import lombok.NonNull;
@@ -8,12 +9,16 @@ import lombok.SneakyThrows;
 
 import java.lang.annotation.AnnotationTypeMismatchException;
 import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SQLQueryMaker implements QueryMaker {
 
     @SneakyThrows
     public<T> Query makeQuery(@NonNull DBMethods method, T entity, String... conditions) {
         Class<?> cls = (entity instanceof Class)? (Class) entity :entity.getClass();
+
+        boolean isSelect = entity instanceof Class;
 
         if (!cls.isAnnotationPresent(Table.class))
             throw new AnnotationTypeMismatchException(null, "class is not annotated");
@@ -28,27 +33,38 @@ public class SQLQueryMaker implements QueryMaker {
         }
 
         Field[] fields = cls.getDeclaredFields();
-        String[] columnNames = new String[fields.length];
-        String[] values = new String[fields.length];
+        List<String> columnNames = new ArrayList <>();
+        List<String> values = new ArrayList <>();
+        String id = "";
 
-        for (int i = 0; i < fields.length; i++) {
-            fields[i].setAccessible(true);
-            String column = fields[i].getAnnotation(Column.class).name();
-            if (column.equals(""))
-                column = fields[i].getName();
-            columnNames[i] = column;
-            values[i] = fields[i].get(entity).toString();
+        if (!isSelect){
+            for (int i = 0; i < fields.length; i++) {
+                fields[i].setAccessible(true);
+                if (fields[i].isAnnotationPresent(Id.class)) {
+                    id = fields[i].get(entity).toString();
+                    continue;
+                }
+                Column column = fields[i].getAnnotation(Column.class);
+                String columnName = column.name();
+                if (columnName.equals(""))
+                    columnName = fields[i].getName();
+                columnNames.add(columnName);
+                if (column.type() == String.class)
+                    values.add("'" + fields[i].get(entity).toString() + "'");
+                else
+                    values.add(fields[i].get(entity).toString());
+            }
         }
 
         switch (method) {
             case CREATE:
                 return new Create(table,new String[]{""}); // TODO: 28/10/2020 переделать create method
             case DELETE:
-                return new Delete(table, conBuilder.toString());
+                return new Delete(table, id);
             case SELECT:
                 return new Select(table, conBuilder.toString());
             case UPDATE:
-                return new Update(table, columnNames, values, conBuilder.toString());
+                return new Update(table, columnNames, values, conBuilder.toString(), id);
             case INSERT:
                 return new Insert(table,columnNames,values);
         }

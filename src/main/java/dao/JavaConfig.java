@@ -27,7 +27,7 @@ public class JavaConfig implements Config {
             Set <Class<? extends T>> classes = scanner.getSubTypesOf(ifc);
 
             if (classes.size()!=1)
-                throw new RuntimeException(ifc+"has 0 or more than 1 impl and there no config");
+                throw new RuntimeException(ifc+" has 0 or more than 1 impl and there no config");
 
             return classes.iterator().next();
         });

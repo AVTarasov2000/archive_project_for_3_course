@@ -11,12 +11,16 @@ import lombok.Setter;
 @Table(name = "archive.archive")
 public class DAOArchive {
     @Id
-    @Column
+    @Column(name = "id" , type = Integer.class)
     private Integer id;
-    @Column(name = "name")
-    private String name;
+    @Column(name = "name", type = String.class)
+    private String name = "";
 
     public DAOArchive() {
+    }
+
+    public DAOArchive(Integer id) {
+        this.id = id;
     }
 
     public DAOArchive(Integer id, String name) {

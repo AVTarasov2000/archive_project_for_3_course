@@ -22,7 +22,7 @@ public class ArchiveService {
     }
 
     public void choseArchive(Integer archiveId){
-        this.archive = new DAOArchive(archiveId, "");
+        this.archive = new DAOArchive(archiveId);
     }
 
     public void addArchive(String name){
@@ -30,7 +30,7 @@ public class ArchiveService {
     }
 
     public void deleteArchive(Integer id){
-        dao.deleteArchive(new DAOArchive(id, null));
+        dao.deleteArchive(new DAOArchive(id));
     }
 
     public List<Archive> getAllArchives(){

@@ -115,7 +115,7 @@ public class InputService {
         int year = scanner.nextInt();
         int month = scanner.nextInt();
         int date = scanner.nextInt();
-        Date from = new Date(year,month,date);
+        Date from = new Date(year, month, date);
         year = scanner.nextInt();
         month = scanner.nextInt();
         date = scanner.nextInt();

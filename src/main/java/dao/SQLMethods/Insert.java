@@ -2,37 +2,30 @@ package dao.SQLMethods;
 
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
 
 public class Insert extends Query {
-    public Insert(String table, String[] columnNames, String[] values) {
-        if (columnNames.length != values.length)
+    public Insert(String table, List <String> columnNames, List<String> values) {
+        if (columnNames.size() != values.size())
             throw new IllegalArgumentException("length of columnNames and values must be equal");
 
         StringBuilder namesBuilder = new StringBuilder();
-        Iterator<String> nameIter = Arrays.stream(columnNames).iterator();
+        Iterator<String> nameIter = columnNames.stream().iterator();
         while (nameIter.hasNext()){
             namesBuilder.append(nameIter.next());
             if (nameIter.hasNext())
                 namesBuilder.append(" ,");
         }
-//        for (String name : columnNames) {
-//            namesBuilder.append(name).append(", ");
-//        }
 
         StringBuilder valuesBuilder = new StringBuilder();
-        Iterator<String> valueIter = Arrays.stream(columnNames).iterator();
+        Iterator<String> valueIter = values.stream().iterator();
         while (valueIter.hasNext()){
             valuesBuilder.append(valueIter.next());
             if (valueIter.hasNext())
                 valuesBuilder.append(" ,");
         }
 
-
-//        StringBuilder valuesBuilder = new StringBuilder();
-//        for (String value : values) {
-//            valuesBuilder.append(value).append(", ");
-//        }
-        super.setQuery(String.format("INSERT INTO %s (%s) VALUES (%s)",
+        super.setQuery(String.format("INSERT INTO %s (%s) VALUES (%s);",
                 table,
                 namesBuilder.toString(),
                 valuesBuilder.toString())

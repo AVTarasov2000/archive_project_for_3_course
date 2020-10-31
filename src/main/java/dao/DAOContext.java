@@ -19,6 +19,10 @@ public class DAOContext {
         this.config = config;
     }
 
+    public void putInCache(Class cls, Object obj){
+        cache.put(cls, obj);
+    }
+
     public <T> T getObject(Class <T> type){
         if (cache.containsKey(type))
             return (T) cache.get(type);
