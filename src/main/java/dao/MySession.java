@@ -3,10 +3,14 @@ package dao;
 
 import annotations.db.InjectByType;
 import dao.SQLMethods.Query;
+import dao.daoInterfaces.DataConverter;
+import dao.daoInterfaces.QueryMaker;
+import dao.daoInterfaces.QuerySender;
+import dao.daoInterfaces.Session;
 
 import java.util.List;
 
-public class MySession implements Session{
+public class MySession implements Session {
 
 
     @InjectByType

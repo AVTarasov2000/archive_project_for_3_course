@@ -1,5 +1,6 @@
 package dao;
 
+import dao.daoInterfaces.Config;
 import interfaces.ObjectFactory;
 
 import java.util.Map;

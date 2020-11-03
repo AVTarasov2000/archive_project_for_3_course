@@ -3,13 +3,14 @@ package dao;
 
 import annotations.db.InjectByType;
 import dao.SQLMethods.Query;
+import dao.daoInterfaces.QuerySender;
 import lombok.SneakyThrows;
 import org.postgresql.util.PSQLException;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class SQLQuerySender implements QuerySender{
+public class SQLQuerySender implements QuerySender {
 
 
     @InjectByType

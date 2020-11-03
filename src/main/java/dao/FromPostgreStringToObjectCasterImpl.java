@@ -1,11 +1,13 @@
 package dao;
 
+import annotations.db.Singleton;
+import dao.daoInterfaces.FromStringToObjectCaster;
 import lombok.SneakyThrows;
 
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-
+@Singleton
 public class FromPostgreStringToObjectCasterImpl implements FromStringToObjectCaster {
     @SneakyThrows
     @Override

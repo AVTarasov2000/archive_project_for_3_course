@@ -1,8 +1,8 @@
 package services;
 
-import dao.DAOArchive;
-import dao.DAOFile;
-import dao.EntityConverter;
+import dao.daoEntitys.DAOArchive;
+import dao.daoEntitys.DAOFile;
+import utils.EntityConverter;
 import entitys.Archive;
 import entitys.File;
 import enums.FileType;

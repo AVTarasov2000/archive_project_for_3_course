@@ -1,7 +1,7 @@
 package interfaces;
 
-import dao.DAOArchive;
-import dao.DAOFile;
+import dao.daoEntitys.DAOArchive;
+import dao.daoEntitys.DAOFile;
 import enums.FileType;
 
 import java.sql.Date;

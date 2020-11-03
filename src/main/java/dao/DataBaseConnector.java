@@ -1,5 +1,8 @@
 package dao;
 
+import dao.daoEntitys.DAOArchive;
+import dao.daoEntitys.DAOFile;
+import dao.daoInterfaces.Session;
 import enums.FileType;
 import interfaces.DAO;
 

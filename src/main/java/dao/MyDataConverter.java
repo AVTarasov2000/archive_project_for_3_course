@@ -2,6 +2,8 @@ package dao;
 
 import annotations.db.Column;
 import annotations.db.InjectByType;
+import dao.daoInterfaces.DataConverter;
+import dao.daoInterfaces.FromStringToObjectCaster;
 import lombok.SneakyThrows;
 
 import java.lang.reflect.Field;

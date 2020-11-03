@@ -1,6 +1,7 @@
 package dao;
 
 import annotations.db.Singleton;
+import dao.daoInterfaces.Config;
 import lombok.Getter;
 import lombok.SneakyThrows;
 import org.reflections8.Reflections;

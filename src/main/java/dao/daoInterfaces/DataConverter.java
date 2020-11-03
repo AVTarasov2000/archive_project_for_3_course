@@ -1,4 +1,4 @@
-package dao;
+package dao.daoInterfaces;
 
 import java.sql.ResultSet;
 import java.util.List;

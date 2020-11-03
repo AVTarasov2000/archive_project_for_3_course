@@ -1,5 +1,6 @@
-package dao;
+package dao.daoInterfaces;
 
+import dao.DAOContext;
 import interfaces.ObjectFactory;
 
 public interface ObjectConfigurator {

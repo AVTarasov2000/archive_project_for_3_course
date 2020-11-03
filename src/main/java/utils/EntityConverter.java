@@ -1,12 +1,10 @@
-package dao;
+package utils;
 
+import dao.daoEntitys.DAOArchive;
+import dao.daoEntitys.DAOFile;
 import entitys.Archive;
 import entitys.File;
-import entitys.VirtualPlace;
 import enums.FileType;
-import utils.PlaceFabric;
-
-import java.util.Date;
 
 
 public class EntityConverter {

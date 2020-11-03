@@ -4,6 +4,7 @@ import annotations.db.Column;
 import annotations.db.Id;
 import annotations.db.Table;
 import dao.SQLMethods.*;
+import dao.daoInterfaces.QueryMaker;
 import lombok.NonNull;
 import lombok.SneakyThrows;
 

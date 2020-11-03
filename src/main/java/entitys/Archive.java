@@ -1,6 +1,6 @@
 package entitys;
 
-import dao.DAOArchive;
+import dao.daoEntitys.DAOArchive;
 import lombok.Getter;
 import lombok.Setter;
 

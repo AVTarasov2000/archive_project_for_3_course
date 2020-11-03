@@ -1,4 +1,4 @@
-package dao;
+package dao.daoEntitys;
 
 import annotations.db.Column;
 import annotations.db.Id;

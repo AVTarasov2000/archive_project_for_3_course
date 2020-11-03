@@ -1,6 +1,7 @@
 package dao;
 
 import annotations.db.InjectByType;
+import dao.daoInterfaces.ObjectConfigurator;
 import lombok.SneakyThrows;
 
 import java.lang.reflect.Field;
