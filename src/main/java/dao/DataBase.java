@@ -1,13 +1,10 @@
 package dao;
 
-import entitys.Archive;
 import entitys.File;
 import enums.FileType;
-import interfaces.DAO;
-import utils.PlaceFabric;
+import utils.PlaceGenerator;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class DataBase {
 
@@ -18,30 +15,30 @@ public class DataBase {
     static {
         archiveNames = new HashMap <>();
         archives = new HashMap <>();
-        PlaceFabric placeFabric = new PlaceFabric();
+        PlaceGenerator placeGenerator = new PlaceGenerator();
 
         archiveNames.put(0, "test1");
         archives.put(0, new ArrayList <>(Arrays.asList(
-                new File(0, new Date(2017-1900, 5, 10),"file1", FileType.DOCUMENT,placeFabric.createPlace("place1".split("_"))),
-                new File(1, new Date(2017-1900, 5, 11),"file1", FileType.DOCUMENT,placeFabric.createPlace("place2".split("_"))),
-                new File(2, new Date(2017-1900, 5, 12),"file1",FileType.MEDIA_LOG,placeFabric.createPlace("place1".split("_"))),
-                new File(3, new Date(2017-1900, 5, 13),"file1",FileType.MEDIA_LOG,placeFabric.createPlace("place2".split("_"))),
-                new File(4, new Date(2017-1900, 5, 14),"file2", FileType.DOCUMENT,placeFabric.createPlace("place1".split("_"))),
-                new File(5, new Date(2017-1900, 5, 15),"file2", FileType.DOCUMENT,placeFabric.createPlace("place2".split("_"))),
-                new File(6, new Date(2017-1900, 5, 16),"file2",FileType.MEDIA_LOG,placeFabric.createPlace("place1".split("_"))),
-                new File(7, new Date(2017-1900, 5, 17),"file2",FileType.MEDIA_LOG,placeFabric.createPlace("place2".split("_")))
+                new File(0, new Date(2017-1900, 5, 10),"file1", FileType.DOCUMENT, placeGenerator.createPlace("place1".split("_"))),
+                new File(1, new Date(2017-1900, 5, 11),"file1", FileType.DOCUMENT, placeGenerator.createPlace("place2".split("_"))),
+                new File(2, new Date(2017-1900, 5, 12),"file1",FileType.MEDIA_LOG, placeGenerator.createPlace("place1".split("_"))),
+                new File(3, new Date(2017-1900, 5, 13),"file1",FileType.MEDIA_LOG, placeGenerator.createPlace("place2".split("_"))),
+                new File(4, new Date(2017-1900, 5, 14),"file2", FileType.DOCUMENT, placeGenerator.createPlace("place1".split("_"))),
+                new File(5, new Date(2017-1900, 5, 15),"file2", FileType.DOCUMENT, placeGenerator.createPlace("place2".split("_"))),
+                new File(6, new Date(2017-1900, 5, 16),"file2",FileType.MEDIA_LOG, placeGenerator.createPlace("place1".split("_"))),
+                new File(7, new Date(2017-1900, 5, 17),"file2",FileType.MEDIA_LOG, placeGenerator.createPlace("place2".split("_")))
         )));
 
         archiveNames.put(1, "test2");
         archives.put(1, new ArrayList <>(Arrays.asList(
-                new File(0, new Date(2017-1900, 5, 10),"file1", FileType.DOCUMENT,placeFabric.createPlace("place1".split("_"))),
-                new File(1, new Date(2017-1900, 5, 11),"file1", FileType.DOCUMENT,placeFabric.createPlace("place2".split("_"))),
-                new File(2, new Date(2017-1900, 5, 12),"file1",FileType.MEDIA_LOG,placeFabric.createPlace("place1".split("_"))),
-                new File(3, new Date(2017-1900, 5, 13),"file1",FileType.MEDIA_LOG,placeFabric.createPlace("place2".split("_"))),
-                new File(4, new Date(2017-1900, 5, 14),"file2", FileType.DOCUMENT,placeFabric.createPlace("place1".split("_"))),
-                new File(5, new Date(2017-1900, 5, 15),"file2", FileType.DOCUMENT,placeFabric.createPlace("place2".split("_"))),
-                new File(6, new Date(2017-1900, 5, 16),"file2",FileType.MEDIA_LOG,placeFabric.createPlace("place1".split("_"))),
-                new File(7, new Date(2017-1900, 5, 17),"file2",FileType.MEDIA_LOG,placeFabric.createPlace("place2".split("_")))
+                new File(0, new Date(2017-1900, 5, 10),"file1", FileType.DOCUMENT, placeGenerator.createPlace("place1".split("_"))),
+                new File(1, new Date(2017-1900, 5, 11),"file1", FileType.DOCUMENT, placeGenerator.createPlace("place2".split("_"))),
+                new File(2, new Date(2017-1900, 5, 12),"file1",FileType.MEDIA_LOG, placeGenerator.createPlace("place1".split("_"))),
+                new File(3, new Date(2017-1900, 5, 13),"file1",FileType.MEDIA_LOG, placeGenerator.createPlace("place2".split("_"))),
+                new File(4, new Date(2017-1900, 5, 14),"file2", FileType.DOCUMENT, placeGenerator.createPlace("place1".split("_"))),
+                new File(5, new Date(2017-1900, 5, 15),"file2", FileType.DOCUMENT, placeGenerator.createPlace("place2".split("_"))),
+                new File(6, new Date(2017-1900, 5, 16),"file2",FileType.MEDIA_LOG, placeGenerator.createPlace("place1".split("_"))),
+                new File(7, new Date(2017-1900, 5, 17),"file2",FileType.MEDIA_LOG, placeGenerator.createPlace("place2".split("_")))
         )));
         nextArchiveId = 2;
     }

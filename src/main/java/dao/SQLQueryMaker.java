@@ -65,7 +65,7 @@ public class SQLQueryMaker implements QueryMaker {
 
         switch (method) {
             case CREATE:
-                return new Create(table,new String[]{""}); // TODO: 28/10/2020 переделать create method
+                return new Create(table,new String[]{""});
             case DELETE:
                 return new Delete(table, id);
             case SELECT:

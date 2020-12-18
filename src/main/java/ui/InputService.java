@@ -6,11 +6,9 @@ import entitys.Place;
 import enums.Arguments;
 import enums.FileType;
 import services.CommandService;
-import utils.PlaceFabric;
+import utils.PlaceGenerator;
 
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 public class InputService {
@@ -76,7 +74,7 @@ public class InputService {
         System.out.println("place format: <shelving_shelf_index> or <linkToFile>\nwright args <name> <type> <place>");
         String name = scanner.next();
         FileType type = FileType.getTypeByStr(scanner.next());//FileType.valueOf(scanner.next());
-        Place place = new PlaceFabric().createPlace(scanner.nextLine().replaceAll(" ","").split("_"));
+        Place place = new PlaceGenerator().createPlace(scanner.nextLine().replaceAll(" ","").split("_"));
         File f = new File(0, new Date(), name, type, place);
         commandService.setArgument(Arguments.FILE.getArgument(),f);
         int feedBack = commandService.executeCommand("add_file");
@@ -94,9 +92,8 @@ public class InputService {
         int id = scanner.nextInt();
         String name = scanner.next();
         FileType type = FileType.getTypeByStr(scanner.next()); //FileType.valueOf(scanner.next());
-        Place place = new PlaceFabric().createPlace(scanner.nextLine().split("_"));
-        File f = new File(id, new Date() {
-        }, name, type, place);
+        Place place = new PlaceGenerator().createPlace(scanner.nextLine().split("_"));
+        File f = new File(id, new Date() , name, type, place);
         commandService.setArgument(Arguments.ID.getArgument(),id);
         commandService.setArgument(Arguments.FILE.getArgument(),f);
         int feedBack = commandService.executeCommand("edit_file");

@@ -4,7 +4,7 @@ import entitys.Place;
 import entitys.RealPlace;
 import entitys.VirtualPlace;
 
-public class PlaceFabric {
+public class PlaceGenerator {
 
     public Place createPlace(String[] args){
         if (args.length==1){

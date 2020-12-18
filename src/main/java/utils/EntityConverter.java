@@ -14,7 +14,7 @@ public class EntityConverter {
     }
 
     public static File convert(DAOFile f){
-        return new File(f.getId(),f.getDatetime(),f.getName(), FileType.getTypeByStr(f.getType()),new PlaceFabric().createPlace(f.getPlace().split("_")));
+        return new File(f.getId(),f.getDatetime(),f.getName(), FileType.getTypeByStr(f.getType()),new PlaceGenerator().createPlace(f.getPlace().split("_")));
     }
 
     public static DAOArchive convert(Archive f){
